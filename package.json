@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./server/index.js",
-    "dev": "nodemon ./server/index.js"
+    "server": "nodemon ./server/index.js",
+    "client": "npm run start --prefix server/client",
+    "dev": "concurrently \"npm run server \" \"npm run client\""
   },
   "engines": {
     "npm": "5.6.0",
@@ -14,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^3.5.1",
     "cookie-session": "^2.0.0-beta.3",
     "express": "^4.16.2",
     "mongoose": "^5.0.4",

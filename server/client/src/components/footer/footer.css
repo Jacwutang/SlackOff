@@ -1,0 +1,32 @@
+.nav-footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #F8F8F8;
+    color: white;
+    height: 25%;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.h4-footer{
+  color: black;
+}
+
+.p-footer-description{
+  color: gray;
+}
+
+.p-footer{
+  padding-bottom: 5px;
+}
+.p-footer img:first-of-type{
+  padding-right: 10px;
+
+}
+
+.p-footer img:last-of-type{
+  padding-left: 10px;
+
+}

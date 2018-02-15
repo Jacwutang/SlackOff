@@ -1,0 +1,22 @@
+
+nav{
+  background-color: white;
+}
+
+li a span{
+  color: gray;
+}
+
+img{
+  vertical-align: middle;
+}
+
+.logo-span{
+  font-size: 25px;
+  color: black;
+  font-weight: bold;
+}
+
+img{
+  vertical-align: middle;
+}

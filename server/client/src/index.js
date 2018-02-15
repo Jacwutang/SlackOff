@@ -20,6 +20,4 @@ document.addEventListener('DOMContentLoaded', () => {
     root
   );
 
-
-
 });

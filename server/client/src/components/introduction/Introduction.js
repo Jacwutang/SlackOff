@@ -4,7 +4,15 @@ import './introduction.css';
 export default () => {
   return(
     <div className="div-intro">
-      <h1>In Development</h1>
+      <div className="img-container">
+        <img src={require('../../images/Slack_Profile.jpg')} />
+        <h4 className="top-center"> In Development </h4>
+      </div>
+
+
+    <div>
+
+    </div>
     </div>
   );
 

@@ -1,7 +1,13 @@
 import React, {Component} from 'react';
 import './navbar.css';
+import { connect } from 'react-redux';
 
 class Header extends Component {
+  renderContent(){
+    
+  }
+
+
   render(){
     return(
       <nav>
@@ -38,4 +44,12 @@ class Header extends Component {
 
 };
 
-export default Header;
+export default connect(mapStateToProps)(Header);
+
+
+function mapStateToProps(state){
+  return {
+    auth: state.auth
+  }
+
+};

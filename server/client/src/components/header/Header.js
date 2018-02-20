@@ -43,9 +43,9 @@ class Header extends Component {
           </Link>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li>
-              <a href="">
+              <Link to="/demo">
                 <span>Why SlackOff?</span>
-              </a>
+              </Link>
             </li>
 
             {this.renderContent()}
@@ -69,16 +69,3 @@ function mapStateToProps(state){
   }
 
 };
-
-
-// <li>
-//   <a href="">
-//     <span>Log In</span>
-//   </a>
-// </li>
-//
-// <li>
-//   <a href="">
-//     <span> Sign Up </span>
-//   </a>
-// </li>

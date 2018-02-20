@@ -5,12 +5,13 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
 import reduxThunk from 'redux-thunk';
+import logger from 'redux-logger'
 
 import App from './components/App';
 import reducers from './reducers';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const store = createStore( reducers, {}, applyMiddleware(reduxThunk) );
+  const store = createStore( reducers, {}, applyMiddleware(reduxThunk, logger) );
   const root = document.getElementById('root');
 
   ReactDOM.render(

@@ -4,7 +4,28 @@ import { connect } from 'react-redux';
 
 class Header extends Component {
   renderContent(){
-    
+    switch(this.props.auth){
+      case null:
+        return;
+
+      case false:
+        return(
+          <li>
+            <a href= "">
+              <span> Log In </span>
+            </a>
+          </li>
+        );
+      default:
+        return (
+          <li>
+            <a href= "">
+              <span> Logout </span>
+            </a>
+          </li>
+        );
+
+    }
   }
 
 
@@ -23,17 +44,8 @@ class Header extends Component {
               </a>
             </li>
 
-            <li>
-              <a href="">
-                <span>Log In</span>
-              </a>
-            </li>
+            {this.renderContent()}
 
-            <li>
-              <a href="">
-                <span> Sign Up </span>
-              </a>
-            </li>
 
           </ul>
         </div>
@@ -53,3 +65,16 @@ function mapStateToProps(state){
   }
 
 };
+
+
+// <li>
+//   <a href="">
+//     <span>Log In</span>
+//   </a>
+// </li>
+//
+// <li>
+//   <a href="">
+//     <span> Sign Up </span>
+//   </a>
+// </li>

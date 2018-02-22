@@ -13,10 +13,18 @@ class Channel extends Component {
 
       <div className="col s10">
 
-        <div className="temprow">
+        <div className="top-row">
 
-        2nd here
+        Top Row
 
+        </div>
+
+        <div>
+        Middle content
+        </div>
+
+        <div className="bottom-row">
+          Bottom Row
         </div>
       </div>
 

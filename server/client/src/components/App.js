@@ -4,26 +4,29 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 import Landing from './Landing';
+import Channel from './channel/Channel';
 
 class App extends Component{
 
   componentDidMount(){
     this.props.fetchUser();
+
   }
 
 
   render(){
     return(
-        <div className="container">
+
           <BrowserRouter>
             <div>
               <Route exact path="/" component={Landing} />
+              <Route exact path="/channels" component={Channel} />
 
             </div>
 
           </BrowserRouter>
 
-        </div>
+
     );
   }
 

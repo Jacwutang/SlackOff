@@ -1,0 +1,24 @@
+/* #4d394b */
+
+.row{
+  width: 100%;
+  /* border: 1px solid black; */
+}
+
+.col.s10 , .col.s2{
+  /* border: 1px solid black; */
+  min-height: 100vh;
+  padding: 0;
+}
+
+.col.s2{
+  background-color: #4d394b;
+}
+
+
+.temprow{
+  width:100%;
+  border-bottom: 1px solid gray;
+  height: 8vh;
+
+}

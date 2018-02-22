@@ -5,7 +5,7 @@ import Introduction from './introduction/Introduction';
 
 export default () => {
   return(
-    <div>
+    <div className="container">
       <Header />
       <Introduction />
       <Footer />

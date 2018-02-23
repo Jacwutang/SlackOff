@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
-import './index.css';
-import ChannelDisplay from './'
+import './dashboard.css';
+// import ChannelDisplay from './'
 
 
 class DashBoard extends Component {

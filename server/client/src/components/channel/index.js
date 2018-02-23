@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
 
-import './Channel.css';
-import DashBoard from './dashboard/Dashboard';
-import Message from './message/Message';
+import './index.css';
+import DashBoard from './dashboard/index';
+import Message from './message/index';
 
 
 class Channel extends Component {

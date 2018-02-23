@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 import Landing from './Landing';
-import Channel from './channel/Channel';
+import Channel from './channel/index';
 
 class App extends Component{
 

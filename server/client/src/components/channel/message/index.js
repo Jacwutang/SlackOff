@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
-import './Message.css';
+import './index.css';
 
 class Message extends Component {
   render(){
@@ -23,7 +23,7 @@ class Message extends Component {
           Bottom Row
         </div>
       </div>
-      
+
     );
   }
 

@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+
+
 import './Channel.css';
 
 class Channel extends Component {
@@ -8,7 +11,7 @@ class Channel extends Component {
     <div className="row">
 
       <div className="col s2">
-        Here
+        Side column
       </div>
 
       <div className="col s10">
@@ -35,4 +38,22 @@ class Channel extends Component {
   }
 };
 
-export default Channel;
+export default connect(mapStateToProps,mapDispatchToProps)(Channel);
+
+function mapStateToProps(state){
+  return (
+    {
+
+    }
+  )
+};
+
+
+function mapDispatchToProps(dispatch){
+  return(
+    {
+
+    }
+  )
+
+};

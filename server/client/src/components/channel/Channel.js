@@ -3,6 +3,9 @@ import {connect} from 'react-redux';
 
 
 import './Channel.css';
+import DashBoard from './dashboard/Dashboard';
+import Message from './message/Message';
+
 
 class Channel extends Component {
   render(){
@@ -10,26 +13,9 @@ class Channel extends Component {
 
     <div className="row">
 
-      <div className="col s2">
-        Side column
-      </div>
+      <DashBoard />
+      <Message />
 
-      <div className="col s10">
-
-        <div className="top-row">
-
-        Top Row
-
-        </div>
-
-        <div>
-        Middle content
-        </div>
-
-        <div className="bottom-row">
-          Bottom Row
-        </div>
-      </div>
 
     </div>
 
@@ -39,6 +25,8 @@ class Channel extends Component {
 };
 
 export default connect(mapStateToProps,mapDispatchToProps)(Channel);
+
+
 
 function mapStateToProps(state){
   return (

@@ -1,0 +1,24 @@
+.col.s10{
+  /* border: 1px solid black; */
+  min-height: 100vh;
+  padding: 0;
+}
+
+
+
+.top-row{
+  width:100%;
+  border-bottom: 1px solid #C0C0C0;
+  height: 5vh;
+
+}
+
+
+.bottom-row{
+  height: 7vh;
+  border-top: 1px solid #C0C0C0;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+
+}

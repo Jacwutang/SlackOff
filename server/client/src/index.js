@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const store = createStore( reducers, {}, applyMiddleware(reduxThunk, logger) );
   const root = document.getElementById('root');
 
+  document.body.style.overflow = "hidden";
+
   ReactDOM.render(
     <Provider store={store}>
       <App />

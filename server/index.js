@@ -10,6 +10,9 @@ require('./services/passport');
 
 
 mongoose.connect(keys.mongoURI);
+mongoose.Promise = global.Promise;
+// var db = mongoose.connections;
+// db.on('error', console.error.bind(console,'MongoDB connection error'));
 
 const app = express();
 

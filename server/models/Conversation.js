@@ -2,8 +2,11 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const conversationSchema = new Schema({
-  name: String,
-  members: [{ type: Schema.Types.ObjectId, ref: 'User'}]
+
+  members: [{ type: Schema.Types.ObjectId, ref: 'User'}],
+  channel: { type: Schema.Types.ObjectId, ref: 'Channel'},
+  directMessage: { type: Schema.Types.ObjectId, ref: 'DirectMessage'}
+  //can be aprt of channels or direct_messages. Need to incorporate some meta-data to tell us if apart of channel or dm
 
 });
 

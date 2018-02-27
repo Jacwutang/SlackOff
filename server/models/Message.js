@@ -10,7 +10,7 @@ const messageSchema = new Schema({
 
 });
 
-mongoose.model('messages', messageSchema);
+mongoose.model('Message', messageSchema);
 // Conversation : {
 //  id: 123,
 //  members: [ user_id1, user_id2 ]

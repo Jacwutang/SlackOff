@@ -10,7 +10,7 @@ const conversationSchema = new Schema({
 
 });
 
-mongoose.model('conversations', conversationSchema);
+mongoose.model('Conversation', conversationSchema);
 // Conversation : {
 //  id: 123,
 //  members: [ user_id1, user_id2 ]

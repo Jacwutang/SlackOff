@@ -8,7 +8,7 @@ const directMessageSchema = new Schema({
 
 });
 
-mongoose.model('directMessages', directMessageSchema);
+mongoose.model('DirectMessage', directMessageSchema);
 // Conversation : {
 //  id: 123,
 //  members: [ user_id1, user_id2 ]

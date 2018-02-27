@@ -8,7 +8,7 @@ const channelSchema = new Schema({
 
 });
 
-mongoose.model('channels', channelSchema);
+mongoose.model('Channel', channelSchema);
 // Conversation : {
 //  id: 123,
 //  members: [ user_id1, user_id2 ]

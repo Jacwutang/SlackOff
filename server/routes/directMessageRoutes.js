@@ -1,7 +1,9 @@
+const mongoose = require('mongoose');
+
 module.exports = (app) => {
 
 
-  app.get('', (req,res) => {
+  app.get('/messages/dm/new', (req,res) => {
 
   });
 

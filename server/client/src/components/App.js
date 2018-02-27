@@ -20,7 +20,7 @@ class App extends Component{
           <BrowserRouter>
             <div>
               <Route exact path="/" component={Landing} />
-              <Route exact path="/channels" component={Channel} />
+              <Route exact path="/messages" component={Channel} />
 
             </div>
 

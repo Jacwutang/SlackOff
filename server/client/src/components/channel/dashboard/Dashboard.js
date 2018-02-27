@@ -2,19 +2,44 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
 import './dashboard.css';
-// import ChannelDisplay from './'
+
 
 
 class DashBoard extends Component {
+
+  dmdisplay(){
+    return(
+      <div>
+      <div className="message-display-add">
+        <span>DirectMessageDisplay</span>
+        <span> Button </span>
+
+      </div>
+      </div>
+    );
+  }
+  channelDisplay(){
+    return(
+      <div>
+      <span>
+      channelDisplay
+      </span>
+      </div>
+    );
+  }
+
   render(){
     return(
       <section className="col s2">
         <div className="workspace-div"> Workspace </div>
         <section className="dashboard-message">
-          <div> Channels
 
-          </div>
-          <div> Direct Messages </div>
+          {this.channelDisplay()}
+
+          {this.dmdisplay()}
+
+
+
         </section>
       </section>
     );

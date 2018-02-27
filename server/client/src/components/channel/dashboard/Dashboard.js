@@ -12,7 +12,7 @@ class DashBoard extends Component {
       <div>
       <div className="message-display-add">
         <span>DirectMessageDisplay</span>
-        <span> Button </span>
+        <button> + </button>
 
       </div>
       </div>
@@ -21,9 +21,11 @@ class DashBoard extends Component {
   channelDisplay(){
     return(
       <div>
-      <span>
-      channelDisplay
-      </span>
+      <div className="message-display-add">
+      <span> channelDisplay </span>
+      <button> + </button>
+
+      </div>
       </div>
     );
   }

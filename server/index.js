@@ -5,7 +5,43 @@ const passport = require('passport');
 const keys = require('./config/keys');
 
 require('./models/User');
+require('./models/Channel');
+require('./models/Conversation');
+require('./models/directMessage');
+require('./models/Message');
+
+// const Channel = mongoose.model('Channel');
+// const test = new Channel({name: "Hello"});
+// test.save();
+//
+// const User = mongoose.model('User');
+// const jack = new User({googleId: 211212122, displayName: 'jack'});
+// jack.save();
+//
+// const Convo = mongoose.model('Conversation');
+// const convo1 = new Convo({members: jack._id, channel: test._id});
+// convo1.save();
+//
+// const Message = mongoose.model('Message');
+// new Message({body: "hi whats my name", author: jack._id, conversationId: convo1._id }).save();
+//
+//
+//
+// Message
+// .findOne({ body: 'hi whats my name' })
+// .populate('conversationId') //This populates the author id with actual author information!
+// .exec(function (err, convo) {
+//   if (err) return handleError(err);
+//   console.log('The author is %s', convo.);
+//   // prints "The author is Bob Smith"
+// });
+//
+
+
+
+
 require('./services/passport');
+
 
 
 

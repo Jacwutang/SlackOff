@@ -69,6 +69,8 @@ app.use(passport.session());
 
 //load route handlers
 require('./routes/authRoutes')(app);
+require('./routes/channelRoutes')(app);
+require('./routes/directMessageRoutes')(app);
 
 
 

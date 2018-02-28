@@ -13,69 +13,7 @@ class DashBoard extends Component {
   constructor(props){
     super(props);
 
-    this.state = {
-    open: false,
-  };
-
-    this.handleClick = this.handleClick.bind(this);
-    this.onOpenModal = this.onOpenModal.bind(this);
-    // this.handleChannelModal = this.handleChannelModal.bind(this);
-    // this.handleDirectModal = this.handleDirectModal.bind(this);
   }
-
-  handleClick(e){
-    console.log(e);
-  }
-
-
-  onOpenModal(){
-   this.setState({ open: true });
- };
-
- onCloseModal(){
-   this.setState({ open: false });
- };
-
-
-  directDisplay(){
-    const { open } = this.state;
-
-    return(
-      <div>
-      <div className="message-display-add">
-        <span>DirectMessageDisplay</span>
-         <button onClick={() =>  this.onOpenModal()}> +
-        <Modal open={open} onClose={() => this.onCloseModal()} little>
-          <h2>Create a Private Convo</h2>
-        </Modal>
-
-        </button>
-
-      </div>
-      </div>
-    );
-  }
-
-  channelDisplay(){
-    const { open } = this.state;
-
-    return(
-      <div>
-      <div className="message-display-add">
-      <span> channelDisplay </span>
-      <button onClick={() => this.onOpenModal() }> +
-      <Modal open={open} onClose={() => this.onCloseModal()} little>
-        <h2>Create a new Channel</h2>
-        <h3> more stuff </h3>
-      </Modal>
-
-      </button>
-
-      </div>
-      </div>
-    );
-  }
-
 
   render(){
     return(

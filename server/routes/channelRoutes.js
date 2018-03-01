@@ -3,8 +3,15 @@ const mongoose = require('mongoose');
 
 module.exports = (app) => {
 
-  app.get('/messages/channel/new', (req,res) => {
-      
+  app.post('/api/channel/new', (req,res) => {
+
+      console.log(req.body);
+      console.log("REACHED HERE");
+      // console.log(req.params);
+      // console.log(req.data);
+      //
+      // console.log(req.channel, "CHANNEL DATA");
+
 
       // console.log("HERE");
       // console.log(req);

@@ -11,14 +11,13 @@ export const fetchUser = () => async dispatch => {
       return dispatch({type: FETCH_USER, payload: res});
 };
 
-export const createChannel = (channel) => async dispatch => {
-      console.log(channel);
+export const createChannel = (channel) => dispatch => {
+
 
       //prints out {name: 'Test'}
-      const res = await axios.post(
+      const res =  axios.post(
       '/api/channel/new',
       channel
-      );
-
-      return dispatch({type: CREATE_CHANNEL, payload: res});
+      )
+      .then(res => dispatch({type: CREATE_CHANNEL, payload: res}));
 };

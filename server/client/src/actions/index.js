@@ -15,7 +15,7 @@ export const createChannel = (channel) => dispatch => {
 
 
       //prints out {name: 'Test'}
-      const res =  axios.post(
+      axios.post(
       '/api/channel/new',
       channel
       )

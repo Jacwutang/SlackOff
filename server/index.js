@@ -3,12 +3,14 @@ const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const keys = require('./config/keys');
+const bodyParser = require('body-parser');
 
 require('./models/User');
 require('./models/Channel');
 require('./models/Conversation');
 require('./models/directMessage');
 require('./models/Message');
+
 
 // const Channel = mongoose.model('Channel');
 // const test = new Channel({name: "Hello"});
@@ -49,6 +51,9 @@ mongoose.connect(keys.mongoURI);
 mongoose.Promise = global.Promise;
 
 const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // next 3 functions are middlewares
 

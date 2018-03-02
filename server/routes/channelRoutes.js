@@ -4,20 +4,27 @@ const mongoose = require('mongoose');
 module.exports = (app) => {
 
   app.post('/api/channel/new', (req,res) => {
-      // console.log(req);
-      console.log(req.body);
-      // console.log(req.user);
-      // console.log(req.params);
-      // console.log(req.body);
-      // console.log("REACHED HERE");
-      res.send({hello: "hi"})// console.log(req.params);
-      // console.log(req.data);
-      //
-      // console.log(req.channel, "CHANNEL DATA");
+
+      const { name } = req.body;
+
+      const Channel = mongoose.model('Channel');
+
+      let newChannel = new Channel({name});
+
+      newChannel.save( (err,newChannel) => {
+        if(err){
+          console.log("error", err);
+          res.send(400, err.msg);
+        } else{
+          res.send(newChannel);
+        }
+
+      });
 
 
-      // console.log("HERE");
-      // console.log(req);
+
+
+
       // const Channel = mongoose.model('Channel');
       // const test = new Channel({name: "Hello"});
       // test.save();

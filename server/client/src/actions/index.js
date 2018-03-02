@@ -15,9 +15,10 @@ export const createChannel = (channel) => dispatch => {
 
 
       //prints out {name: 'Test'}
-      axios.post(
+      const res =  axios.post(
       '/api/channel/new',
       channel
-      )
-      .then(res => dispatch({type: CREATE_CHANNEL, payload: res}));
+      );
+
+      return dispatch({type: CREATE_CHANNEL, payload: res});
 };

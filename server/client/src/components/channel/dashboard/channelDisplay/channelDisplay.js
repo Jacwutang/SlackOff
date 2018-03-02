@@ -22,6 +22,13 @@ class ChannelDisplay extends Component {
   componentDidMount(){
     console.log(this.props);
   }
+  componentWillReceiveProps(nextProps){
+    if(this.props === nextProps)
+      return;
+
+
+
+  }
 
 
 
@@ -45,48 +52,60 @@ class ChannelDisplay extends Component {
   render(){
     const { open } = this.state;
     return(
+      <div>
+        <div className="message-display-add">
+        <span> channelDisplay </span>
+        <button onClick={() => this.onOpenModal() }> + </button>
+        <Modal
+        open={open}
+        onClose={() => this.onCloseModal()}
+        little
+        classNames={{
+              transitionEnter: 'transition-enter',
+              transitionEnterActive: 'transition-enter-active',
+              transitionExit: 'transition-exit-active',
+              transitionExitActive: 'transition-exit-active',
 
-      <div className="message-display-add">
-      <span> channelDisplay </span>
-      <button onClick={() => this.onOpenModal() }> + </button>
-      <Modal
-      open={open}
-      onClose={() => this.onCloseModal()}
-      little
-      classNames={{
-            transitionEnter: 'transition-enter',
-            transitionEnterActive: 'transition-enter-active',
-            transitionExit: 'transition-exit-active',
-            transitionExitActive: 'transition-exit-active',
+            }}
+        animationDuration={1000} >
 
-          }}
-      animationDuration={1000} >
+        <h2>Create a new Channel</h2>
+        <button onClick={(e) => this.handleSubmit(e)}> Submit </button>
+        <input
+          placeholder="Enter channel name"
+        />
 
-      <h2>Create a new Channel</h2>
-      <button onClick={(e) => this.handleSubmit(e)}> Submit </button>
-      <input
-        placeholder="Enter channel name"
+        </Modal>
 
-      >
+        </div>
+      <ul>
 
+       {this.props.channel.map( (channel) =>
+          <li
+          key={channel._id}
+          >
+            {channel.name}
 
+          </li>
 
-
-      </input>
+      )}
 
 
-      </Modal>
-
-
+      </ul>
 
       </div>
-
     )
   }
 };
 
-export default connect(null, mapDispatchToProps)(ChannelDisplay);
+export default connect(mapStateToProps, mapDispatchToProps)(ChannelDisplay);
 
+function mapStateToProps(state){
+  return {
+    channel: state.channel
+  };
+
+}
 
 function mapDispatchToProps(dispatch){
   return{
@@ -94,3 +113,14 @@ function mapDispatchToProps(dispatch){
   };
 
 };
+
+
+// {this.props.channel.map( (channel) =>
+//     <li
+//     key={channel._id}
+//     >
+//       {channel.name}
+//
+//     </li>
+//
+// )}

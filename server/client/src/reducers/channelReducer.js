@@ -2,13 +2,15 @@ import { CREATE_CHANNEL } from '../actions/types';
 
 
 
-export default function(state = {}, action){
+export default function(state = [], action){
 
   Object.freeze(state);
 
   switch(action.type){
     case CREATE_CHANNEL:
-      return Object.assign({},state,action.payload.data);
+      let newChannel =  Object.assign({},state,action.payload.data);
+
+      return [newChannel];
       break;
 
 

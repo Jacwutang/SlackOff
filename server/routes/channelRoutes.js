@@ -21,6 +21,16 @@ module.exports = (app) => {
 
       });
 
+      // const Conversation = mongoose.model('Conversation');
+
+      // let newConversation = new Conversation({
+      //   members: req.user._id,
+      //   channel: newChannel._id
+      // });
+
+      // Create a new conversation as well
+
+
 
 
 

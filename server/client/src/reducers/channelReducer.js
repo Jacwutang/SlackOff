@@ -8,9 +8,10 @@ export default function(state = [], action){
 
   switch(action.type){
     case CREATE_CHANNEL:
-      let newChannel =  Object.assign({},state,action.payload.data);
+      let newChannel =  action.payload.data;
 
-      return [newChannel];
+
+      return state.concat(newChannel);
       break;
 
 

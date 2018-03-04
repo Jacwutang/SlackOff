@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import Modal from 'react-responsive-modal';
 
 import { createChannel } from '../../../../actions/index';
+import ChannelIndexItem from './channelIndexItem';
 
 import './channelDisplay.css';
 import '../dashboard.css';
@@ -13,7 +14,8 @@ class ChannelDisplay extends Component {
     super(props);
 
     this.state = {
-      open: false
+      open: false,
+      input: '',
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -35,8 +37,20 @@ class ChannelDisplay extends Component {
   handleSubmit(e){
     e.preventDefault();
     this.props.createChannel({
-      name: 'Testing'
+      name: this.state.input
     });
+
+    this.setState({
+      input: ''
+    })
+  }
+
+  handleInput(field){
+    return( e =>
+      this.setState({ [field]: e.target.value  })
+
+    )
+
   }
 
 
@@ -47,6 +61,24 @@ class ChannelDisplay extends Component {
  onCloseModal(){
    this.setState({ open: false });
  };
+
+ //
+ renderChannels(){
+   return(
+     <ul>
+
+      {this.props.channel.map( (channel) =>
+         <ChannelIndexItem
+         key={channel._id}
+         channel={channel}
+         />
+
+       )}
+
+
+     </ul>
+   );
+ }
 
 
   render(){
@@ -73,25 +105,15 @@ class ChannelDisplay extends Component {
         <button onClick={(e) => this.handleSubmit(e)}> Submit </button>
         <input
           placeholder="Enter channel name"
+          value={this.state.input}
+          onChange={this.handleInput('input')}
         />
 
         </Modal>
 
         </div>
-      <ul>
 
-       {this.props.channel.map( (channel) =>
-          <li
-          key={channel._id}
-          >
-            {channel.name}
-
-          </li>
-
-      )}
-
-
-      </ul>
+        {this.renderChannels()}
 
       </div>
     )

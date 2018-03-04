@@ -67,7 +67,7 @@ class ChannelDisplay extends Component {
    return(
      <ul>
 
-      {this.props.channel.map( (channel) =>
+      {this.props.channels.map( (channel) =>
          <ChannelIndexItem
          key={channel._id}
          channel={channel}
@@ -123,8 +123,9 @@ class ChannelDisplay extends Component {
 export default connect(mapStateToProps, mapDispatchToProps)(ChannelDisplay);
 
 function mapStateToProps(state){
+  const { channels } = state;
   return {
-    channel: state.channel
+    channels: Object.keys(channels).map(id => state.channels[id])
   };
 
 }
@@ -135,14 +136,3 @@ function mapDispatchToProps(dispatch){
   };
 
 };
-
-
-// {this.props.channel.map( (channel) =>
-//     <li
-//     key={channel._id}
-//     >
-//       {channel.name}
-//
-//     </li>
-//
-// )}

@@ -8,6 +8,6 @@ import channelReducer from './channelReducer';
 
 export default combineReducers({
   auth: authReducer,
-  channel: channelReducer,
+  channels: channelReducer,
 
 });

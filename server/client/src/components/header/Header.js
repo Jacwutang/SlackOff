@@ -35,7 +35,7 @@ class Header extends Component {
       <nav>
         <div className="nav-wrapper">
           <Link
-            to={this.props.auth ? '/channels' : '/' }
+            to={this.props.auth ? '/messages' : '/' }
             className="brand-logo"
           >
            <img src={require("../../images/Slack_Mark_Web.png")} alt="logo" width={75}  />

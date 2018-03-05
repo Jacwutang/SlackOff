@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 import Landing from './Landing';
-import Channel from './channel/index';
+import Channel from './channel/Channel';
 
 class App extends Component{
 
@@ -20,7 +20,7 @@ class App extends Component{
           <BrowserRouter>
             <div>
               <Route exact path="/" component={Landing} />
-              <Route exact path="/channels" component={Channel} />
+              <Route exact path="/messages" component={Channel} />
 
             </div>
 

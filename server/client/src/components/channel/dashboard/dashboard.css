@@ -1,0 +1,25 @@
+.workspace-div{
+  border-bottom:  1px solid black;
+  padding-bottom: 50px;
+}
+
+
+.col.s2{
+  background-color: #4d394b;
+  min-height: 100vh;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 220px;
+
+}
+
+.dashboard-message{
+  display: flex;
+  flex-direction: column;
+}
+
+.message-display-add{
+  display: flex;
+  justify-content: space-between;
+}

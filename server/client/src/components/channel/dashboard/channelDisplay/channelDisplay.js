@@ -22,7 +22,7 @@ class ChannelDisplay extends Component {
   }
 
   componentDidMount(){
-    console.log(this.props);
+    // console.log(this.props);
   }
   componentWillReceiveProps(nextProps){
     if(this.props === nextProps)

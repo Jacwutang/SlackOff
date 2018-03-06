@@ -41,7 +41,8 @@ class ChannelDisplay extends Component {
     });
 
     this.setState({
-      input: ''
+      input: '',
+      open: false,
     })
   }
 

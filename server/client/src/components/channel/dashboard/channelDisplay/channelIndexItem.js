@@ -13,7 +13,7 @@ class ChannelIndexItem extends Component{
 
     return(
       <div>
-        <Link to={`messages/channel/${channel._id}`}>
+        <Link to={`/messages/channel/${channel._id}`}>
         {channel.name}
         </Link>
       </div>

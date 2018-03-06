@@ -44,7 +44,7 @@ class DirectMessageDisplay extends Component {
         <h2>Create a Private Convo</h2>
         <button onClick={() => this.handleSubmit()}> Submit </button>
         <input
-          placeHolder="Search Members"/>
+          placeholder="Search Members"/>
 
 
         </Modal>

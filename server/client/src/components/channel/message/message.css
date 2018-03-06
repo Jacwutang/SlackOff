@@ -18,17 +18,32 @@
 
 .bottom-row{
   height: 7vh;
-  border-top: 1px solid #C0C0C0;
-  width: 100%;
+  /* border-top: 1px solid #C0C0C0; */
+  width: 85%;
   position: fixed;
   bottom: 0;
+  margin-bottom: 15px;
 
 }
 
 
-.msg-input{
+.msg-input-wrapper{
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  height: 100%;
+  width: 85%;
 
+}
+
+#msg-input{
+  border: 1px solid black;
+  height: 100%;
+  box-sizing: border-box;
+  border-left: none;
+  width:100%;
+}
+
+.msg-input-gif{
+  /* border-right: 1px solid blue; */
+  height: 100%;
+  border: 1px solid black;
 }

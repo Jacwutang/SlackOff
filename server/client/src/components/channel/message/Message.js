@@ -15,6 +15,13 @@ class Message extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  renderConversations(){
+    return(
+      "hi"
+    )
+
+  }
+
 
   componentDidMount(){
 
@@ -31,7 +38,7 @@ class Message extends Component {
   handleSubmit(e){
     e.preventDefault();
     window.alert("SUBMITEED");
-
+    //create a new message
 
   }
 
@@ -50,16 +57,18 @@ class Message extends Component {
         </div>
 
         <div>
-        Middle content
+        {this.renderConversations()}
         </div>
 
         <div className="bottom-row">
-        <form onSubmit={this.handleSubmit} className="msg-input">
-          <input
-          value={this.state.input}
-          onChange={this.handleInput('input')} />
-          <button> Submit NOW </button>
-        </form>
+          <form onSubmit={this.handleSubmit} className="msg-input-wrapper">
+            <button type="button" className="msg-input-gif"> Click </button>
+            <input
+            id="msg-input"
+            value={this.state.input}
+            onChange={this.handleInput('input')} />
+
+          </form>
 
 
         </div>

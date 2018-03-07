@@ -15,6 +15,11 @@ class Message extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount(){
+
+  }
+
+
   renderConversations(){
     return(
       "hi"
@@ -23,9 +28,7 @@ class Message extends Component {
   }
 
 
-  componentDidMount(){
 
-  }
 
   handleInput(field){
 

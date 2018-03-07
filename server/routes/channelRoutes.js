@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-
+const Channel = mongoose.model('Channel');
+const Conversation = mongoose.model('Conversation');
 
 module.exports = (app) => {
 
@@ -7,7 +8,7 @@ module.exports = (app) => {
 
       const { name } = req.body;
 
-      const Channel = mongoose.model('Channel');
+
 
       let newChannel = new Channel({name});
 
@@ -16,12 +17,23 @@ module.exports = (app) => {
           console.log("error", err);
           res.send(400, err.msg);
         } else{
-          res.send(newChannel);
+
+          let newConversation = new Conversation({
+            members: req.user._id,
+            channel: newChannel._id
+          });
+
+
+
+          res.send({
+            channel: newChannel,
+            conversation: newConversation
+          });
         }
 
       });
 
-      // const Conversation = mongoose.model('Conversation');
+
 
       // let newConversation = new Conversation({
       //   members: req.user._id,

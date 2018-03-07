@@ -47,7 +47,13 @@ class ChannelDisplay extends Component {
     e.preventDefault();
     this.props.createChannel({
       name: this.state.input
-    }).then((channel) => this.props.history.push(`/messages/channel/${channel.payload.data._id}`))
+    }).then( (response) => {
+      console.log(response.payload.data);
+      this.props.history.push(`/messages/channel/${response.payload.data.channel._id}`)
+
+    })
+
+
 
     this.setState({
       input: '',
@@ -73,8 +79,6 @@ class ChannelDisplay extends Component {
  };
 
  toggleActive(channel){
-   // console.log(channel);
-   // console.log(this);
 
    this.setState({
      currentChannel: channel
@@ -168,3 +172,19 @@ function mapDispatchToProps(dispatch){
   };
 
 };
+
+
+
+// handleSubmit(e){
+//   e.preventDefault();
+//   this.props.createChannel({
+//     name: this.state.input
+//   }).then((channel) => this.props.history.push(`/messages/channel/${channel.payload.data._id}`))
+//
+//
+//
+//   this.setState({
+//     input: '',
+//     open: false,
+//   })
+// }

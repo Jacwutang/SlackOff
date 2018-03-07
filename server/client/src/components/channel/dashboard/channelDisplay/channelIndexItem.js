@@ -67,10 +67,3 @@ let styles = {
 }
 
 export default Radium(ChannelIndexItem);
-
-
-// bStyle:{
-//   ':hover': {
-//   backgroundColor: 'gray'
-//   }
-// }

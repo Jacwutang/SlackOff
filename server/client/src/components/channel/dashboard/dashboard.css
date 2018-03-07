@@ -24,14 +24,19 @@
   justify-content: space-between;
 }
 
-:focus{
+/* :focus{
     background-color: red;
+} */
+
+.channel-index-item:focus:not(:hover){
+  background-color: red;
 }
 
 .channel-index-item:focus{
   background-color: red;
 }
 
-.channel-index-item:hover{
+
+.channel-index-item:hover:not(:focus){
   background-color: gray;
 }

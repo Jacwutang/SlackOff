@@ -5,9 +5,18 @@ import {connect} from 'react-redux';
 import './channel.css';
 import DashBoard from './dashboard/Dashboard';
 import Message from './message/Message';
+import { withRouter } from 'react-router';
 
 
 class Channel extends Component {
+  constructor(){
+    super();
+
+  }
+  
+
+
+
   render(){
     return(
 
@@ -24,11 +33,16 @@ class Channel extends Component {
   }
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(Channel);
+export default withRouter( connect(mapStateToProps,mapDispatchToProps)(Channel));
 
 
 
-function mapStateToProps(state){
+function mapStateToProps(state,ownProps){
+  //ownProps.match.params.type
+  //ownProps.match.params.type_id
+
+  console.log(ownProps, "HERE");
+
   return (
     {
 

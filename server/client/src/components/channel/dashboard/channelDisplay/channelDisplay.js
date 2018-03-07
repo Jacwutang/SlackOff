@@ -73,9 +73,13 @@ class ChannelDisplay extends Component {
  };
 
  toggleActive(channel){
+   // console.log(channel);
+   // console.log(this);
+
    this.setState({
      currentChannel: channel
-   })
+   });
+
  }
  renderChannels(){
    if(!this.state.currentChannel ){
@@ -85,9 +89,10 @@ class ChannelDisplay extends Component {
    let currentChannel = this.state.currentChannel;
 
    return(
-     <ul className="channel-index-item">
+     <ul>
 
       {this.props.channels.map( (channel) => {
+
         let bool = (channel === currentChannel)? true: false;
 
         return(
@@ -95,7 +100,7 @@ class ChannelDisplay extends Component {
            key={channel._id}
            channel={channel}
            active={bool}
-           onToggle={() => this.toggleActive()}
+           onToggle={this.toggleActive}
            />
         )
       })}

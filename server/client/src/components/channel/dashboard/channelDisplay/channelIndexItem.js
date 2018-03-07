@@ -17,17 +17,24 @@ class ChannelIndexItem extends Component{
 
   componentDidMount(){
 
-    console.log(this.props);
+
 
   }
+
+
 
   componentWillReceiveProps(nextProps){
 
   }
 
+  handleClick = () => {
+    this.props.onToggle(this.props.channel);
+  }
+
 
 
   render(){
+
     const { channel } = this.props;
 
     return(
@@ -35,8 +42,9 @@ class ChannelIndexItem extends Component{
 
       <li
       style={this.props.active === true ? styles.aStyle : styles.bStyle }
+      onClick={this.handleClick}
 
-      tabIndex="1"
+
 
       >
 
@@ -55,14 +63,14 @@ let styles = {
     backgroundColor: 'blue'
   },
 
-  bStyle:{
-    ':hover': {
-    backgroundColor: 'gray'
-    }
-  }
+
 }
 
 export default Radium(ChannelIndexItem);
 
 
-// onClick={() => this.props.onToggle(channel)}
+// bStyle:{
+//   ':hover': {
+//   backgroundColor: 'gray'
+//   }
+// }

@@ -31,3 +31,7 @@
 .channel-index-item:focus{
   background-color: red;
 }
+
+.channel-index-item:hover{
+  background-color: gray;
+}

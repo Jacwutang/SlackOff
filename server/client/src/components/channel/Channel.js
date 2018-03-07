@@ -13,7 +13,7 @@ class Channel extends Component {
     super();
 
   }
-  
+
 
 
 
@@ -41,7 +41,7 @@ function mapStateToProps(state,ownProps){
   //ownProps.match.params.type
   //ownProps.match.params.type_id
 
-  console.log(ownProps, "HERE");
+  // console.log(ownProps, "HERE");
 
   return (
     {

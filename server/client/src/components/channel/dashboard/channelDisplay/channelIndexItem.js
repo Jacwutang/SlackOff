@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
+import Radium from 'radium';
 // import './channelDisplay.css';
 import '../dashboard.css';
 
@@ -15,17 +16,17 @@ class ChannelIndexItem extends Component{
   }
 
   componentDidMount(){
+
     console.log(this.props);
+
+  }
+
+  componentWillReceiveProps(nextProps){
+
   }
 
 
-  toggleBackground(){
-    let { background } = this.state;
 
-
-
-
-  }
   render(){
     const { channel } = this.props;
 
@@ -33,8 +34,9 @@ class ChannelIndexItem extends Component{
       <Link to={`/messages/channel/${channel._id}`}>
 
       <li
-      className="channel-index-item"
-      tabindex="1"
+      style={this.props.active === true ? styles.aStyle : styles.bStyle }
+
+      tabIndex="1"
 
       >
 
@@ -48,4 +50,19 @@ class ChannelIndexItem extends Component{
 
 };
 
-export default ChannelIndexItem;
+let styles = {
+  aStyle:{
+    backgroundColor: 'blue'
+  },
+
+  bStyle:{
+    ':hover': {
+    backgroundColor: 'gray'
+    }
+  }
+}
+
+export default Radium(ChannelIndexItem);
+
+
+// onClick={() => this.props.onToggle(channel)}

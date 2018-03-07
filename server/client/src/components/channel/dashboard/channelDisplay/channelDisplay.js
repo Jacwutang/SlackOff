@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import { withRouter } from 'react-router';
 import Modal from 'react-responsive-modal';
 
 import { createChannel } from '../../../../actions/index';
@@ -16,18 +17,26 @@ class ChannelDisplay extends Component {
     this.state = {
       open: false,
       input: '',
+      currentChannel: '',
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleActive = this.toggleActive.bind(this);
   }
 
   componentDidMount(){
     // console.log(this.props);
   }
   componentWillReceiveProps(nextProps){
-    if(this.props === nextProps)
+    if(nextProps.channels.length === this.props.channels.length){
       return;
+    }
 
+    let newChannel = nextProps.channels.slice(-1)[0];
+
+    this.setState({
+      currentChannel: newChannel
+    });
 
 
   }
@@ -38,7 +47,7 @@ class ChannelDisplay extends Component {
     e.preventDefault();
     this.props.createChannel({
       name: this.state.input
-    });
+    }).then((channel) => this.props.history.push(`/messages/channel/${channel.payload.data._id}`))
 
     this.setState({
       input: '',
@@ -63,18 +72,33 @@ class ChannelDisplay extends Component {
    this.setState({ open: false });
  };
 
- //
+ toggleActive(channel){
+   this.setState({
+     currentChannel: channel
+   })
+ }
  renderChannels(){
+   if(!this.state.currentChannel ){
+     return;
+   }
+
+   let currentChannel = this.state.currentChannel;
+
    return(
-     <ul>
+     <ul className="channel-index-item">
 
-      {this.props.channels.map( (channel) =>
-         <ChannelIndexItem
-         key={channel._id}
-         channel={channel}
-         />
+      {this.props.channels.map( (channel) => {
+        let bool = (channel === currentChannel)? true: false;
 
-       )}
+        return(
+           <ChannelIndexItem
+           key={channel._id}
+           channel={channel}
+           active={bool}
+           onToggle={() => this.toggleActive()}
+           />
+        )
+      })}
 
 
      </ul>
@@ -121,12 +145,14 @@ class ChannelDisplay extends Component {
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChannelDisplay);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ChannelDisplay));
 
-function mapStateToProps(state){
+function mapStateToProps(state,ownProps){
   const { channels } = state;
+
   return {
-    channels: Object.keys(channels).map(id => state.channels[id])
+    channels: Object.keys(channels).map(key => state.channels[key])
+
   };
 
 }

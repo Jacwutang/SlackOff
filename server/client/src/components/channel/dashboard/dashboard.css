@@ -28,15 +28,33 @@
     background-color: red;
 } */
 
-.channel-index-item:focus:not(:hover){
+
+/*
+.channel-index-item li:focus:not(:hover){
   background-color: red;
 }
 
-.channel-index-item:focus{
+
+.channel-index-item li:focus{
   background-color: red;
 }
 
 
-.channel-index-item:hover:not(:focus){
+.channel-index-item li:hover:not(:focus){
   background-color: gray;
 }
+
+
+.channel-index-item a:last-of-type li{
+  background-color: red;
+
+} */
+
+
+/* .channel-index-item-selected{
+
+}
+
+.channel-index-item-unselected{
+
+} */

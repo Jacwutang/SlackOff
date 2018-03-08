@@ -10,7 +10,9 @@ require('./models/Channel');
 require('./models/Conversation');
 require('./models/directMessage');
 require('./models/Message');
-
+// require('./models/ChannelMessage');
+// require('./models/DirectMessageChannel');
+//
 
 // const Channel = mongoose.model('Channel');
 // const test = new Channel({name: "Hello"});

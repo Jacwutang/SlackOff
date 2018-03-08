@@ -48,8 +48,8 @@ class ChannelDisplay extends Component {
     this.props.createChannel({
       name: this.state.input
     }).then( (response) => {
-      console.log(response.payload.data);
-      this.props.history.push(`/messages/channel/${response.payload.data.channel._id}`)
+
+      this.props.history.push(`/messages/channel/${response.payload.data._id}`)
 
     })
 

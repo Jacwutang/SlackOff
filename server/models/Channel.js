@@ -2,7 +2,9 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const channelSchema = new Schema({
-  name: String
+  name: String,
+  description: String,
+  members: [{ type: Schema.Types.ObjectId, ref: 'User'}],
 
 
 

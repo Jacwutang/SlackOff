@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const directMessageChannelSchema = new Schema({
-    members: [{ type: Schema.Types.ObjectId, ref: 'User'}]
-    },
-    options);
+    members: [{ type: Schema.Types.ObjectId, ref: 'User'}],
+    description: String,
+  });
 
 // mongoose.model('DirectMessageChannel', directMessageChannelSchema);
 // Conversation : {

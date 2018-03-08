@@ -7,12 +7,53 @@ const bodyParser = require('body-parser');
 
 require('./models/User');
 require('./models/Channel');
-require('./models/Conversation');
-require('./models/directMessage');
+require('./models/DirectMessageChannel');
 require('./models/Message');
-// require('./models/ChannelMessage');
-// require('./models/DirectMessageChannel');
+
+
+
+// require('./models/Conversation');
+// require('./models/directMessage');
+
+
+// const Message = mongoose.model('Message');
+// const Channel = mongoose.model('Channel');
+// const User = mongoose.model('User');
+
+// let jack = new User({
+//   displayName: 'Jack',
+//   googleId: '123456',
+// })
 //
+// const ChannelMessage = mongoose.model('channelMessage');
+//
+// let newChannel = new Channel({
+//   name: 'JackChannel',
+//
+// });
+//
+//
+//
+//
+// let testMessage = new ChannelMessage({
+//   channel: newChannel,
+//   body: 'this is a test message',
+//   author: jack,
+// });
+//
+//
+// let testDM = new DirectMessage({
+//
+// })
+//
+// testMessage.save();
+
+
+
+// console.log(testMessage.kind);
+// console.log(testMessage.channel);
+// console.log(testMessage);
+
 
 // const Channel = mongoose.model('Channel');
 // const test = new Channel({name: "Hello"});

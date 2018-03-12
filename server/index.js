@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 
 require('./models/User');
 require('./models/Channel');
-require('./models/DirectMessageChannel');
+// require('./models/DirectMessageChannel');
 require('./models/Message');
 
 

@@ -42,11 +42,7 @@ class ChannelIndexItem extends Component{
 
       <li
       style={this.props.active === true ? styles.aStyle : styles.bStyle }
-      onClick={this.handleClick}
-
-
-
-      >
+      onClick={this.handleClick}>
 
         {channel.name}
 

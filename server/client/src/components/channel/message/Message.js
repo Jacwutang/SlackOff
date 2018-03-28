@@ -1,31 +1,49 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import socketIOClient from "socket.io-client";
 
 import './message.css';
+import MessageListItem from './messageListItem';
 
 class Message extends Component {
 
-  constructor(){
+  constructor(props){
     super();
     this.state = {
-      input: ""
+      input: "",
+      messages: ["hey man", "yo what up"]
     }
 
     this.handleInput = this.handleInput.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.send = this.send.bind(this);
+    // this.renderConversations = this.renderConversations.bind(this);
+
   }
 
   componentDidMount(){
-
+    //fetch all Messages in this chatroom.
+    // Joe: "hey whats up"
+    //setState Messages
   }
 
 
   renderConversations(){
+    console.log("HERE",this.state.messages);
     return(
-      "hi"
-    )
+      <ul>
+      { this.state.messages.map( (message) => (
+        <MessageListItem
+        key={message.id}
+        author={message.author}
+        body={message.body}
+        timestamp={message.timestamp}/>
+      )) }
+      </ul>
+    );
 
-  }
+
+
+ }
 
 
 
@@ -38,16 +56,19 @@ class Message extends Component {
     )
   }
 
-  handleSubmit(e){
+  send(e){
     e.preventDefault();
+    const socket = socketIOClient("http://localhost:5000");
     window.alert("SUBMITEED");
+    socket.emit('chat message', this.state.input);
+
     //create a new message
 
   }
 
 
   render(){
-    console.log(this.state.input);
+
 
     return(
 
@@ -59,12 +80,12 @@ class Message extends Component {
 
         </div>
 
-        <div>
+
         {this.renderConversations()}
-        </div>
+
 
         <div className="bottom-row">
-          <form onSubmit={this.handleSubmit} className="msg-input-wrapper">
+          <form onSubmit={this.send} className="msg-input-wrapper">
             <button type="button" className="msg-input-gif"> Click </button>
             <input
             id="msg-input"

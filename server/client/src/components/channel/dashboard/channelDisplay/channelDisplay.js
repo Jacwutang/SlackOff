@@ -25,7 +25,7 @@ class ChannelDisplay extends Component {
   }
 
   componentDidMount(){
-    // console.log(this.props);
+    
   }
   componentWillReceiveProps(nextProps){
     if(nextProps.channels.length === this.props.channels.length){

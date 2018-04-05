@@ -25,13 +25,16 @@ class ChannelDisplay extends Component {
   }
 
   componentDidMount(){
-    
+
   }
   componentWillReceiveProps(nextProps){
     if(nextProps.channels.length === this.props.channels.length){
       return;
     }
 
+
+    // Create a new channel and then extract it from the redux store;
+    // set it as the currentChannel
     let newChannel = nextProps.channels.slice(-1)[0];
 
     this.setState({
@@ -64,19 +67,17 @@ class ChannelDisplay extends Component {
   handleInput(field){
     return( e =>
       this.setState({ [field]: e.target.value  })
-
     )
-
   }
 
 
   onOpenModal(){
    this.setState({ open: true });
- };
+  };
 
  onCloseModal(){
    this.setState({ open: false });
- };
+  };
 
  toggleActive(channel){
 
@@ -111,7 +112,7 @@ class ChannelDisplay extends Component {
 
 
      </ul>
-   );
+  );
  }
 
 
@@ -120,30 +121,30 @@ class ChannelDisplay extends Component {
     return(
       <div>
         <div className="message-display-add">
-        <span> channelDisplay </span>
-        <button onClick={() => this.onOpenModal() }> + </button>
-        <Modal
-        open={open}
-        onClose={() => this.onCloseModal()}
-        little
-        classNames={{
-              transitionEnter: 'transition-enter',
-              transitionEnterActive: 'transition-enter-active',
-              transitionExit: 'transition-exit-active',
-              transitionExitActive: 'transition-exit-active',
+          <span> channelDisplay </span>
+          <button onClick={() => this.onOpenModal() }> + </button>
+          <Modal
+            open={open}
+            onClose={() => this.onCloseModal()}
+            little
+            classNames={{
+                  transitionEnter: 'transition-enter',
+                  transitionEnterActive: 'transition-enter-active',
+                  transitionExit: 'transition-exit-active',
+                  transitionExitActive: 'transition-exit-active',
 
-            }}
-        animationDuration={1000} >
+                }}
+            animationDuration={1000} >
 
-        <h2>Create a new Channel</h2>
-        <button onClick={(e) => this.handleSubmit(e)}> Submit </button>
-        <input
-          placeholder="Enter channel name"
-          value={this.state.input}
-          onChange={this.handleInput('input')}
-        />
+            <h2>Create a new Channel</h2>
+            <button onClick={(e) => this.handleSubmit(e)}> Submit </button>
+            <input
+              placeholder="Enter channel name"
+              value={this.state.input}
+              onChange={this.handleInput('input')}
+            />
 
-        </Modal>
+          </Modal>
 
         </div>
 
@@ -172,19 +173,3 @@ function mapDispatchToProps(dispatch){
   };
 
 };
-
-
-
-// handleSubmit(e){
-//   e.preventDefault();
-//   this.props.createChannel({
-//     name: this.state.input
-//   }).then((channel) => this.props.history.push(`/messages/channel/${channel.payload.data._id}`))
-//
-//
-//
-//   this.setState({
-//     input: '',
-//     open: false,
-//   })
-// }

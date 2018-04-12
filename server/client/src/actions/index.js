@@ -17,7 +17,7 @@ export const fetchUser = () => async dispatch => {
 export const createChannel = (channel) => async dispatch => {
 
 
-      //prints out {name: 'Test'}
+      
       const res =  await axios.post(
       '/api/channel/new',
       channel

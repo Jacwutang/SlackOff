@@ -21,7 +21,7 @@ class App extends Component{
             <div>
               <Route exact path="/" component={Landing} />
               <Route exact path="/messages" component={Channel} />
-
+              <Route exact path="/messages/:type/:type_id" component={Channel } />
             </div>
 
           </BrowserRouter>

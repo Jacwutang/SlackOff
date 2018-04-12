@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Channel = mongoose.model('Channel');
 
 
 module.exports = (app) => {
@@ -7,7 +8,7 @@ module.exports = (app) => {
 
       const { name } = req.body;
 
-      const Channel = mongoose.model('Channel');
+
 
       let newChannel = new Channel({name});
 
@@ -21,7 +22,7 @@ module.exports = (app) => {
 
       });
 
-      // const Conversation = mongoose.model('Conversation');
+
 
       // let newConversation = new Conversation({
       //   members: req.user._id,

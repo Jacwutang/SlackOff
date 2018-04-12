@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import { withRouter } from 'react-router';
 import Modal from 'react-responsive-modal';
 
 import { createChannel } from '../../../../actions/index';
@@ -16,18 +17,29 @@ class ChannelDisplay extends Component {
     this.state = {
       open: false,
       input: '',
+      currentChannel: '',
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleActive = this.toggleActive.bind(this);
   }
 
   componentDidMount(){
-    console.log(this.props);
+
   }
   componentWillReceiveProps(nextProps){
-    if(this.props === nextProps)
+    if(nextProps.channels.length === this.props.channels.length){
       return;
+    }
 
+
+    // Create a new channel and then extract it from the redux store;
+    // set it as the currentChannel
+    let newChannel = nextProps.channels.slice(-1)[0];
+
+    this.setState({
+      currentChannel: newChannel
+    });
 
 
   }
@@ -38,46 +50,69 @@ class ChannelDisplay extends Component {
     e.preventDefault();
     this.props.createChannel({
       name: this.state.input
-    });
+    }).then( (response) => {
+
+      this.props.history.push(`/messages/channel/${response.payload.data._id}`)
+
+    })
+
+
 
     this.setState({
-      input: ''
+      input: '',
+      open: false,
     })
   }
 
   handleInput(field){
     return( e =>
       this.setState({ [field]: e.target.value  })
-
     )
-
   }
 
 
   onOpenModal(){
    this.setState({ open: true });
- };
+  };
 
  onCloseModal(){
    this.setState({ open: false });
- };
+  };
 
- //
+ toggleActive(channel){
+
+   this.setState({
+     currentChannel: channel
+   });
+
+ }
  renderChannels(){
+   if(!this.state.currentChannel ){
+     return;
+   }
+
+   let currentChannel = this.state.currentChannel;
+
    return(
      <ul>
 
-      {this.props.channels.map( (channel) =>
-         <ChannelIndexItem
-         key={channel._id}
-         channel={channel}
-         />
+      {this.props.channels.map( (channel) => {
 
-       )}
+        let bool = (channel === currentChannel)? true: false;
+
+        return(
+           <ChannelIndexItem
+           key={channel._id}
+           channel={channel}
+           active={bool}
+           onToggle={this.toggleActive}
+           />
+        )
+      })}
 
 
      </ul>
-   );
+  );
  }
 
 
@@ -86,30 +121,30 @@ class ChannelDisplay extends Component {
     return(
       <div>
         <div className="message-display-add">
-        <span> channelDisplay </span>
-        <button onClick={() => this.onOpenModal() }> + </button>
-        <Modal
-        open={open}
-        onClose={() => this.onCloseModal()}
-        little
-        classNames={{
-              transitionEnter: 'transition-enter',
-              transitionEnterActive: 'transition-enter-active',
-              transitionExit: 'transition-exit-active',
-              transitionExitActive: 'transition-exit-active',
+          <span> channelDisplay </span>
+          <button onClick={() => this.onOpenModal() }> + </button>
+          <Modal
+            open={open}
+            onClose={() => this.onCloseModal()}
+            little
+            classNames={{
+                  transitionEnter: 'transition-enter',
+                  transitionEnterActive: 'transition-enter-active',
+                  transitionExit: 'transition-exit-active',
+                  transitionExitActive: 'transition-exit-active',
 
-            }}
-        animationDuration={1000} >
+                }}
+            animationDuration={1000} >
 
-        <h2>Create a new Channel</h2>
-        <button onClick={(e) => this.handleSubmit(e)}> Submit </button>
-        <input
-          placeholder="Enter channel name"
-          value={this.state.input}
-          onChange={this.handleInput('input')}
-        />
+            <h2>Create a new Channel</h2>
+            <button onClick={(e) => this.handleSubmit(e)}> Submit </button>
+            <input
+              placeholder="Enter channel name"
+              value={this.state.input}
+              onChange={this.handleInput('input')}
+            />
 
-        </Modal>
+          </Modal>
 
         </div>
 
@@ -120,12 +155,14 @@ class ChannelDisplay extends Component {
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChannelDisplay);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ChannelDisplay));
 
-function mapStateToProps(state){
+function mapStateToProps(state,ownProps){
   const { channels } = state;
+
   return {
-    channels: Object.keys(channels).map(id => state.channels[id])
+    channels: Object.keys(channels).map(key => state.channels[key])
+
   };
 
 }

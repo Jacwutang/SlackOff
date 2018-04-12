@@ -23,3 +23,32 @@
   display: flex;
   justify-content: space-between;
 }
+
+ul li:hover:not(:focus){
+  background-color: gray;
+}
+/* :focus{
+    background-color: red;
+} */
+
+
+/*
+.channel-index-item li:focus:not(:hover){
+  background-color: red;
+}
+
+
+.channel-index-item li:focus{
+  background-color: red;
+}
+
+
+.channel-index-item li:hover:not(:focus){
+  background-color: gray;
+}
+
+
+.channel-index-item a:last-of-type li{
+  background-color: red;
+
+} */

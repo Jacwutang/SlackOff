@@ -1,25 +1,51 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
-import './channelDisplay.css';
+
+
+import '../dashboard.css';
+
 
 
 class ChannelIndexItem extends Component{
-  componentDidMount(){
-    console.log(this.props);
+  constructor(){
+    super();
+
   }
+
+
+  handleClick = () => {
+    //this is preserved/unchanged. Otherwise it would be from the event handler
+    this.props.onToggle(this.props.channel);
+  }
+
   render(){
+
     const { channel } = this.props;
 
     return(
-      <div>
-        <Link to={`messages/channel/${channel._id}`}>
+      <Link to={`/messages/channel/${channel._id}`}>
+
+      <li
+      style={this.props.active === true ? styles.activeStyle : null }
+      onClick={this.handleClick}>
+
         {channel.name}
-        </Link>
-      </div>
+
+      </li>
+
+      </Link>
     );
   }
 
 };
+
+let styles = {
+  activeStyle:{
+    backgroundColor: 'blue'
+  },
+
+
+}
 
 export default ChannelIndexItem;

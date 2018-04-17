@@ -5,6 +5,7 @@ import * as actions from '../actions';
 
 import Landing from './Landing';
 import Channel from './channel/Channel';
+import SessionForm from './session/session_form_container';
 
 class App extends Component{
 
@@ -22,6 +23,7 @@ class App extends Component{
               <Route exact path="/" component={Landing} />
               <Route exact path="/messages" component={Channel} />
               <Route exact path="/messages/:type/:type_id" component={Channel } />
+              <Route exact path="/session" component={SessionForm} />
             </div>
 
           </BrowserRouter>

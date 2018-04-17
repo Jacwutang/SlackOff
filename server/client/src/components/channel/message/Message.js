@@ -11,7 +11,8 @@ class Message extends Component {
     super();
     this.state = {
       input: "",
-      messages: ["hey man", "yo what up"]
+      messages: ["hey man", "yo what up"],
+      loaded: false
     }
 
     this.handleInput = this.handleInput.bind(this);
@@ -21,8 +22,11 @@ class Message extends Component {
   }
 
   componentDidMount(){
+
     //fetch all Messages in this chatroom.
-    // Joe: "hey whats up"
+    
+    //this.props.fetchMessages(channel_id)
+    // then setstate loaded: true
     //setState Messages
   }
 
@@ -49,11 +53,9 @@ class Message extends Component {
 
 
   handleInput(field){
-
-
     return(
       (e) => this.setState({[field]: e.target.value})
-    )
+    );
   }
 
   send(e){
@@ -68,7 +70,10 @@ class Message extends Component {
 
 
   render(){
-
+    //if loading, then spin
+    // if(!this.state.loading){
+    //  <Spinner />
+    //}
 
     return(
 
@@ -109,9 +114,10 @@ export default connect(mapStateToProps,mapDispatchToProps)(Message);
 function mapStateToProps(state){
   return (
     {
-
+      // messages: state.messages
     }
   );
+
 };
 
 

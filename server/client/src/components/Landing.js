@@ -6,9 +6,9 @@ import Introduction from './introduction/Introduction';
 export default () => {
   return(
     <div className="container">
-      <Header />
+
       <Introduction />
-      <Footer />
+
     </div>
   );
 };

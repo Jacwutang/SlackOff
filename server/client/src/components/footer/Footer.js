@@ -4,6 +4,8 @@ import './footer.css';
 
 export default () => {
   return(
+
+    <div className="container">
     <nav className="nav-footer">
       <div className="div-footer">
         <h4 className="h4-footer"> You're in Good Hands </h4>
@@ -24,6 +26,8 @@ export default () => {
 
       </div>
     </nav>
+
+    </div>
   );
 
 };

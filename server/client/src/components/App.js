@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
-import { BrowserRouter, Route} from 'react-router-dom';
+import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 import Landing from './Landing';
 import Channel from './channel/Channel';
 import SessionForm from './session/session_form_container';
+import Header from './header/Header';
+import Footer from './footer/Footer';
 
 class App extends Component{
 
@@ -20,10 +22,14 @@ class App extends Component{
 
           <BrowserRouter>
             <div>
-              <Route exact path="/" component={Landing} />
-              <Route exact path="/messages" component={Channel} />
-              <Route exact path="/messages/:type/:type_id" component={Channel } />
-              <Route exact path="/session" component={SessionForm} />
+                <Route path="/" component={Header} />
+              <Switch>
+                <Route exact path="/" component={Landing} />
+                <Route exact path="/messages" component={Channel} />
+                <Route exact path="/messages/:type/:type_id" component={Channel } />
+                <Route exact path="/session" component={SessionForm} />
+              </Switch>
+                <Route path="/" component={Footer} />
             </div>
 
           </BrowserRouter>

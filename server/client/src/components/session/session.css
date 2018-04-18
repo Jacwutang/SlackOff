@@ -1,7 +1,7 @@
 .session-form{
   /* border: 1px solid gray; */
   width: 50%;
-  height: 200px;
+  height: 275px;
   margin: 0 auto;
   box-shadow: rgba(0,0,0,0.1) 0px 4px 8px 0px;
   border-radius: 5px;
@@ -25,6 +25,7 @@
 .input-buttons{
     display: flex;
     justify-content: space-around;
+    margin-bottom: 25px;
 }
 
 .loginBtn {
@@ -71,8 +72,8 @@
 }
 
 
-.authBtn:focus{
-  background: #E74B37;
+.authBtn:hover{
+  background: #2ea664;
 }
 .authBtn{
   background: #2ea664;
@@ -85,5 +86,20 @@
   line-height: 34px;
   margin: 0.2em;
 
+}
+
+.session-span{
+  text-align: center;
+  margin: 0 auto;
+}
+
+.div-account{
+
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.session-form > input:first-child{
+  margin-top: 25px;
 
 }

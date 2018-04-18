@@ -12,7 +12,7 @@ class Header extends Component {
       case false:
         return(
           <li>
-            <Link to="/session">
+            <Link to="/session/login">
               <span> Log In </span>
             </Link>
           </li>

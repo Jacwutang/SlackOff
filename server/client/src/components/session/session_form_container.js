@@ -5,7 +5,8 @@ import {withRouter} from 'react-router';
 
 function mapStateToProps(state,ownProps){
   return{
-
+    currentUser: state.currentUser,
+    form_type: ownProps.match.params.form_type
   }
 
 }

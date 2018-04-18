@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import './session.css';
 
 class SessionForm extends Component{
@@ -6,8 +7,73 @@ class SessionForm extends Component{
     super(props);
   }
 
+  componentDidMount(){
+    console.log(this.props);
+  }
+
+  renderContent(){
+    switch(this.props.form_type){
+      case 'login':
+        return(
+          <div>
+            <div className="div-account">
+             Don't have an account? &nbsp;
+            <Link to="/session/signup">
+              Register
+            </Link>
+
+            </div>
+
+            <div className="input-buttons">
+              <button className="authBtn">
+              Demo Login
+              </button>
+
+              <button className="loginBtn loginBtn-google">
+              Login with Google
+              </button>
+            </div>
+          </div>
+        );
+      default:
+        return(
+          <div>
+            <div className="div-account">
+             Already have an account? &nbsp;
+            <Link to="/session/login">
+              Login
+            </Link>
+
+            </div>
+
+            <div className="input-buttons">
+              <button className="authBtn">
+              Register
+              </button>
+
+              <button className="loginBtn loginBtn-google">
+              Signup with Google
+              </button>
+            </div>
+          </div>
+        );
+
+
+
+
+
+
+
+    }
+
+  }
+
 
   render(){
+
+    const {form_type} = this.props;
+
+
     return(
       <div className="container">
 
@@ -21,15 +87,9 @@ class SessionForm extends Component{
 
               <input placeholder="Enter Password" className="input-session" type="password"/>
 
-              <div className="input-buttons">
-                <button className="authBtn">
-                Login with Username
-                </button>
+              {this.renderContent()}
 
-                <button className="loginBtn loginBtn-google">
-                Login with Google
-                </button>
-              </div>
+
 
             </form>
 
@@ -40,7 +100,27 @@ class SessionForm extends Component{
 
     )
 
-}
+  }
 }
 
 export default SessionForm;
+
+
+
+// <div className="div-account">
+//  Don't have an account? &nbsp;
+// <Link to="/signup">
+//   Sign up
+// </Link>
+//
+// </div>
+//
+// <div className="input-buttons">
+//   <button className="authBtn">
+//   Demo Login
+//   </button>
+//
+//   <button className="loginBtn loginBtn-google">
+//   Login with Google
+//   </button>
+// </div>

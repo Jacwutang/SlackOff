@@ -23,12 +23,15 @@ class App extends Component{
           <BrowserRouter>
             <div>
                 <Route path="/" component={Header} />
-              <Switch>
-                <Route exact path="/" component={Landing} />
-                <Route exact path="/messages" component={Channel} />
-                <Route exact path="/messages/:type/:type_id" component={Channel } />
-                <Route exact path="/session" component={SessionForm} />
-              </Switch>
+
+                <Switch>
+                  <Route exact path="/" component={Landing} />
+                  <Route exact path="/messages" component={Channel} />
+                  <Route exact path="/messages/:type/:type_id" component={Channel } />
+                  <Route exact path="/session/:form_type" component={SessionForm} />
+                </Switch>
+
+
                 <Route path="/" component={Footer} />
             </div>
 

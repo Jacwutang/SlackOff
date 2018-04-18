@@ -24,12 +24,14 @@
   justify-content: space-between;
 }
 
-ul li:hover:not(:focus){
+/* ul li:hover:not(:focus){
+  background-color: gray;
+} */
+
+.ul-channel-messages li:hover:not(:focus){
   background-color: gray;
 }
-/* :focus{
-    background-color: red;
-} */
+
 
 
 /*

@@ -6,7 +6,11 @@ export default () => {
     <div className="div-intro">
       <div className="img-container">
         <img src={require('../../images/Slack_Profile.jpg')} alt="slack profile"/>
-        <h4 className="top-center"> In Development </h4>
+        <div className="slidingVertical row">
+          <h2> Get Organized </h2>
+          <h2> Stay Engaged  </h2>
+          <h2> SlackOff Together </h2>
+        </div>
       </div>
 
 

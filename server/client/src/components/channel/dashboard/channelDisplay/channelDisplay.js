@@ -94,7 +94,7 @@ class ChannelDisplay extends Component {
    let currentChannel = this.state.currentChannel;
 
    return(
-     <ul>
+     <ul className="ul-channel-messages">
 
       {this.props.channels.map( (channel) => {
 

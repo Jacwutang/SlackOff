@@ -8,8 +8,16 @@ class SessionForm extends Component{
   }
 
   componentDidMount(){
-    console.log(this.props);
+    if(this.props.auth){
+      //if there is a currentUser already, re-direct them home
+      this.props.history.push('/');
+
+    }
   }
+
+
+
+
 
   renderContent(){
     switch(this.props.form_type){
@@ -19,7 +27,7 @@ class SessionForm extends Component{
             <div className="div-account">
              Don't have an account? &nbsp;
             <Link to="/session/signup">
-              Register
+              <span style={{color: 'blue'}}>Register</span>
             </Link>
 
             </div>
@@ -30,7 +38,7 @@ class SessionForm extends Component{
               </button>
 
               <button className="loginBtn loginBtn-google">
-              Login with Google
+              <a href="/auth/google"> Login with Google </a>
               </button>
             </div>
           </div>
@@ -41,7 +49,7 @@ class SessionForm extends Component{
             <div className="div-account">
              Already have an account? &nbsp;
             <Link to="/session/login">
-              Login
+              <span style={{color: 'blue'}}>Login</span>
             </Link>
 
             </div>
@@ -52,7 +60,7 @@ class SessionForm extends Component{
               </button>
 
               <button className="loginBtn loginBtn-google">
-              Signup with Google
+              <a href="/auth/google"> Signup with Google </a>
               </button>
             </div>
           </div>

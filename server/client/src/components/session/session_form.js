@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import Header from '../header/Header';
+import Footer from '../footer/Footer';
 import './session.css';
 
 class SessionForm extends Component{
@@ -83,28 +85,34 @@ class SessionForm extends Component{
 
 
     return(
-      <div className="container">
-
-        <div className="session-container">
-
-            <form className="session-form">
 
 
-              <input placeholder="Enter Username" className="input-session" type="text"/>
+        <div className="container">
+          <Header />
+
+          <div className="session-container">
+
+              <form className="session-form">
 
 
-              <input placeholder="Enter Password" className="input-session" type="password"/>
-
-              {this.renderContent()}
+                <input placeholder="Enter Username" className="input-session" type="text"/>
 
 
+                <input placeholder="Enter Password" className="input-session" type="password"/>
 
-            </form>
+                {this.renderContent()}
 
 
+
+              </form>
+
+
+          </div>
+          <Footer />
         </div>
 
-      </div>
+
+
 
     )
 

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import { withRouter } from 'react-router';
 import Modal from 'react-responsive-modal';
 
-import { createChannel } from '../../../../actions/index';
+
 import ChannelIndexItem from './channelIndexItem';
 
 import './channelDisplay.css';
@@ -155,21 +155,4 @@ class ChannelDisplay extends Component {
   }
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ChannelDisplay));
-
-function mapStateToProps(state,ownProps){
-  const { channels } = state;
-
-  return {
-    channels: Object.keys(channels).map(key => state.channels[key])
-
-  };
-
-}
-
-function mapDispatchToProps(dispatch){
-  return{
-      createChannel: (channel) => dispatch(createChannel(channel))
-  };
-
-};
+export default ChannelDisplay;

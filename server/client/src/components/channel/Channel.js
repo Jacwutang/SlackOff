@@ -33,29 +33,4 @@ class Channel extends Component {
   }
 };
 
-export default withRouter( connect(mapStateToProps,mapDispatchToProps)(Channel));
-
-
-
-function mapStateToProps(state,ownProps){
-  //ownProps.match.params.type
-  //ownProps.match.params.type_id
-
-  // console.log(ownProps, "HERE");
-
-  return (
-    {
-
-    }
-  )
-};
-
-
-function mapDispatchToProps(dispatch){
-  return(
-    {
-
-    }
-  )
-
-};
+export default Channel;

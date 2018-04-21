@@ -9,7 +9,7 @@ class SessionForm extends Component{
     super(props);
     this.animateDemo = this.animateDemo.bind(this);
 
-    this.demoUsername = ['d','e','m','o'];
+    this.demoUsername = ['d','e','m','o','u','s','e','r'];
     this.demoPassword = ['p','a','s','s','w','o','r','d'];
 
     this.state = {
@@ -28,6 +28,15 @@ class SessionForm extends Component{
     }
   }
 
+  componentWillReceiveProps(nextProps){
+    //if user switches to registration or vice-versa. Clear the form
+    if(this.props.form_type !== nextProps.form_type){
+      this.demoUsername = ['d','e','m','o','u','s','e','r'];
+      this.demoPassword = ['p','a','s','s','w','o','r','d'];
+      this.setState({username: '', password: ''});
+    }
+  }
+
   animateDemo(e){
     e.preventDefault();
 
@@ -42,7 +51,7 @@ class SessionForm extends Component{
         this.setState({username: currentUsername});
         this.animateDemo(e);
 
-      },250);
+      },150);
 
     } else if(this.demoPassword.length > 0){
 
@@ -54,7 +63,7 @@ class SessionForm extends Component{
         this.setState({password: currentPassword});
         this.animateDemo(e);
 
-      },250);
+      },150);
     }
 
   }

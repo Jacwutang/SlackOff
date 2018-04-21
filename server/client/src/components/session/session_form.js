@@ -1,22 +1,30 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import Header from '../header/Header';
+import Header from '../header/header_container';
 import Footer from '../footer/Footer';
 import './session.css';
 
 class SessionForm extends Component{
   constructor(props){
     super(props);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount(){
-    if(this.props.auth){
+    
+
+    if(this.props.auth === true){
       //if there is a currentUser already, re-direct them home
       this.props.history.push('/');
 
     }
   }
 
+
+  handleClick(e){
+    e.preventDefault();
+    console.log("this was clicked");
+  }
 
 
 
@@ -35,7 +43,7 @@ class SessionForm extends Component{
             </div>
 
             <div className="input-buttons">
-              <button className="authBtn">
+              <button className="authBtn" onClick={this.handleClick}>
               Demo Login
               </button>
 
@@ -120,23 +128,3 @@ class SessionForm extends Component{
 }
 
 export default SessionForm;
-
-
-
-// <div className="div-account">
-//  Don't have an account? &nbsp;
-// <Link to="/signup">
-//   Sign up
-// </Link>
-//
-// </div>
-//
-// <div className="input-buttons">
-//   <button className="authBtn">
-//   Demo Login
-//   </button>
-//
-//   <button className="loginBtn loginBtn-google">
-//   Login with Google
-//   </button>
-// </div>

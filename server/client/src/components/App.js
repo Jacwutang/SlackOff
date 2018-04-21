@@ -29,6 +29,7 @@ class App extends Component{
                   <Route exact path="/messages" component={Channel} />
                   <Route exact path="/messages/:type/:type_id" component={Channel } />
                   <Route exact path="/session/:form_type" component={SessionForm} />
+
                 </Switch>
 
 

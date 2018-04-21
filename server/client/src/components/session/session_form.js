@@ -7,11 +7,19 @@ import './session.css';
 class SessionForm extends Component{
   constructor(props){
     super(props);
-    this.handleClick = this.handleClick.bind(this);
+    this.animateDemo = this.animateDemo.bind(this);
+
+    this.demoUsername = ['d','e','m','o'];
+    this.demoPassword = ['p','a','s','s','w','o','r','d'];
+
+    this.state = {
+      username: '',
+      password: ''
+    }
   }
 
   componentDidMount(){
-    
+
 
     if(this.props.auth === true){
       //if there is a currentUser already, re-direct them home
@@ -20,11 +28,39 @@ class SessionForm extends Component{
     }
   }
 
-
-  handleClick(e){
+  animateDemo(e){
     e.preventDefault();
-    console.log("this was clicked");
+
+
+    if (this.demoUsername.length > 0){
+
+      window.setTimeout( () => {
+
+        let currentUsername = this.state.username;
+        currentUsername += this.demoUsername.shift();
+
+        this.setState({username: currentUsername});
+        this.animateDemo(e);
+
+      },250);
+
+    } else if(this.demoPassword.length > 0){
+
+      window.setTimeout( () => {
+
+        let currentPassword = this.state.password;
+        currentPassword += this.demoPassword.shift();
+
+        this.setState({password: currentPassword});
+        this.animateDemo(e);
+
+      },250);
+    }
+
   }
+
+
+
 
 
 
@@ -43,7 +79,7 @@ class SessionForm extends Component{
             </div>
 
             <div className="input-buttons">
-              <button className="authBtn" onClick={this.handleClick}>
+              <button className="authBtn" onClick={this.animateDemo}>
               Demo Login
               </button>
 
@@ -103,10 +139,10 @@ class SessionForm extends Component{
               <form className="session-form">
 
 
-                <input placeholder="Enter Username" className="input-session" type="text"/>
+                <input placeholder="Enter Username" className="input-session" value={this.state.username} type="text"/>
 
 
-                <input placeholder="Enter Password" className="input-session" type="password"/>
+                <input placeholder="Enter Password" className="input-session" value={this.state.password} type="password"/>
 
                 {this.renderContent()}
 

@@ -1,7 +1,7 @@
 .session-form{
   /* border: 1px solid gray; */
   width: 50%;
-  height: 275px;
+  height: 300px;
   margin: 0 auto;
   box-shadow: rgba(0,0,0,0.1) 0px 4px 8px 0px;
   border-radius: 5px;
@@ -12,7 +12,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  height: calc(100vh - 264px);
+  height: calc(100vh - 360px);
   top: 64px;
 }
 
@@ -20,12 +20,18 @@
 .input-session{
   box-sizing: border-box !important;
   text-align: center !important;
+  font-size: 1.25rem !important;
 }
 
 .input-buttons{
     display: flex;
     justify-content: space-around;
     margin-bottom: 25px;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.25rem;
+
+
 }
 
 .loginBtn {
@@ -39,8 +45,9 @@
   line-height: 34px;
   white-space: nowrap;
   border-radius: 0.2em;
-  font-size: 16px;
+  /* font-size: 16px; */
   color: #FFF;
+  width:225px;
 }
 .loginBtn:before {
   content: "";
@@ -78,7 +85,7 @@
 .authBtn{
   background: #2ea664;
   color: #fff;
-
+  width: 225px;
   cursor: pointer;
   border: none;
   border-radius: 5px;
@@ -94,7 +101,7 @@
 }
 
 .div-account{
-
+  font-size: 1.25rem;
   margin-bottom: 20px;
   text-align: center;
 }

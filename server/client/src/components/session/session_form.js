@@ -8,9 +8,10 @@ class SessionForm extends Component{
   constructor(props){
     super(props);
     this.animateDemo = this.animateDemo.bind(this);
-
-    this.demoUsername = ['d','e','m','o','u','s','e','r'];
+    this.handleInput = this.handleInput.bind(this);
+    this.demoUsername = ['d','e','m','o'];
     this.demoPassword = ['p','a','s','s','w','o','r','d'];
+
 
     this.state = {
       username: '',
@@ -31,7 +32,7 @@ class SessionForm extends Component{
   componentWillReceiveProps(nextProps){
     //if user switches to registration or vice-versa. Clear the form
     if(this.props.form_type !== nextProps.form_type){
-      this.demoUsername = ['d','e','m','o','u','s','e','r'];
+      this.demoUsername = ['d','e','m','o'];
       this.demoPassword = ['p','a','s','s','w','o','r','d'];
       this.setState({username: '', password: ''});
     }
@@ -131,6 +132,12 @@ class SessionForm extends Component{
 
   }
 
+  handleInput(field){
+    return ( e =>
+      this.setState({[field]: e.target.value })
+    )
+  }
+
 
   render(){
 
@@ -147,11 +154,10 @@ class SessionForm extends Component{
 
               <form className="session-form">
 
+                <input placeholder="Enter Username" className="input-session" value={this.state.username} onChange={this.handleInput('username')} type="text"/>
 
-                <input placeholder="Enter Username" className="input-session" value={this.state.username} type="text"/>
 
-
-                <input placeholder="Enter Password" className="input-session" value={this.state.password} type="password"/>
+                <input placeholder="Enter Password" className="input-session" value={this.state.password} onChange={this.handleInput('password')} type="password"/>
 
                 {this.renderContent()}
 

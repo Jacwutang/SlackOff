@@ -55,7 +55,7 @@ passport.use('local-signup', new LocalStrategy({
                 console.log("ALREADY THIS USER BRO")
                 // return done(null, false, req.flash('signupMessage', 'That username is already taken.'));
 
-                return done(null,false,{message: 'Username already taken'});
+                return done(null,user,{message: 'Username already taken'});
                 // return res.status(401).json("Incorrect email or password1")
             } else {
               console.log("SIGNUP PORTION REACHED")

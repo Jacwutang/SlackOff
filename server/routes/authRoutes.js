@@ -9,23 +9,39 @@ module.exports = (app) => {
     })
   );
 
-  app.post('/api/local-signup', passport.authenticate('local-signup'), (req,res) => {
-    console.log("SOMETHING WENT WRONG")
-    if(!req.user){
-      // console.log("SOMETHING WENT WRONG")
-      res.send(401,req.authInfo);
+  // app.post('/api/local-signup', (req,res) => {
+  //   passport.authenticate('local-signup', (err,user,info) => {
+  //     console.log("SOMETHING WENT WRONG")
+  //     console.log(req,user);
+  //     console.log(err,user,info);
+  //     if(!user){
+  //       // console.log("SOMETHING WENT WRONG")
+  //       res.send(401,info);
+  //
+  //     } else{
+  //       let user = {};
+  //       user.username =  req.user.local.username;
+  //       user.id = req.user._id;
+  //
+  //       res.send(user);
+  //     }})
+  //   });
 
-    } else{
-      let user = {};
-      user.username =  req.user.local.username;
-      user.id = req.user._id;
+  app.post('/api/local-signup',(req,res) => {
+    passport.authenticate('local-signup', (err,user,info) => {
+      if(user){
+        res.send({error:info});
+      } else{
+        let user = {};
+        user.username =  req.user.local.username;
+        user.id = req.user._id;
+        res.send(user);
+      }
 
-      res.send(user);
-    }
+    })(req,res);
 
+    });
 
-
-  });
 
   app.get('/auth/google/callback', passport.authenticate('google'),
   (req,res) => {

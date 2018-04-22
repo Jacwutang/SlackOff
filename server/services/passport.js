@@ -1,5 +1,6 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const LocalStrategy   = require('passport-local').Strategy;
 const keys = require('../config/keys');
 const mongoose = require('mongoose');
 
@@ -24,6 +25,54 @@ passport.deserializeUser( (id,done) => {
 });
 
 
+passport.use('local-signup', new LocalStrategy({
+        // by default, local strategy uses username and password, we will override with email
+        usernameField : 'username',
+        passwordField : 'password',
+        passReqToCallback : true // allows us to pass back the entire request to the callback
+    },
+    function(req, email, password, done) {
+
+        // asynchronous
+        // User.findOne wont fire unless data is sent back
+        process.nextTick(function() {
+
+        // find a user whose email is the same as the forms email
+        // we are checking to see if the user trying to login already exists
+        User.findOne({ 'local.username' :  username }, function(err, user) {
+            // if there are any errors, return the error
+            if (err)
+                return done(err);
+
+            // check to see if theres already a user with that username
+            if (user) {
+                return done(null, false, req.flash('signupMessage', 'That username is already taken.'));
+            } else {
+
+                // if there is no user with that username
+                // create the user
+                var newUser            = new User();
+
+                // set the user's local credentials
+                newUser.local.username    = username;
+                newUser.local.password = newUser.generateHash(password);
+
+                // save the user
+                newUser.save(function(err) {
+                    if (err)
+                        throw err;
+                    return done(null, newUser);
+                });
+            }
+
+        });
+
+        });
+
+  }));
+
+
+
 
 
 passport.use(
@@ -38,7 +87,7 @@ passport.use(
 
             if(existingUser){
               //1st arg error obj, 2nd user obj
-              
+
               done(null, existingUser);
             } else{
                 const user = await new User({ googleId: profile.id, displayName: profile.displayName}).save()

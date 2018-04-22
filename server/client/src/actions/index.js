@@ -11,13 +11,20 @@ export const fetchUser = () => async dispatch => {
       return dispatch({type: FETCH_USER, payload: res});
 };
 
+export const createUser = (username,password) => async dispatch => {
+      const res = await axios.post('/api/local-signup',{username:username, password:password});
+
+      return dispatch({type: FETCH_USER, payload: res});
+};
+
+
 
 
 
 export const createChannel = (channel) => async dispatch => {
 
 
-      
+
       const res =  await axios.post(
       '/api/channel/new',
       channel

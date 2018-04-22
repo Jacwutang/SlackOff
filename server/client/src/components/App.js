@@ -9,10 +9,17 @@ import SessionForm from './session/session_form_container';
 import Header from './header/Header';
 import Footer from './footer/Footer';
 
+import axios from 'axios';
+
 class App extends Component{
 
-  componentDidMount(){
-    this.props.fetchUser();
+   componentDidMount(){
+    // this.props.fetchUser();
+    // const res = await axios.post('/local-signup',{username:'joe', password:'password'});
+    //
+    // return res;
+
+    this.props.createUser('jack','password');
 
   }
 

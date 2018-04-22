@@ -19,11 +19,16 @@ passport.serializeUser((user,done) => {
 
 // find user by unique id
 // convert into user obj
-passport.deserializeUser( (id,done) => {
-  User.findById(id)
-    .then(user => done(null,user));
-});
+// passport.deserializeUser( (id,done) => {
+//   User.findById(id)
+//     .then(user => done(null,user));
+// });
 
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
 
 passport.use('local-signup', new LocalStrategy({
         // by default, local strategy uses username and password, we will override with email
@@ -31,10 +36,11 @@ passport.use('local-signup', new LocalStrategy({
         passwordField : 'password',
         passReqToCallback : true // allows us to pass back the entire request to the callback
     },
-    function(req, email, password, done) {
+    function(req, username, password, done) {
 
         // asynchronous
         // User.findOne wont fire unless data is sent back
+        console.log(username,password, "HERE")
         process.nextTick(function() {
 
         // find a user whose email is the same as the forms email
@@ -46,9 +52,13 @@ passport.use('local-signup', new LocalStrategy({
 
             // check to see if theres already a user with that username
             if (user) {
-                return done(null, false, req.flash('signupMessage', 'That username is already taken.'));
-            } else {
+                console.log("ALREADY THIS USER BRO")
+                // return done(null, false, req.flash('signupMessage', 'That username is already taken.'));
 
+                return done(null,false,{message: 'Username already taken'});
+                // return res.status(401).json("Incorrect email or password1")
+            } else {
+              console.log("SIGNUP PORTION REACHED")
                 // if there is no user with that username
                 // create the user
                 var newUser            = new User();
@@ -59,9 +69,14 @@ passport.use('local-signup', new LocalStrategy({
 
                 // save the user
                 newUser.save(function(err) {
-                    if (err)
-                        throw err;
-                    return done(null, newUser);
+                    if (err){
+                      throw err;
+                    } else{
+                      console.log("saved user")
+                        return done(null, newUser);
+                    }
+
+
                 });
             }
 

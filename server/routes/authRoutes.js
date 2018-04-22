@@ -9,11 +9,23 @@ module.exports = (app) => {
     })
   );
 
-  app.post('/local-signup', passport.authenticate('local-signup', {
-       successRedirect : '/messages', // redirect to the secure profile section
-       failureRedirect : '/session/signup', // redirect back to the signup page if there is an error
-       failureFlash : true // allow flash messages
-   }));
+  app.post('/api/local-signup', passport.authenticate('local-signup'), (req,res) => {
+    console.log("SOMETHING WENT WRONG")
+    if(!req.user){
+      // console.log("SOMETHING WENT WRONG")
+      res.send(401,req.authInfo);
+
+    } else{
+      let user = {};
+      user.username =  req.user.local.username;
+      user.id = req.user._id;
+
+      res.send(user);
+    }
+
+
+
+  });
 
   app.get('/auth/google/callback', passport.authenticate('google'),
   (req,res) => {

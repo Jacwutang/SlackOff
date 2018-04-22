@@ -4,10 +4,12 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const keys = require('./config/keys');
 const bodyParser = require('body-parser');
+const flash    = require('connect-flash');
 
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
 
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
@@ -73,6 +75,7 @@ app.use(
 app.use(passport.initialize());
 //passport.session middleware is a Passport Strategy which will load the user object onto req.user or req.session? if a serialised user object was found in the server.
 app.use(passport.session());
+// app.use(flash());
 
 //load route handlers
 require('./routes/authRoutes')(app);

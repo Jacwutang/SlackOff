@@ -38,7 +38,7 @@ passport.use(
 
             if(existingUser){
               //1st arg error obj, 2nd user obj
-              console.log("existingUser");
+              
               done(null, existingUser);
             } else{
                 const user = await new User({ googleId: profile.id, displayName: profile.displayName}).save()

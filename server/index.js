@@ -47,11 +47,6 @@ require('./models/User');
 require('./models/Channel');
 require('./models/Message');
 
-
-
-
-
-
 require('./services/passport');
 
 

@@ -9,23 +9,6 @@ module.exports = (app) => {
     })
   );
 
-  // app.post('/api/local-signup', (req,res) => {
-  //   passport.authenticate('local-signup', (err,user,info) => {
-  //     console.log("SOMETHING WENT WRONG")
-  //     console.log(req,user);
-  //     console.log(err,user,info);
-  //     if(!user){
-  //       // console.log("SOMETHING WENT WRONG")
-  //       res.send(401,info);
-  //
-  //     } else{
-  //       let user = {};
-  //       user.username =  req.user.local.username;
-  //       user.id = req.user._id;
-  //
-  //       res.send(user);
-  //     }})
-  //   });
 
   app.post('/api/local-signup',(req,res) => {
     passport.authenticate('local-signup', (err,user,info) => {
@@ -73,22 +56,27 @@ module.exports = (app) => {
   });
 
   app.get('/api/current_user', (req,res) => {
-      console.log(req.user);
-    //   let obj = req.user._doc;
-    //   let types = Object.keys(obj);
-    //   //google, local, _id, _v
-    //   let type = types.filter((type) =>    Object.values(obj[type]).length > 1
-    // );
-    //   console.log(type);
+      if(!req.user){
+        res.send(req.user);
+      }
 
 
+      let obj = req.user._doc;
 
+      let user = {};
+      user.id = obj._id;
 
-      res.send(req.user);
+      switch(true){
+        case(Object.values(obj.google).length > 1):
+          user.displayName = obj.google.displayName;
+          return res.send({google:user});
+        default:
+        local.username = obj.local.username;
+        return res.send({local:user});
+
+      }
+
   });
 
 };
-
-// Notes:
-// passport.authenticate triggers our local
-// 'strategy'. Proceed to GoogleStrategy in passport.js
+ // pkill -f node

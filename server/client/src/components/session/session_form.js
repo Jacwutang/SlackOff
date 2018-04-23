@@ -30,6 +30,10 @@ class SessionForm extends Component{
 
   }
 
+
+
+
+
   componentWillReceiveProps(nextProps){
     //if user switches to registration or vice-versa. Clear the form
     if(this.props.form_type !== nextProps.form_type){
@@ -85,7 +89,20 @@ class SessionForm extends Component{
 
 
 
+  renderErrors(){
+    return(
+     <ul className="errors-ul">
+       {this.props.errors.map((error, i) => (
+         <li className = "errors-li" key={`error-${i}`}>
+           {error}
+         </li>
+       ))}
 
+     </ul>
+   );
+
+
+  }
 
 
   renderContent(){
@@ -164,6 +181,7 @@ class SessionForm extends Component{
           <Header />
 
           <div className="session-container">
+              {this.renderErrors()}
 
               <form className="session-form" onSubmit={this.handleSubmit}>
 

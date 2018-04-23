@@ -65,8 +65,8 @@ module.exports = (app) => {
       return next(err);
     }
     if (!user){
-      console.log(info)
-      return res.send(info);
+      
+      return res.status(401).send(info);
     }
     req.logIn(user, function(err) {
       if (err){
@@ -76,6 +76,7 @@ module.exports = (app) => {
       let newUser = {};
       newUser.username = req.user.local.username;
       newUser.id = req.user._id;
+
       res.send({local:newUser});
 
     });

@@ -8,7 +8,7 @@ export default function(state = [], action){
 
   switch(action.type){
     case RECEIVE_SESSION_ERRORS:
-      let errors = action.payload.data.message;
+      let errors = Object.values(action.payload);
       return errors;
 
 

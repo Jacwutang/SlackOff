@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { RECEIVE_USER, CREATE_CHANNEL } from './types';
+import { RECEIVE_USER, CREATE_CHANNEL,RECEIVE_SESSION_ERRORS } from './types';
 
 // axios pings back-end with a http request.
 // res is what the back-end returns
@@ -26,11 +26,23 @@ export const createChannel = (channel) => async dispatch => {
 };
 
 export const login = (username,password) => async dispatch => {
-  const res = await axios.post('/api/local-login', {username:username,password:password});
 
-  console.log(res, "RES OVER HERE IS");
+  try {
 
-  return dispatch({type: RECEIVE_USER, payload: res});
+      // wait for the fetch to finish then dispatch the result
+      const res = await axios.post('/api/local-login', {username:username,password:password});
+
+
+
+      return dispatch({type: RECEIVE_USER, payload: res});
+
+    } catch (error) {
+
+      // catch errors from fetch
+      dispatch({type:RECEIVE_SESSION_ERRORS, payload:error.response.data});
+    }
+
+
 
 
 };

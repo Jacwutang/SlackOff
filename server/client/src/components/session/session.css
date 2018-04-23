@@ -114,3 +114,14 @@
 a{
   color: #fff;
 }
+
+.errors-ul{
+  list-style: none;
+  color: red;
+}
+
+.errors-li{
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+}

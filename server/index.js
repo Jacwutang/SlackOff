@@ -49,10 +49,10 @@ require('./models/Message');
 
 const User = mongoose.model('User');
 
-let jack = new User();
-jack.local.username = 'demo';
-jack.local.password = jack.generateHash('password');
-jack.save();
+// let jack = new User();
+// jack.local.username = 'demo';
+// jack.local.password = jack.generateHash('password');
+// jack.save();
 
 require('./services/passport');
 

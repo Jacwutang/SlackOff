@@ -8,7 +8,7 @@ class Header extends Component {
     switch(this.props.auth){
       case null:
         return;
-
+        
       case false:
         return(
           <li>
@@ -31,6 +31,8 @@ class Header extends Component {
 
 
   render(){
+
+
     return(
 
       <nav>

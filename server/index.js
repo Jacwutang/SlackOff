@@ -5,6 +5,8 @@ const passport = require('passport');
 const keys = require('./config/keys');
 const bodyParser = require('body-parser');
 const flash    = require('connect-flash');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 app.use(bodyParser.json());
@@ -67,18 +69,28 @@ mongoose.connect(keys.mongoURI);
 // next 3 functions are middlewares
 
 //makes use of cookies. (serializeUser, deserializeUser)
-app.use(
-  cookieSession({
-    maxAge: 30 * 24 * 60 * 60 * 1000,
-    keys: [keys.cookieKey]
-  })
-);
+// app.use(
+//   cookieSession({
+//     name: 'session',
+//     maxAge: 30 * 24 * 60 * 60 * 1000,
+//     keys: [keys.cookieKey]
+//   })
+// );
+app.use(cookieParser());
+app.use(session({
+  secret: 'cat',
+  resave: true,
+  saveUninitialized: true,
+  cookie: { secure: false }
+  }));
+
+
 
 // passport.initialize middleware is invoked on every request
 app.use(passport.initialize());
 //passport.session middleware is a Passport Strategy which will load the user object onto req.user or req.session? if a serialised user object was found in the server.
 app.use(passport.session());
-// app.use(flash());
+
 
 //load route handlers
 require('./routes/authRoutes')(app);

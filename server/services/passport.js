@@ -13,22 +13,24 @@ const User = mongoose.model('User');
 passport.serializeUser((user,done) => {
   // uses id assigned by mongoDB
   // The cookie id is user's id. But is encrypted to something else.
-  done(null, user.id);
+  console.log("serialize");
+  return done(null, user.id);
 });
 
 
 // find user by unique id
 // convert into user obj
-// passport.deserializeUser( (id,done) => {
-//   User.findById(id)
-//     .then(user => done(null,user));
-// });
-
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
+passport.deserializeUser( (id,done) => {
+  console.log("deserialize");
+  return User.findById(id)
+    .then(user => done(null,user));
 });
+
+// passport.deserializeUser(function(id, done) {
+//   User.findById(id, function(err, user) {
+//     done(err, user);
+//   });
+// });
 
 passport.use('local-signup', new LocalStrategy({
         // by default, local strategy uses username and password, we will override with email
@@ -61,7 +63,7 @@ passport.use('local-signup', new LocalStrategy({
               console.log("SIGNUP PORTION REACHED")
                 // if there is no user with that username
                 // create the user
-                var newUser    = new User();
+                var newUser  = new User();
 
                 // set the user's local credentials
                 newUser.local.username    = username;
@@ -108,7 +110,7 @@ passport.use('local-signup', new LocalStrategy({
 
             // if the user is found but the password is wrong
             if (!user.validPassword(password)){
-              
+
               return done(null, false, {message: "Incorrect password"});
 
             }
@@ -133,7 +135,7 @@ passport.use(
     proxy: true
   }, async (accessToken, refreshToken,profile,done) => {
       //returns promise
-      const existingUser = await User.findOne({ googleId: profile.id })
+      const existingUser = await User.findOne({ 'google.googleId': profile.id })
 
             if(existingUser){
               //1st arg error obj, 2nd user obj

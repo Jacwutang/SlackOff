@@ -9,6 +9,7 @@ class SessionForm extends Component{
     super(props);
     this.animateDemo = this.animateDemo.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.demoUsername = ['d','e','m','o'];
     this.demoPassword = ['p','a','s','s','w','o','r','d'];
 
@@ -20,15 +21,13 @@ class SessionForm extends Component{
   }
 
   componentDidMount(){
+    if(this.props.auth){
+      //if there is a currentUser already, re-direct them home
+      this.props.history.push('/');
+
+    }
 
 
-    // if(this.props.auth === true){
-    //   //if there is a currentUser already, re-direct them home
-    //   this.props.history.push('/');
-    //
-    // }
-
-    this.props.login('demo-jack','password');
   }
 
   componentWillReceiveProps(nextProps){
@@ -76,7 +75,12 @@ class SessionForm extends Component{
 
   }
 
+  handleSubmit(e){
+    e.preventDefault();
 
+    (this.props.form_type === "login")? this.props.login(this.state.username,this.state.password):
+    this.props.signup(this.state.username,this.state.password);
+  }
 
 
 
@@ -98,7 +102,7 @@ class SessionForm extends Component{
             </div>
 
             <div className="input-buttons">
-              <button className="authBtn" onClick={this.animateDemo}>
+              <button className="authBtn" type="button" onClick={this.animateDemo}>
               Demo Login
               </button>
 
@@ -161,7 +165,7 @@ class SessionForm extends Component{
 
           <div className="session-container">
 
-              <form className="session-form">
+              <form className="session-form" onSubmit={this.handleSubmit}>
 
                 <input placeholder="Enter Username" className="input-session" value={this.state.username} onChange={this.handleInput('username')} type="text"/>
 

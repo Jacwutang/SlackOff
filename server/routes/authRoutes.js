@@ -15,10 +15,11 @@ module.exports = (app) => {
       if(info){
         res.send({error:info});
       } else{
-        let user = {};
-        user.username =  req.user.local.username;
-        user.id = req.user._id;
-        res.send(user);
+        let sessionUser = {};
+
+        sessionUser.username =  user.local.username;
+        sessionUser.id = user._id;
+        res.send({local:sessionUser});
       }
 
       })(req,res);
@@ -29,10 +30,10 @@ module.exports = (app) => {
         if(!user){
           res.send({error:info});
         } else{
-          let newUser = {};
-          newUser.username = user.local.username;
-          newUser.id = user._id;
-          return res.send({local: newUser});
+          let sessionUser = {};
+          sessionUser.username = user.local.username;
+          sessionUser.id = user._id;
+          return res.send({local: sessionUser});
 
         }
 
@@ -57,9 +58,9 @@ module.exports = (app) => {
   });
 
   app.get('/api/current_user', (req,res) => {
-      
+      // console.log(req);
+      // console.log("session obj", req.session);
       if(req.user === undefined){
-        console.log("null user");
         return res.send(null);
       }
 

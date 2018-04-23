@@ -19,7 +19,9 @@ class App extends Component{
     //
     // return res;
 
-    this.props.createUser('jack','password');
+    // this.props.createUser('jack','password');
+    // this.props.fetchUser();
+    this.props.fetchUser();
 
   }
 

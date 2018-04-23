@@ -11,13 +11,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
+// const http = require('http').Server(app);
+// const io = require('socket.io')(http);
 
-// app.get('/', function(req,res){
-//   res.sendFile(__dirname + '/index.html');
-//
-// });
 
 //any-time a new user connects
 // io.on('connection', function(socket){
@@ -29,17 +25,17 @@ const io = require('socket.io')(http);
 //listen to port 3000, which is default react port
 const PORT = process.env.PORT ||  5000;
 
-http.listen(PORT, function(){
-  console.log('listening on *:5000');
-});
-
-io.on('connection', function(socket){
-  console.log('a user connected');
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
-    console.log(msg);
-  });
-});
+// http.listen(PORT, function(){
+//   console.log('listening on *:5000');
+// });
+//
+// io.on('connection', function(socket){
+//   console.log('a user connected');
+//   socket.on('chat message', function(msg){
+//     io.emit('chat message', msg);
+//     console.log(msg);
+//   });
+// });
 
 
 
@@ -55,7 +51,7 @@ require('./services/passport');
 
 
 mongoose.connect(keys.mongoURI);
-mongoose.Promise = global.Promise;
+// mongoose.Promise = global.Promise;
 
 
 
@@ -98,7 +94,5 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-//
-// const PORT = process.env.PORT ||  5000;
-//
-// app.listen(PORT);
+
+app.listen(PORT);

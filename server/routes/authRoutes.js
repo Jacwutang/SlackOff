@@ -38,9 +38,27 @@ module.exports = (app) => {
         res.send(user);
       }
 
-    })(req,res);
-
+      })(req,res);
     });
+
+    app.post('/api/local-login', (req,res) => {
+      passport.authenticate('local-login', (err,user,info) => {
+        if(!user){
+          res.send({error:info});
+        } else{
+          let user = {};
+          user.username =  req.user.local.username;
+          user.id = req.user._id;
+          res.send(user);
+        }
+
+      })(req,res);
+    });
+
+
+
+
+
 
 
   app.get('/auth/google/callback', passport.authenticate('google'),
@@ -55,9 +73,19 @@ module.exports = (app) => {
   });
 
   app.get('/api/current_user', (req,res) => {
+      console.log(req.user);
+    //   let obj = req.user._doc;
+    //   let types = Object.keys(obj);
+    //   //google, local, _id, _v
+    //   let type = types.filter((type) =>    Object.values(obj[type]).length > 1
+    // );
+    //   console.log(type);
 
-    res.send(req.user);
-  })
+
+
+
+      res.send(req.user);
+  });
 
 };
 

@@ -12,8 +12,7 @@ const userSchema = new Schema({
 
   local:{
     username: {
-     type: String,
-     unique: true,
+     type: String
     },
     password: {
      type: String,

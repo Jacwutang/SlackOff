@@ -11,14 +11,6 @@ export const fetchUser = () => async dispatch => {
       return dispatch({type: RECEIVE_USER, payload: res});
 };
 
-// export const createUser = (username,password) => async dispatch => {
-//       const res = await axios.post('/api/local-signup',{username:username, password:password});
-//
-//       return dispatch({type: RECEIVE_USER, payload: res});
-// };
-
-
-
 
 
 export const createChannel = (channel) => async dispatch => {
@@ -35,6 +27,8 @@ export const createChannel = (channel) => async dispatch => {
 
 export const login = (username,password) => async dispatch => {
   const res = await axios.post('/api/local-login', {username:username,password:password});
+
+  console.log(res, "RES OVER HERE IS");
 
   return dispatch({type: RECEIVE_USER, payload: res});
 

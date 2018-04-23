@@ -25,50 +25,90 @@ module.exports = (app) => {
   //     })(req,res);
   //   });
   app.post('/api/local-signup',
-  passport.authenticate('local-signup'),
+  passport.authenticate('local-signup',{failureFlash: true}),
   function(req, res) {
+    console.log("successful");
     // If this function gets called, authentication was successful.
     // `req.user` contains the authenticated user.
-    let newUser = {};
-    newUser.username = req.user.local.username;
-    newUser.id = req.user._id;
-    res.send({local:newUser});
+
+    // if(req.session.flash){
+    //   console.log(req.session.flash);
+    // }
+
+    // let newUser = {};
+    // newUser.username = req.user.local.username;
+    // newUser.id = req.user._id;
+    // res.send({local:newUser});
   });
 
 
-  app.post('/api/local-login',
-  passport.authenticate('local-login'),
-  function(req, res) {
-    // If this function gets called, authentication was successful.
-    // `req.user` contains the authenticated user.
-    let newUser = {};
-    newUser.username = req.user.local.username;
-    newUser.id = req.user._id;
-    res.send({local:newUser});
 
+
+  // app.post('/api/local-login',
+  // passport.authenticate('local-login',
+  // { failureRedirect: '/login',failureFlash : true}),
+  // function(req, res) {
+  //   // If this function gets called, authentication was successful.
+  //   // `req.user` contains the authenticated user.
+  //
+  //   let newUser = {};
+  //   newUser.username = req.user.local.username;
+  //   newUser.id = req.user._id;
+  //   res.send({local:newUser});
+  //
+  // });
+
+  app.post('/api/local-login', function(req, res, next) {
+  passport.authenticate('local-login', function(err, user, info) {
+    if (err){
+      console.log("error");
+      return next(err);
+    }
+    if (!user){
+      console.log(info)
+      return res.send(info);
+    }
+    req.logIn(user, function(err) {
+      if (err){
+        console.log("error login");
+        return next(err);
+      }
+      let newUser = {};
+      newUser.username = req.user.local.username;
+      newUser.id = req.user._id;
+      res.send({local:newUser});
+
+    });
+
+    })(req, res, next);
   });
 
 
-    // app.post('/api/local-login', (req,res) => {
-    //   passport.authenticate('local-login', (err,user,info) => {
-    //     if(!user){
-    //       res.send({error:info});
-    //     } else{
-    //       let sessionUser = {};
-    //       sessionUser.username = user.local.username;
-    //       sessionUser.id = user._id;
-    //       return res.send({local: sessionUser});
-    //
-    //     }
-    //
-    //   })(req,res);
-    // });
+  app.post('/api/local-signup', function(req, res, next) {
+  passport.authenticate('local-signup', function(err, user, info) {
+    if (err){
+      console.log("error");
+      return next(err);
+    }
+    if (!user){
+      console.log(info)
+      return res.send(info);
+    }
+    req.logIn(user, function(err) {
+      if (err){
+        console.log("error login");
+        return next(err);
+      }
+
+      let newUser = {};
+      newUser.username = req.user.local.username;
+      newUser.id = req.user._id;
+      res.send({local:newUser});
 
 
-
-
-
-
+    });
+    })(req, res, next);
+  });
 
   app.get('/auth/google/callback', passport.authenticate('google'),
   (req,res) => {
@@ -82,14 +122,14 @@ module.exports = (app) => {
   });
 
   app.get('/api/current_user', (req,res) => {
-    console.log(req.user,"REQ>USER");
+
     if(!req.user){
       return res.send(null);
     }
 
     let user = {};
     user.id = req.user._id;
-    console.log(req,"REQUEST");
+
     if(req.user.google.displayName){
       user.displayName = req.user.google.displayName;
       return res.send({google:user});
@@ -101,29 +141,3 @@ module.exports = (app) => {
 
 };
  // pkill -f node
-
-
- // app.get('/api/current_user', (req,res) => {
- //
- //     if(req.user === undefined){
- //       return res.send(null);
- //     }
- //
- //
- //     let obj = req.user._doc;
- //
- //     let user = {};
- //     user.id = obj._id;
- //
- //     switch(true){
- //       case(Object.values(obj.google).length > 1):
- //         user.displayName = obj.google.displayName;
- //         return res.send({google:user});
- //       default:
- //       user.local.username = obj.local.username;
- //       return res.send({local:user});
- //
- //     }
- //
- //
- // });

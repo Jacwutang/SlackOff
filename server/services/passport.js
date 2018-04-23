@@ -57,7 +57,7 @@ passport.use('local-signup', new LocalStrategy({
                 console.log("ALREADY THIS USER BRO")
                 // return done(null, false, req.flash('signupMessage', 'That username is already taken.'));
 
-                return done(null,user,{message: 'Username already taken'});
+                return done(null,user,{message: 'Username already exists'});
                 // return res.status(401).json("Incorrect email or password1")
             } else {
               console.log("SIGNUP PORTION REACHED")
@@ -96,17 +96,24 @@ passport.use('local-signup', new LocalStrategy({
     },
     function(req, username, password, done) { // callback with username and password from our form
       console.log("LOCAL-LOGIN")
-      // console.log(password === req.body.password, password, req.body.password);
+      console.log(username,password);
         // find a user whose username is the same as the forms username
         // we are checking to see if the user trying to login already exists
         User.findOne({ 'local.username' :  username }, function(err, user) {
             // if there are any errors, return the error before anything else
-            if (err)
-                return done(err);
+            if (err){
+
+              return done(err);
+            }
+
 
             // if no user is found, return the message
-            if (!user)
-                return done(null, false, {message:"No user found"})
+            if (!user){
+
+              return done(null, false, {message:"No user found"});
+
+            }
+
 
             // if the user is found but the password is wrong
             if (!user.validPassword(password)){

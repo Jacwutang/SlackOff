@@ -12,7 +12,7 @@ module.exports = (app) => {
 
   app.post('/api/local-signup',(req,res) => {
     passport.authenticate('local-signup', (err,user,info) => {
-      if(user){
+      if(info){
         res.send({error:info});
       } else{
         let user = {};
@@ -29,10 +29,11 @@ module.exports = (app) => {
         if(!user){
           res.send({error:info});
         } else{
-          let user = {};
-          user.username =  req.user.local.username;
-          user.id = req.user._id;
-          res.send(user);
+          let newUser = {};
+          newUser.username = user.local.username;
+          newUser.id = user._id;
+          return res.send({local: newUser});
+
         }
 
       })(req,res);
@@ -56,8 +57,10 @@ module.exports = (app) => {
   });
 
   app.get('/api/current_user', (req,res) => {
-      if(!req.user){
-        res.send(req.user);
+      
+      if(req.user === undefined){
+        console.log("null user");
+        return res.send(null);
       }
 
 
@@ -71,10 +74,11 @@ module.exports = (app) => {
           user.displayName = obj.google.displayName;
           return res.send({google:user});
         default:
-        local.username = obj.local.username;
+        user.local.username = obj.local.username;
         return res.send({local:user});
 
       }
+
 
   });
 

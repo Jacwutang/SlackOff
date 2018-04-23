@@ -14,13 +14,7 @@ import axios from 'axios';
 class App extends Component{
 
    componentDidMount(){
-    // this.props.fetchUser();
-    // const res = await axios.post('/local-signup',{username:'joe', password:'password'});
-    //
-    // return res;
 
-    // this.props.createUser('jack','password');
-    // this.props.fetchUser();
     this.props.fetchUser();
 
   }

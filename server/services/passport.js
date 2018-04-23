@@ -93,7 +93,8 @@ passport.use('local-signup', new LocalStrategy({
         passReqToCallback : true // allows us to pass back the entire request to the callback
     },
     function(req, username, password, done) { // callback with username and password from our form
-
+      console.log("LOCAL-LOGIN")
+      // console.log(password === req.body.password, password, req.body.password);
         // find a user whose username is the same as the forms username
         // we are checking to see if the user trying to login already exists
         User.findOne({ 'local.username' :  username }, function(err, user) {
@@ -106,9 +107,14 @@ passport.use('local-signup', new LocalStrategy({
                 return done(null, false, {message:"No user found"})
 
             // if the user is found but the password is wrong
-            if (!user.validPassword(password))
-                return done(null, false, {message: "Incorrect password"});
+            if (!user.validPassword(password)){
+              
+              return done(null, false, {message: "Incorrect password"});
+
+            }
+
             // all is well, return successful user
+            console.log("WE FOUND YOU RETURN USER")
             return done(null, user);
         });
 

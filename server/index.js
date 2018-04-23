@@ -45,6 +45,13 @@ require('./models/User');
 require('./models/Channel');
 require('./models/Message');
 
+const User = mongoose.model('User');
+
+let jack = new User();
+jack.local.username = 'demo';
+jack.local.password = jack.generateHash('password');
+jack.save();
+
 require('./services/passport');
 
 

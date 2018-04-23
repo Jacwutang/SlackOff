@@ -22,11 +22,13 @@ class SessionForm extends Component{
   componentDidMount(){
 
 
-    if(this.props.auth === true){
-      //if there is a currentUser already, re-direct them home
-      this.props.history.push('/');
+    // if(this.props.auth === true){
+    //   //if there is a currentUser already, re-direct them home
+    //   this.props.history.push('/');
+    //
+    // }
 
-    }
+    this.props.login('demo-jack','password');
   }
 
   componentWillReceiveProps(nextProps){
@@ -67,7 +69,14 @@ class SessionForm extends Component{
       },150);
     }
 
+    if(this.demoUsername.length === 0 && this.demoPassword.length === 0){
+
+      this.props.login(this.state.username,this.state.password).then(() => this.props.history.push('/messages'));
+    }
+
   }
+
+
 
 
 

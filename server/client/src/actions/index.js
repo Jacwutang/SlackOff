@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER, CREATE_CHANNEL } from './types';
+import { RECEIVE_USER, CREATE_CHANNEL } from './types';
 
 // axios pings back-end with a http request.
 // res is what the back-end returns
@@ -8,14 +8,14 @@ import { FETCH_USER, CREATE_CHANNEL } from './types';
 export const fetchUser = () => async dispatch => {
       const res = await axios.get('/api/current_user');
 
-      return dispatch({type: FETCH_USER, payload: res});
+      return dispatch({type: RECEIVE_USER, payload: res});
 };
 
-export const createUser = (username,password) => async dispatch => {
-      const res = await axios.post('/api/local-signup',{username:username, password:password});
-
-      return dispatch({type: FETCH_USER, payload: res});
-};
+// export const createUser = (username,password) => async dispatch => {
+//       const res = await axios.post('/api/local-signup',{username:username, password:password});
+//
+//       return dispatch({type: RECEIVE_USER, payload: res});
+// };
 
 
 
@@ -31,4 +31,20 @@ export const createChannel = (channel) => async dispatch => {
       );
 
       return dispatch({type: CREATE_CHANNEL, payload: res});
+};
+
+export const login = (username,password) => async dispatch => {
+  const res = await axios.post('/api/local-login', {username:username,password:password});
+
+  return dispatch({type: RECEIVE_USER, payload: res});
+
+
+};
+
+export const signup = (username,password) => async dispatch => {
+  const res = await axios.post('/api/local-signup', {username:username,password:password});
+
+  return dispatch({type: RECEIVE_USER, payload: res});
+
+
 };

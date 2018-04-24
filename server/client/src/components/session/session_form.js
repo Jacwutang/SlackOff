@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Header from '../header/header_container';
 import Footer from '../footer/Footer';
+// import {RECEIVE_USER} from '../../action.types';
 import './session.css';
+
 
 class SessionForm extends Component{
   constructor(props){
@@ -10,6 +12,7 @@ class SessionForm extends Component{
     this.animateDemo = this.animateDemo.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
     this.demoUsername = ['d','e','m','o'];
     this.demoPassword = ['p','a','s','s','w','o','r','d'];
 
@@ -35,10 +38,18 @@ class SessionForm extends Component{
 
 
   componentWillReceiveProps(nextProps){
+    if(nextProps.auth){
+      //if a user signs on, re-direct them to messages
+
+      this.props.history.push('/messages');
+    }
+
+
     //if user switches to registration or vice-versa. Clear the form
     if(this.props.form_type !== nextProps.form_type){
       this.demoUsername = ['d','e','m','o'];
       this.demoPassword = ['p','a','s','s','w','o','r','d'];
+      this.props.clearErrors();
       this.setState({username: '', password: ''});
     }
   }
@@ -74,10 +85,11 @@ class SessionForm extends Component{
 
     if(this.demoUsername.length === 0 && this.demoPassword.length === 0){
 
-      this.props.login(this.state.username,this.state.password).then(() => this.props.history.push('/messages'));
+      this.props.login(this.state.username,this.state.password);
     }
 
   }
+
 
   handleSubmit(e){
     e.preventDefault();
@@ -104,6 +116,19 @@ class SessionForm extends Component{
 
   }
 
+  triggerClass(e){
+    e.preventDefault();
+
+    document.querySelector('.fa-arrow-right').style = "color:white";
+
+  }
+
+  exitClass(e){
+    e.preventDefault();
+
+    document.querySelector('.fa-arrow-right').style = "color:blue";
+  }
+
 
   renderContent(){
     switch(this.props.form_type){
@@ -119,6 +144,10 @@ class SessionForm extends Component{
             </div>
 
             <div className="input-buttons">
+              <button className="session-submit-btn" onMouseEnter={this.triggerClass} onMouseLeave={this.exitClass}
+              onClick={this.handleSubmit} type="button">
+                <i className="fas fa-arrow-right"></i>
+              </button>
               <button className="authBtn" type="button" onClick={this.animateDemo}>
               Demo Login
               </button>
@@ -152,13 +181,7 @@ class SessionForm extends Component{
           </div>
         );
 
-
-
-
-
-
-
-    }
+      }
 
   }
 

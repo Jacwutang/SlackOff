@@ -24,22 +24,22 @@ module.exports = (app) => {
   //
   //     })(req,res);
   //   });
-  app.post('/api/local-signup',
-  passport.authenticate('local-signup',{failureFlash: true}),
-  function(req, res) {
-    console.log("successful");
-    // If this function gets called, authentication was successful.
-    // `req.user` contains the authenticated user.
-
-    // if(req.session.flash){
-    //   console.log(req.session.flash);
-    // }
-
-    // let newUser = {};
-    // newUser.username = req.user.local.username;
-    // newUser.id = req.user._id;
-    // res.send({local:newUser});
-  });
+  // app.post('/api/local-signup',
+  // passport.authenticate('local-signup',{failureFlash: true}),
+  // function(req, res) {
+  //   console.log("successful");
+  //   // If this function gets called, authentication was successful.
+  //   // `req.user` contains the authenticated user.
+  //
+  //   // if(req.session.flash){
+  //   //   console.log(req.session.flash);
+  //   // }
+  //
+  //   // let newUser = {};
+  //   // newUser.username = req.user.local.username;
+  //   // newUser.id = req.user._id;
+  //   // res.send({local:newUser});
+  // });
 
 
 
@@ -61,16 +61,16 @@ module.exports = (app) => {
   app.post('/api/local-login', function(req, res, next) {
   passport.authenticate('local-login', function(err, user, info) {
     if (err){
-      console.log("error");
+
       return next(err);
     }
     if (!user){
-      
+
       return res.status(401).send(info);
     }
     req.logIn(user, function(err) {
       if (err){
-        console.log("error login");
+
         return next(err);
       }
       let newUser = {};
@@ -88,12 +88,13 @@ module.exports = (app) => {
   app.post('/api/local-signup', function(req, res, next) {
   passport.authenticate('local-signup', function(err, user, info) {
     if (err){
-      console.log("error");
+      // console.log("error");
       return next(err);
     }
+
     if (!user){
-      console.log(info)
-      return res.send(info);
+      // console.log(info)
+      return res.status(401).send(info);
     }
     req.logIn(user, function(err) {
       if (err){
@@ -110,6 +111,7 @@ module.exports = (app) => {
     });
     })(req, res, next);
   });
+
 
   app.get('/auth/google/callback', passport.authenticate('google'),
   (req,res) => {

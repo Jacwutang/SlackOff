@@ -12,7 +12,10 @@ const userSchema = new Schema({
 
   local:{
     username: {
-     type: String
+     type: String,
+     index: {
+       unique: true
+     },
     },
     password: {
      type: String,
@@ -28,7 +31,7 @@ userSchema.methods.generateHash = function(password) {
 
 // checking if password is valid
 userSchema.methods.validPassword = function(password) {
-    console.log(bcrypt.compareSync(password, this.local.password));
+    // console.log(bcrypt.compareSync(password, this.local.password));
     return bcrypt.compareSync(password, this.local.password);
 };
 

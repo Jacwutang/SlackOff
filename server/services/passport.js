@@ -13,7 +13,7 @@ const User = mongoose.model('User');
 passport.serializeUser((user,done) => {
   // uses id assigned by mongoDB
   // The cookie id is user's id. But is encrypted to something else.
-  console.log("serialize");
+
   return done(null, user.id);
 });
 
@@ -21,7 +21,7 @@ passport.serializeUser((user,done) => {
 // find user by unique id
 // convert into user obj
 passport.deserializeUser( (id,done) => {
-  console.log("deserialize");
+
   return User.findById(id)
     .then(user => done(null,user));
 });
@@ -42,7 +42,7 @@ passport.use('local-signup', new LocalStrategy({
 
         // asynchronous
         // User.findOne wont fire unless data is sent back
-        console.log(username,password, "HERE")
+        console.log("LOCAL-SIGNUP")
         process.nextTick(function() {
 
         // find a user whose email is the same as the forms email
@@ -54,10 +54,10 @@ passport.use('local-signup', new LocalStrategy({
 
             // check to see if theres already a user with that username
             if (user) {
-                console.log("ALREADY THIS USER BRO")
+                console.log("ALREADY THIS USER")
                 // return done(null, false, req.flash('signupMessage', 'That username is already taken.'));
 
-                return done(null,user,{message: 'Username already exists'});
+                return done(null,false,{message: 'Username already exists'});
                 // return res.status(401).json("Incorrect email or password1")
             } else {
               console.log("SIGNUP PORTION REACHED")
@@ -96,7 +96,7 @@ passport.use('local-signup', new LocalStrategy({
     },
     function(req, username, password, done) { // callback with username and password from our form
       console.log("LOCAL-LOGIN")
-      console.log(username,password);
+
         // find a user whose username is the same as the forms username
         // we are checking to see if the user trying to login already exists
         User.findOne({ 'local.username' :  username }, function(err, user) {

@@ -48,9 +48,19 @@ export const login = (username,password) => async dispatch => {
 };
 
 export const signup = (username,password) => async dispatch => {
-  const res = await axios.post('/api/local-signup', {username:username,password:password});
+  try{
 
-  return dispatch({type: RECEIVE_USER, payload: res});
+
+    const res = await axios.post('/api/local-signup', {username:username,password:password});
+
+    return dispatch({type: RECEIVE_USER, payload: res});
+
+  }catch(error){
+
+      dispatch({type: RECEIVE_SESSION_ERRORS, payload: error.response.data});
+
+  }
+
 
 
 };

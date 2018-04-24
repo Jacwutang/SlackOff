@@ -52,6 +52,8 @@ class SessionForm extends Component{
       this.props.clearErrors();
       this.setState({username: '', password: ''});
     }
+
+    this.setState({username: '',password:''});
   }
 
   animateDemo(e){
@@ -93,6 +95,8 @@ class SessionForm extends Component{
 
   handleSubmit(e){
     e.preventDefault();
+    e.target.blur();
+
 
     (this.props.form_type === "login")? this.props.login(this.state.username,this.state.password):
     this.props.signup(this.state.username,this.state.password);

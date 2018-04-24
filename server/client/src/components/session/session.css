@@ -20,9 +20,16 @@
   margin-left: 125px;
   margin-bottom: 10px;
 }
+/* .session-submit-btn:hover{
+  background: #298EEA;
+} */
+
 .session-submit-btn:hover{
   background: #298EEA;
 }
+
+
+
 
 .fa-arrow-right{
   color: blue;

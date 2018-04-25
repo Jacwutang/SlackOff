@@ -38,11 +38,13 @@ class SessionForm extends Component{
 
 
   componentWillReceiveProps(nextProps){
+    //for demo login + custom login. 
     if(nextProps.auth){
       //if a user signs on, re-direct them to messages
 
       this.props.history.push('/messages');
     }
+
 
 
     //if user switches to registration or vice-versa. Clear the form

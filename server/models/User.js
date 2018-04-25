@@ -8,6 +8,7 @@ const userSchema = new Schema({
     googleId: String,
     displayName: String,
     image_url: String,
+
   },
 
   local:{
@@ -20,7 +21,12 @@ const userSchema = new Schema({
     password: {
      type: String,
     }
-  }
+  },
+
+  //user stores array of channel references
+  channels: [{ type: Schema.Types.ObjectId, ref: 'Channel'}]
+
+
 
 
 });

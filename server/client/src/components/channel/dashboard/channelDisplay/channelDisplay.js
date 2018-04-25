@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import { withRouter } from 'react-router';
 import Modal from 'react-responsive-modal';
 
+import axios from 'axios';
 
 import ChannelIndexItem from './channelIndexItem';
 
@@ -27,21 +28,33 @@ class ChannelDisplay extends Component {
   componentDidMount(){
     //fetch channels
     // this.props.fetchChannels();
-    
+
+    if(this.props.auth_type){
+      axios.get('/api/channels', {params:{type: this.props.auth_type}});
+    }
+
   }
   componentWillReceiveProps(nextProps){
-    if(nextProps.channels.length === this.props.channels.length){
-      return;
+    //Google Oauth's props comes in later
+    if(this.props.auth_type !== nextProps.auth_type){
+
+      axios.get('/api/channels', {params:{type:nextProps.auth_type}});
+    }
+
+
+    if(nextProps.channels.length !== this.props.channels.length){
+      let newChannel = nextProps.channels.slice(-1)[0];
+
+      return this.setState({
+        currentChannel: newChannel
+      });
+
     }
 
 
     // Create a new channel and then extract it from the redux store;
     // set it as the currentChannel
-    let newChannel = nextProps.channels.slice(-1)[0];
 
-    this.setState({
-      currentChannel: newChannel
-    });
 
 
   }
@@ -119,11 +132,13 @@ class ChannelDisplay extends Component {
 
 
   render(){
+
+
     const { open } = this.state;
     return(
       <div>
         <div className="message-display-add">
-          <span> channelDisplay </span>
+          <span> ChannelDisplay </span>
           <button onClick={() => this.onOpenModal() }> + </button>
           <Modal
             open={open}

@@ -4,12 +4,14 @@ const Channel = mongoose.model('Channel');
 
 module.exports = (app) => {
 
+
+  //create a channel
   app.post('/api/channel/new', (req,res) => {
 
       const { name } = req.body;
 
 
-
+      //create channel with 1 user
       let newChannel = new Channel({name});
 
       newChannel.save( (err,newChannel) => {
@@ -24,36 +26,28 @@ module.exports = (app) => {
 
 
 
-      // let newConversation = new Conversation({
-      //   members: req.user._id,
-      //   channel: newChannel._id
-      // });
 
-      // Create a new conversation as well
+  });
 
-
-
-
+  //fetch your channels
+  app.get('/api/channels', (req,res) => {
+    //figure out the type of user. Google or local.
+    const {type} = req.query;
+    const {user} = req.user;
 
 
-      // const Channel = mongoose.model('Channel');
-      // const test = new Channel({name: "Hello"});
-      // test.save();
-      // console.log(test);
+
+
+
+
+
+
+
   });
 
 
 
 
-  // app.get('/messages/*', (req,res) => {
-  //
-  // });
-
 
 
 };
-
-// convo schema
-// members: [{ type: Schema.Types.ObjectId, ref: 'User'}],
-// channel: { type: Schema.Types.ObjectId, ref: 'Channel'},
-// directMessage: { type: Schema.Types.ObjectId, ref: 'DirectMessage'}

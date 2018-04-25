@@ -44,19 +44,7 @@ module.exports = (app) => {
 
 
 
-  // app.post('/api/local-login',
-  // passport.authenticate('local-login',
-  // { failureRedirect: '/login',failureFlash : true}),
-  // function(req, res) {
-  //   // If this function gets called, authentication was successful.
-  //   // `req.user` contains the authenticated user.
-  //
-  //   let newUser = {};
-  //   newUser.username = req.user.local.username;
-  //   newUser.id = req.user._id;
-  //   res.send({local:newUser});
-  //
-  // });
+
 
   app.post('/api/local-login', function(req, res, next) {
   passport.authenticate('local-login', function(err, user, info) {
@@ -115,7 +103,9 @@ module.exports = (app) => {
 
   app.get('/auth/google/callback', passport.authenticate('google'),
   (req,res) => {
+    // res.redirect('/messages');
     res.redirect('/messages');
+
 
   });
 
@@ -127,6 +117,7 @@ module.exports = (app) => {
   app.get('/api/current_user', (req,res) => {
 
     if(!req.user){
+
       return res.send(null);
     }
 
@@ -135,9 +126,11 @@ module.exports = (app) => {
 
     if(req.user.google.displayName){
       user.displayName = req.user.google.displayName;
+      console.log("GOOGLE USER SENT BACK TEHEHEHE")
       return res.send({google:user});
     } else{
       user.username = req.user.local.username;
+      console.log("LOCAL USER SENT BACK")
       return res.send({local:user});
     }
   });

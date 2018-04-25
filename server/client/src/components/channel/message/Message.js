@@ -24,7 +24,7 @@ class Message extends Component {
   componentDidMount(){
 
     //fetch all Messages in this chatroom.
-    
+
     //this.props.fetchMessages(channel_id)
     // then setstate loaded: true
     //setState Messages
@@ -32,7 +32,7 @@ class Message extends Component {
 
 
   renderConversations(){
-    console.log("HERE",this.state.messages);
+    // console.log("HERE",this.state.messages);
     return(
       <ul>
       { this.state.messages.map( (message) => (

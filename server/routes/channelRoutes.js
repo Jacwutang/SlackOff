@@ -35,7 +35,10 @@ module.exports = (app) => {
     const {type} = req.query;
     const {user} = req.user;
 
+    Channel.find({}, function(err,docs){
+      console.log(docs);
 
+    });
 
 
 

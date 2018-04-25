@@ -6,7 +6,7 @@ export default function(state = false, action){
 
   switch(action.type){
     case RECEIVE_USER:
-      return action.payload.data || false;
+      return action.payload || false;
 
 
     default:

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Channel = mongoose.model('Channel');
+const User = mongoose.model('User');
 
 
 module.exports = (app) => {
@@ -31,13 +32,22 @@ module.exports = (app) => {
 
   //fetch your channels
   app.get('/api/channels', (req,res) => {
-    //figure out the type of user. Google or local.
-    const {type} = req.query;
-    const {user} = req.user;
+    // dot versus [].
 
-    Channel.find({}, function(err,docs){
-      console.log(docs);
+    const {user} = req;
+    // const {type} = req.query;
+    console.log("Channel ROUTE HIT");
 
+
+    User
+    .findOne({"_id": user.id})
+    .populate('channels')
+    .exec(function(err,docs){
+      if(err){
+        res.status(401).send({message: "Error occured finding user's channels"});
+      }
+      // console.log("DOCS",docs.channels);
+      res.send(docs.channels);
     });
 
 
@@ -45,8 +55,11 @@ module.exports = (app) => {
 
 
 
+});
 
-  });
+
+
+
 
 
 

@@ -25,20 +25,28 @@ class ChannelDisplay extends Component {
     this.toggleActive = this.toggleActive.bind(this);
   }
 
-  componentDidMount(){
+  async componentDidMount(){
     //fetch channels
     // this.props.fetchChannels();
+    //
+    // if(this.props.auth_type){
+    //   axios.get('/api/channels', {params:{type: this.props.auth_type}});
+    // }
 
     if(this.props.auth_type){
-      axios.get('/api/channels', {params:{type: this.props.auth_type}});
+      this.props.fetchChannels();
     }
 
   }
-  componentWillReceiveProps(nextProps){
+  async componentWillReceiveProps(nextProps){
     //Google Oauth's props comes in later
+    // if(this.props.auth_type !== nextProps.auth_type){
+    //
+    //   axios.get('/api/channels', {params:{type:nextProps.auth_type}});
+    // }
+    // console.log("component will recieve props");
     if(this.props.auth_type !== nextProps.auth_type){
-
-      axios.get('/api/channels', {params:{type:nextProps.auth_type}});
+      this.props.fetchChannels()
     }
 
 
@@ -50,12 +58,6 @@ class ChannelDisplay extends Component {
       });
 
     }
-
-
-    // Create a new channel and then extract it from the redux store;
-    // set it as the currentChannel
-
-
 
   }
 
@@ -70,8 +72,6 @@ class ChannelDisplay extends Component {
       this.props.history.push(`/messages/channel/${response.payload.data._id}`)
 
     })
-
-
 
     this.setState({
       input: '',

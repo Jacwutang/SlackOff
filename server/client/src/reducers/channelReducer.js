@@ -8,7 +8,7 @@ export default function(state = {}, action){
 
   switch(action.type){
     case CREATE_CHANNEL:
-      let newChannel =  { [action.payload.data._id]: action.payload.data};
+      let newChannel =  { [action.payload._id]: action.payload};
 
       return Object.assign({},state, newChannel);
 

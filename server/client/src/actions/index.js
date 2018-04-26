@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { RECEIVE_USER, CREATE_CHANNEL,RECEIVE_SESSION_ERRORS, RECEIVE_CHANNELS, RECEIVE_CHANNELS_ERRORS } from './types';
+import { RECEIVE_USER, CREATE_CHANNEL,RECEIVE_SESSION_ERRORS, RECEIVE_CHANNELS,RECEIVE_CHANNEL,RECEIVE_CHANNELS_ERRORS } from './types';
 
 // axios pings back-end with a http request.
 // res is what the back-end returns
@@ -34,7 +34,7 @@ export const createChannel = (channel) => async dispatch => {
       channel
       );
 
-      return dispatch({type: CREATE_CHANNEL, payload: res.data});
+      return dispatch({type: RECEIVE_CHANNEL, payload: res.data});
 };
 
 export const login = (username,password) => async dispatch => {

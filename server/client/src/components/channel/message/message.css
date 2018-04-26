@@ -17,7 +17,7 @@
 
 
 .bottom-row{
-  height: 5.5vh;
+  height: 5vh;
   /* border-top: 1px solid #C0C0C0; */
   width: 95%;
   position: absolute;
@@ -40,7 +40,7 @@
 }
 
 #msg-input{
-  /* border: 1px solid black; */
+
   height: 100%;
   box-sizing: border-box;
   border-left: none;
@@ -65,7 +65,7 @@
 
 
 .msg-input-gif{
-  /* border-right: 1px solid blue; */
+
   height: 100%;
 
   border-top-left-radius: 5px;

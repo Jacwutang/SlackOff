@@ -39,11 +39,11 @@ class SessionForm extends Component{
 
   componentWillReceiveProps(nextProps){
     //for demo login + custom login.
-    if(nextProps.auth){
-      //if a user signs on, re-direct them to messages
-
-      this.props.history.push('/messages');
-    }
+    // if(nextProps.auth){
+    //   //if a user signs on, re-direct them to messages
+    //
+    //   this.props.history.push('/messages');
+    // }
 
 
 
@@ -57,6 +57,8 @@ class SessionForm extends Component{
 
     this.setState({username: '',password:''});
   }
+
+  
 
   animateDemo(e){
     e.preventDefault();
@@ -89,7 +91,7 @@ class SessionForm extends Component{
 
     if(this.demoUsername.length === 0 && this.demoPassword.length === 0){
 
-      this.props.login(this.state.username,this.state.password);
+      this.props.login(this.state.username,this.state.password).then(() => this.props.history.push('/messages'))
     }
 
   }

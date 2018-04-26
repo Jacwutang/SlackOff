@@ -1,4 +1,5 @@
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router';
 import Message from './Message';
 
 
@@ -6,6 +7,9 @@ import Message from './Message';
 
 function mapStateToProps(state,ownProps){
 
+  return{
+    type_id: ownProps.match.params.type_id,
+  }
 
 }
 
@@ -18,4 +22,4 @@ function mapDispatchToProps(dispatch){
 
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(Message);
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Message));

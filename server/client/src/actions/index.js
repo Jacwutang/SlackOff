@@ -50,7 +50,7 @@ export const login = (username,password) => async dispatch => {
     } catch (error) {
 
       // catch errors from fetch
-      dispatch({type:RECEIVE_SESSION_ERRORS, payload:error.data});
+      dispatch({type:RECEIVE_SESSION_ERRORS, payload: error.data});
     }
 
 

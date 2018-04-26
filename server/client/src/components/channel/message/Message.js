@@ -5,7 +5,7 @@ import socketIOClient from "socket.io-client";
 import './message.css';
 import MessageListItem from './messageListItem';
 import axios from 'axios';
-import { RECEIVE_MESSAGE } from '../../../actions/types';
+import { RECEIVE_ALL_MESSAGES, RECEIVE_MESSAGE } from '../../../actions/types';
 
 class Message extends Component {
 
@@ -24,24 +24,22 @@ class Message extends Component {
   }
 
   async componentDidMount(){
-    console.log("MESSAGES COMPONENT MOUNTED");
-    //fetch all Messages in this chatroom.
-    // let res = await axios.get('/api/messages/room_id',{
-    //   params: {
-    //     room_id: "5adfbef8db2f763976c5bea7"
-    //   }
-    // });
+    // console.log("COMPONENT DID MOUNT");
+    // let res = await axios.post('/api/message/new', {body: "the follow up message", channel_id: "5adfbef8db2f763976c5bea7"});
     //
-    // console.log(res, "MESSAGES RESULT IS");
+    // return this.props.dispatch({type: RECEIVE_MESSAGE, payload: res.data});
+  }
 
-    let res = await axios.post('/api/message/new', {body: this.state.input, channel_id: "5adfbef8db2f763976c5bea7"});
+  async componentWillReceiveProps(nextProps){
 
-    return this.props.dispatch({type: RECEIVE_MESSAGE, payload: res.data});
+    if(nextProps.type_id !== this.props.type_id){
+
+      let res = await axios.get('/api/messages/room_id', {params: {room_id: nextProps.type_id}});
+
+      return this.props.dispatch({type: RECEIVE_ALL_MESSAGES, payload: res.data});
 
 
-    //this.props.fetchMessages(channel_id)
-    // then setstate loaded: true
-    //setState Messages
+    }
   }
 
 

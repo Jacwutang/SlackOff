@@ -13,9 +13,9 @@ export default function(state = {}, action){
 
 
     case "RECEIVE_ALL_MESSAGES":
-      let newObj = {};
+      const newObj = {};
 
-      newObj = action.payload.map((message) => {
+       action.payload.map((message) => {
           newObj[message._id] =  message;
 
       });

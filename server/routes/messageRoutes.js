@@ -9,7 +9,8 @@ module.exports = (app) => {
 
       const {body, channel_id } = req.body;
       console.log(body, "BODY");
-
+      console.log(channel_id,"channel_id");
+      console.log(req.user, "USER IS");
 
 
       Channel.findOne({"_id": channel_id}, (err,channel) => {
@@ -38,26 +39,7 @@ module.exports = (app) => {
 
       });
 
-
-
-      // let newMessage = new Message({
-      //   body: body,
-      //   author: req.user._id,
-      //   channel: channel_obj_id
-      // });
-      //
-      // newMessage.save( (err,newMessage) => {
-      //   if(err){
-      //     console.log("error saving message", err);
-      //     res.send(400, err.msg);
-      //   } else{
-      //     console.log("message saved successfully")
-      //     res.send(newMessage);
-      //   }
-      //
-      // });
-
-  });
+    });
 
 
   app.get('/api/messages/room_id', (req,res) => {
@@ -66,9 +48,15 @@ module.exports = (app) => {
 
     // room_id 5adfbef8db2f763976c5bea
     const {room_id} = req.query;
+    console.log(room_id, "ROOM ID IS");
 
-    Message.find({}, (err,docs) => {
-      console.log(docs);
+    Message.find({channel: room_id}, (err,docs) => {
+      if(err){
+        res.send(400, err.msg);
+
+      } else{
+        res.send(docs);
+      }
 
 
     });

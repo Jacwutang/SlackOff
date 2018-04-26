@@ -26,12 +26,14 @@ class ChannelDisplay extends Component {
   }
 
   async componentDidMount(){
+    // this.props.history.push('/');
     //fetch channels
     // this.props.fetchChannels();
     //
     // if(this.props.auth_type){
     //   axios.get('/api/channels', {params:{type: this.props.auth_type}});
     // }
+    console.log("channel display props", this.props);
 
     if(this.props.auth_type){
       this.props.fetchChannels();
@@ -67,9 +69,11 @@ class ChannelDisplay extends Component {
     e.preventDefault();
     this.props.createChannel({
       name: this.state.input
-    }).then( (response) => {
-
-      this.props.history.push(`/messages/channel/${response.payload.data._id}`)
+    }).then( (action) => {
+      console.log(action.payload,"ACTION PAYLOAD");
+      console.log(action.payload._id, "id");
+      console.log(this.props, "PROPS");
+      this.props.history.push(`/messages/channel/${action.payload._id}`)
 
     })
 

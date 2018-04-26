@@ -9,7 +9,7 @@ function mapStateToProps(state,ownProps){
   // console.log(state.auth, "INSIDE CONTAINER");
 
   return {
-    channels: Object.keys(channels).map(key => state.channels[key]),
+    channels: state.channels,
     auth_type: Object.keys(auth)[0]
 
   };
@@ -24,4 +24,4 @@ function mapDispatchToProps(dispatch){
 
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChannelDisplay);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ChannelDisplay));

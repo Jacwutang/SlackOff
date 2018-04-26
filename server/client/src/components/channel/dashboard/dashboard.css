@@ -1,6 +1,21 @@
 .workspace-div{
+  display: flex;
+  justify-content: space-around;
   border-bottom:  1px solid black;
-  padding-bottom: 50px;
+  padding-bottom: 15px;
+  color: white;
+  margin-top: 15px;
+}
+
+.message-type-header{
+
+  font-size: 16px;
+  color: #cac4c9
+
+}
+
+.message-type-header:hover{
+  color: white;
 }
 
 
@@ -22,6 +37,8 @@
 .message-display-add{
   display: flex;
   justify-content: space-between;
+  margin-top: 15px;
+  margin-left: 10px;
 }
 
 /* ul li:hover:not(:focus){
@@ -31,6 +48,24 @@
 .ul-channel-messages li:hover:not(:focus){
   background-color: #666;
 }
+
+.ul-channel-messages{
+  margin-left: 10px;
+  /* text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap; */
+}
+
+.ul-channel-messages li{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  line-height: 1.5em;
+}
+
+
 
 
 

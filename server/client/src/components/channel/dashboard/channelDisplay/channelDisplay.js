@@ -31,7 +31,7 @@ class ChannelDisplay extends Component {
     // console.log("channel display props", this.props);
 
     if(this.props.auth_type){
-      console.log("fetching channels");
+
       this.props.fetchChannels().then((action) => this.props.history.push(`/messages/channel/${action.payload[0]._id}`));
     }
 
@@ -119,12 +119,7 @@ class ChannelDisplay extends Component {
      return null;
    }
 
-   // console.log("channels list",this.props.channels);
-
-
-   // console.log(this.state.currentChannel);
-
-   console.log(this.props.channels);
+  
 
    return(
      <ul className="ul-channel-messages">
@@ -163,7 +158,7 @@ class ChannelDisplay extends Component {
     return(
       <div>
         <div className="message-display-add">
-          <span> ChannelDisplay </span>
+          <span className="message-type-header"> Channels </span>
           <button onClick={() => this.onOpenModal() }> + </button>
           <Modal
             open={open}

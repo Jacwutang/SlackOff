@@ -27,7 +27,7 @@ class DirectMessageDisplay extends Component {
     const { open } = this.state;
     return(
       <div className="message-display-add">
-        <span>DirectMessageDisplay</span>
+        <span className="message-type-header">DirectMessageDisplay</span>
          <button onClick={() =>  this.onOpenModal()}> + </button>
         <Modal
         open={open}

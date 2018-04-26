@@ -28,7 +28,7 @@ class ChannelIndexItem extends Component{
   render(){
 
     const { channel } = this.props;
-  
+
 
     return(
       <Link to={`/messages/channel/${channel._id}`}>
@@ -37,7 +37,7 @@ class ChannelIndexItem extends Component{
       style={this.props.active === true ? styles.activeStyle : null }
       onClick={this.handleClick}>
 
-        {channel.name}
+        # {channel.name}
 
       </li>
 

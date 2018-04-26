@@ -10,39 +10,6 @@ module.exports = (app) => {
   );
 
 
-  // app.post('/api/local-signup',(req,res) => {
-  //   passport.authenticate('local-signup', (err,user,info) => {
-  //     if(info){
-  //       res.send({error:info});
-  //     } else{
-  //       let sessionUser = {};
-  //
-  //       sessionUser.username =  user.local.username;
-  //       sessionUser.id = user._id;
-  //       res.send({local:sessionUser});
-  //     }
-  //
-  //     })(req,res);
-  //   });
-  // app.post('/api/local-signup',
-  // passport.authenticate('local-signup',{failureFlash: true}),
-  // function(req, res) {
-  //   console.log("successful");
-  //   // If this function gets called, authentication was successful.
-  //   // `req.user` contains the authenticated user.
-  //
-  //   // if(req.session.flash){
-  //   //   console.log(req.session.flash);
-  //   // }
-  //
-  //   // let newUser = {};
-  //   // newUser.username = req.user.local.username;
-  //   // newUser.id = req.user._id;
-  //   // res.send({local:newUser});
-  // });
-
-
-
 
 
 

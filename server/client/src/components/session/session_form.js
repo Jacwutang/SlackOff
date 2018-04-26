@@ -41,7 +41,7 @@ class SessionForm extends Component{
     //for demo login + custom login.
     if(nextProps.auth){
       //if a user signs on, re-direct them to messages
-      
+
       this.props.history.push('/messages');
     }
 
@@ -98,7 +98,7 @@ class SessionForm extends Component{
   handleSubmit(e){
     e.preventDefault();
     e.target.blur();
-
+    console.log("WTF GHOST SUBMIT");
 
     (this.props.form_type === "login")? this.props.login(this.state.username,this.state.password):
     this.props.signup(this.state.username,this.state.password);
@@ -158,7 +158,7 @@ class SessionForm extends Component{
               Demo Login
               </button>
 
-              <button className="loginBtn loginBtn-google">
+              <button className="loginBtn loginBtn-google" type="button">
               <a href="/auth/google"> Login with Google </a>
               </button>
             </div>
@@ -180,7 +180,7 @@ class SessionForm extends Component{
               Register
               </button>
 
-              <button className="loginBtn loginBtn-google">
+              <button className="loginBtn loginBtn-google" type="button">
               <a href="/auth/google"> Signup with Google </a>
               </button>
             </div>

@@ -12,8 +12,8 @@ class Message extends Component {
   constructor(props){
     super();
     this.state = {
-      input: "what up buddy",
-      messages: ["hey man", "yo what up"],
+      input: "",
+      messages: ["hey", "yo"],
       loaded: false
     }
 
@@ -83,10 +83,7 @@ class Message extends Component {
 
 
   render(){
-    //if loading, then spin
-    // if(!this.state.loading){
-    //  <Spinner />
-    //}
+
 
     return(
 
@@ -109,7 +106,13 @@ class Message extends Component {
             </button>
             <input
             id="msg-input"
-            placeholder="Message"
+            placeholder=
+            { (this.props.type_id === undefined)?
+              `Message `:
+              `Message #${this.props.channel.name}`
+
+            }
+
             value={this.state.input}
             onChange={this.handleInput('input')} />
 
@@ -126,3 +129,11 @@ class Message extends Component {
 };
 
 export default Message;
+
+
+
+// { (this.props.type_id === undefined)?
+//   `Message `:
+//   `Message # ${this.props.channel.name}`
+//
+// }

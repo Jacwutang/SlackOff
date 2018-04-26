@@ -1,7 +1,7 @@
 .workspace-div{
   display: flex;
   justify-content: space-around;
-  border-bottom:  1px solid black;
+  border-bottom:  1px  black;
   padding-bottom: 15px;
   color: white;
   margin-top: 15px;

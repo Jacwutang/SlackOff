@@ -91,9 +91,12 @@ class Message extends Component {
 
         <div className="bottom-row">
           <form onSubmit={this.send} className="msg-input-wrapper">
-            <button type="button" className="msg-input-gif"> Click </button>
+            <button type="button" className="msg-input-gif">
+              <i class="fas fa-keyboard"></i>
+            </button>
             <input
             id="msg-input"
+            placeholder="Message"
             value={this.state.input}
             onChange={this.handleInput('input')} />
 

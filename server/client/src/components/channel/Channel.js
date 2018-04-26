@@ -15,7 +15,7 @@ class Channel extends Component {
   }
 
   componentDidMount(){
-    // console.log("channel container PROPS", this.props);
+    
   }
 
 

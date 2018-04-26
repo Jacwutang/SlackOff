@@ -4,26 +4,39 @@ import socketIOClient from "socket.io-client";
 
 import './message.css';
 import MessageListItem from './messageListItem';
+import axios from 'axios';
 
 class Message extends Component {
 
   constructor(props){
     super();
     this.state = {
-      input: "",
+      input: "test message",
       messages: ["hey man", "yo what up"],
       loaded: false
     }
 
     this.handleInput = this.handleInput.bind(this);
-    this.send = this.send.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     // this.renderConversations = this.renderConversations.bind(this);
 
   }
 
-  componentDidMount(){
-
+  async componentDidMount(){
+    console.log("MESSAGES COMPONENT MOUNTED");
     //fetch all Messages in this chatroom.
+    // let res = await axios.get('/api/messages/room_id',{
+    //   params: {
+    //     room_id: "5adfbef8db2f763976c5bea7"
+    //   }
+    // });
+    //
+    // console.log(res, "MESSAGES RESULT IS");
+
+    let res = await axios.post('/api/message/new', {body: this.state.input, channel_id: "5adfbef8db2f763976c5bea7"});
+
+    console.log(res);
+
 
     //this.props.fetchMessages(channel_id)
     // then setstate loaded: true
@@ -58,11 +71,12 @@ class Message extends Component {
     );
   }
 
-  send(e){
+  handleSubmit(e){
     e.preventDefault();
     const socket = socketIOClient("http://localhost:5000");
     window.alert("SUBMITEED");
     socket.emit('chat message', this.state.input);
+
 
     //create a new message
 
@@ -90,7 +104,7 @@ class Message extends Component {
 
 
         <div className="bottom-row">
-          <form onSubmit={this.send} className="msg-input-wrapper">
+          <form onSubmit={this.handleSubmit} className="msg-input-wrapper">
             <button type="button" className="msg-input-gif">
               <i class="fas fa-keyboard"></i>
             </button>

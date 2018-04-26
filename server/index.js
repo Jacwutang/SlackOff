@@ -47,12 +47,7 @@ require('./models/User');
 require('./models/Channel');
 require('./models/Message');
 
-const User = mongoose.model('User');
 
-// let jack = new User();
-// jack.local.username = 'demo';
-// jack.local.password = jack.generateHash('password');
-// jack.save();
 
 require('./services/passport');
 
@@ -95,7 +90,7 @@ app.use(flash());
 //load route handlers
 require('./routes/authRoutes')(app);
 require('./routes/channelRoutes')(app);
-// require('./routes/messageRoutes')(app);
+require('./routes/messageRoutes')(app);
 
 
 

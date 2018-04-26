@@ -28,7 +28,7 @@ class ChannelDisplay extends Component {
 
    componentDidMount(){
 
-    // console.log("channel display props", this.props);
+  
 
     if(this.props.auth_type){
 
@@ -45,11 +45,11 @@ class ChannelDisplay extends Component {
     }
 
     //fetched channels came back
-    // console.log(this.props.channels, nextProps.channels);
+
     if(nextProps.channels.length !== this.props.channels.length){
 
 
-      // let currentChannel = Object.values(nextProps.channels.slice(0)[0])[0];
+
 
 
       // For active channel highlighting, 2 cases to test for. Initial fetch and subsequent adds
@@ -119,7 +119,7 @@ class ChannelDisplay extends Component {
      return null;
    }
 
-  
+
 
    return(
      <ul className="ul-channel-messages">

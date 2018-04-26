@@ -24,7 +24,7 @@ function checkValidChannels(state){
 function mapStateToProps(state,ownProps){
   const { channels,auth } = state;
   // console.log(state.auth, "INSIDE CONTAINER");
-  console.log(ownProps.match.params, "WHERE AM I");
+  // console.log(ownProps.match.params, "WHERE AM I");
   return {
     channels: checkValidChannels(state),
     auth_type: Object.keys(auth)[0],

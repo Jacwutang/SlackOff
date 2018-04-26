@@ -1,14 +1,16 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
+
 // var options = { discriminatorKey: 'kind' };
 
 const messageSchema = new Schema({
-  body: String,
+  body: {type: String, required: true},
   author: {type: Schema.Types.ObjectId, ref: 'User' },
   timestamp: {type: Date, default: Date.now},
   channel: { type: Schema.Types.ObjectId, ref: 'Channel'}
   });
+
 
 mongoose.model('Message', messageSchema);
 

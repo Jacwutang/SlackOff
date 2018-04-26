@@ -93,7 +93,7 @@ module.exports = (app) => {
 
     if(req.user.google.displayName){
       user.displayName = req.user.google.displayName;
-      console.log("GOOGLE USER SENT BACK TEHEHEHE")
+      console.log("GOOGLE USER SENT BACK")
       return res.send({google:user});
     } else{
       user.username = req.user.local.username;

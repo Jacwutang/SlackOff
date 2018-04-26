@@ -15,6 +15,10 @@ class DashBoard extends Component {
 
   }
 
+  componentDidMount(){
+    console.log("DASHBOARD MOUNTED");
+  }
+
   render(){
     return(
       <section className="col s2">

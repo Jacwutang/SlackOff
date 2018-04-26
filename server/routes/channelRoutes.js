@@ -13,8 +13,7 @@ module.exports = (app) => {
 
 
       //create channel with 1 user
-      console.log(req.user);
-      console.log([req.user]);
+
       let newChannel = {
         name: name,
         members: [req.user],
@@ -36,8 +35,7 @@ module.exports = (app) => {
             if(err){
               console.log("error update user");
             } else{
-              console.log(channel.id);
-              console.log(channel._id);
+
             }
 
           });
@@ -70,7 +68,7 @@ module.exports = (app) => {
       if(err){
         res.status(401).send({message: "Error occured finding user's channels"});
       }
-      console.log("DOCS",docs.channels);
+
       res.send(docs.channels);
     });
 

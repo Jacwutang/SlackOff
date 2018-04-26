@@ -5,13 +5,14 @@ import socketIOClient from "socket.io-client";
 import './message.css';
 import MessageListItem from './messageListItem';
 import axios from 'axios';
+import { RECEIVE_MESSAGE } from '../../../actions/types';
 
 class Message extends Component {
 
   constructor(props){
     super();
     this.state = {
-      input: "test message",
+      input: "what up buddy",
       messages: ["hey man", "yo what up"],
       loaded: false
     }
@@ -35,7 +36,7 @@ class Message extends Component {
 
     let res = await axios.post('/api/message/new', {body: this.state.input, channel_id: "5adfbef8db2f763976c5bea7"});
 
-    console.log(res);
+    return this.props.dispatch({type: RECEIVE_MESSAGE, payload: res.data});
 
 
     //this.props.fetchMessages(channel_id)
@@ -124,25 +125,6 @@ class Message extends Component {
   }
 
 
-}
-
-export default connect(mapStateToProps,mapDispatchToProps)(Message);
-
-function mapStateToProps(state){
-  return (
-    {
-      // messages: state.messages
-    }
-  );
-
 };
 
-
-function mapDispatchToProps(dispatch){
-  return(
-    {
-
-    }
-  )
-
-};
+export default Message;

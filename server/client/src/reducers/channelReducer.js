@@ -1,4 +1,5 @@
-import { RECEIVE_CHANNEL, RECEIVE_CHANNELS } from '../actions/types';
+import { RECEIVE_CHANNEL, RECEIVE_ALL_CHANNELS } from '../actions/types';
+
 
 
 
@@ -12,12 +13,16 @@ export default function(state = {}, action){
 
       return Object.assign({},state, newChannel);
 
-    case RECEIVE_CHANNELS:
+    case RECEIVE_ALL_CHANNELS:
 
       const newObj = {};
       action.payload.map((channel) => {
           newObj[channel._id] = channel
       });
+
+
+
+
 
 
 

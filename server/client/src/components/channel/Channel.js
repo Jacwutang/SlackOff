@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 
 import './channel.css';
 import DashBoard from './dashboard/Dashboard';
-import Message from './message/Message';
+import Message from './message/message_container';
 import { withRouter } from 'react-router';
 
 
@@ -15,7 +15,7 @@ class Channel extends Component {
   }
 
   componentDidMount(){
-    
+
   }
 
 

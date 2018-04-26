@@ -8,33 +8,54 @@ module.exports = (app) => {
   app.post('/api/message/new', (req,res) => {
 
       const {body, channel_id } = req.body;
+      console.log(body, "BODY");
 
-      let channel_obj_id;
+
+
       Channel.findOne({"_id": channel_id}, (err,channel) => {
         if(err){
           res.send(400,err.msg);
-        } else{
-          channel_obj_id = channel._id;
         }
 
+        let newMessage = new Message({
+          body: body,
+          author: req.user._id,
+          channel: channel._id
+        });
+
+        newMessage.save( (err,newMessage) => {
+          if(err){
+            console.log("error saving message", err);
+            res.send(400, err.msg);
+          } else{
+            console.log("message saved successfully")
+            res.send(newMessage);
+          }
+
+        });
+
+
+
       });
 
-      let newMessage = new Message({
-        body: body,
-        author: req.user._id,
-        channel: channel_obj_id
-      });
 
-      newMessage.save( (err,newMessage) => {
-        if(err){
-          console.log("error saving message", err);
-          res.send(400, err.msg);
-        } else{
-          console.log("message saved successfully")
-          res.send(newMessage);
-        }
 
-      });
+      // let newMessage = new Message({
+      //   body: body,
+      //   author: req.user._id,
+      //   channel: channel_obj_id
+      // });
+      //
+      // newMessage.save( (err,newMessage) => {
+      //   if(err){
+      //     console.log("error saving message", err);
+      //     res.send(400, err.msg);
+      //   } else{
+      //     console.log("message saved successfully")
+      //     res.send(newMessage);
+      //   }
+      //
+      // });
 
   });
 

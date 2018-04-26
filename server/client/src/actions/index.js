@@ -27,11 +27,10 @@ export const fetchUser = () => async dispatch => {
 
 
 
-export const createChannel = (channel) => async dispatch => {
-
+export const createChannel = (channel,type) => async dispatch => {
+  
       const res =  await axios.post(
-      '/api/channel/new',
-      channel
+      '/api/channel/new', {name: channel,type: type}
       );
 
       return dispatch({type: RECEIVE_CHANNEL, payload: res.data});

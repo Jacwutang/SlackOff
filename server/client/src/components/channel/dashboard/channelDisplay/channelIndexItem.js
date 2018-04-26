@@ -13,6 +13,12 @@ class ChannelIndexItem extends Component{
 
   }
 
+  componentDidMount(){
+
+
+
+  }
+
 
   handleClick = () => {
     //this is preserved/unchanged. Otherwise it would be from the event handler
@@ -22,6 +28,7 @@ class ChannelIndexItem extends Component{
   render(){
 
     const { channel } = this.props;
+  
 
     return(
       <Link to={`/messages/channel/${channel._id}`}>
@@ -42,7 +49,7 @@ class ChannelIndexItem extends Component{
 
 let styles = {
   activeStyle:{
-    backgroundColor: 'blue'
+    backgroundColor: '#4F9589'
   },
 
 

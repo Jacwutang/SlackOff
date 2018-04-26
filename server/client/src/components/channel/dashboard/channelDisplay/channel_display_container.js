@@ -4,13 +4,34 @@ import ChannelDisplay from './channelDisplay';
 
 import { createChannel, fetchChannels } from '../../../../actions/index';
 
+function checkValidChannels(state){
+    if(Object.keys(state.channels).length > 0){
+
+      let objSpread = Object.keys(state.channels).map((key) => {
+        return {[key]: state.channels[key] }
+
+      });
+
+      return objSpread;
+
+    } else{
+      return [];
+    }
+}
+
+
+
 function mapStateToProps(state,ownProps){
   const { channels,auth } = state;
   // console.log(state.auth, "INSIDE CONTAINER");
-
+  console.log(ownProps.match.params, "WHERE AM I");
   return {
-    channels: state.channels,
-    auth_type: Object.keys(auth)[0]
+    channels: checkValidChannels(state),
+    auth_type: Object.keys(auth)[0],
+    type: ownProps.match.params.type,
+    type_id: ownProps.match.params.type_id
+
+
 
   };
 
@@ -18,7 +39,7 @@ function mapStateToProps(state,ownProps){
 
 function mapDispatchToProps(dispatch){
   return{
-      createChannel: (channel) => dispatch(createChannel(channel)),
+      createChannel: (channel,type) => dispatch(createChannel(channel,type)),
       fetchChannels: () => dispatch(fetchChannels()),
   };
 

@@ -8,7 +8,7 @@ class Header extends Component {
     switch(this.props.auth){
       case null:
         return;
-        
+
       case false:
         return(
           <li>
@@ -44,7 +44,7 @@ class Header extends Component {
            <img src={require("../../images/Slack_Mark_Web.png")} alt="logo" width={75}  />
            <span className="logo-span">SlackOff</span>
           </Link>
-          <ul id="nav-mobile" className="right hide-on-med-and-down">
+          <ul id="nav-mobile" className="right">
             <li>
               <Link to="/demo">
                 <span>Why SlackOff?</span>
@@ -65,3 +65,6 @@ class Header extends Component {
 };
 
 export default Header;
+
+
+ // hide-on-med-and-down

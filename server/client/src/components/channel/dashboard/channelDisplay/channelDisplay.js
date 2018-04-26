@@ -19,44 +19,51 @@ class ChannelDisplay extends Component {
       open: false,
       input: '',
       currentChannel: '',
+      loading: true
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.toggleActive = this.toggleActive.bind(this);
   }
 
-  async componentDidMount(){
-    // this.props.history.push('/');
-    //fetch channels
-    // this.props.fetchChannels();
-    //
-    // if(this.props.auth_type){
-    //   axios.get('/api/channels', {params:{type: this.props.auth_type}});
-    // }
-    console.log("channel display props", this.props);
+   componentDidMount(){
+
+    // console.log("channel display props", this.props);
 
     if(this.props.auth_type){
-      this.props.fetchChannels();
+      console.log("fetching channels");
+      this.props.fetchChannels().then((action) => this.props.history.push(`/messages/channel/${action.payload[0]._id}`));
     }
 
   }
-  async componentWillReceiveProps(nextProps){
-    //Google Oauth's props comes in later
-    // if(this.props.auth_type !== nextProps.auth_type){
-    //
-    //   axios.get('/api/channels', {params:{type:nextProps.auth_type}});
-    // }
-    // console.log("component will recieve props");
+   componentWillReceiveProps(nextProps){
+
+
     if(this.props.auth_type !== nextProps.auth_type){
-      this.props.fetchChannels()
+      //Google Oauth's props comes in later
+       this.props.fetchChannels();
     }
 
-
+    //fetched channels came back
+    // console.log(this.props.channels, nextProps.channels);
     if(nextProps.channels.length !== this.props.channels.length){
-      let newChannel = nextProps.channels.slice(-1)[0];
+
+
+      // let currentChannel = Object.values(nextProps.channels.slice(0)[0])[0];
+
+
+      // For active channel highlighting, 2 cases to test for. Initial fetch and subsequent adds
+      let currentChannel = (this.props.channels.length === 0)?
+      Object.values(nextProps.channels.slice(0)[0])[0]:
+      Object.values(nextProps.channels.slice(-1)[0])[0];
+
+
+
+
+
 
       return this.setState({
-        currentChannel: newChannel
+        currentChannel: currentChannel
       });
 
     }
@@ -67,12 +74,11 @@ class ChannelDisplay extends Component {
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.createChannel({
-      name: this.state.input
-    }).then( (action) => {
-      console.log(action.payload,"ACTION PAYLOAD");
-      console.log(action.payload._id, "id");
-      console.log(this.props, "PROPS");
+    this.props.createChannel(
+      this.state.input,
+      this.props.type
+    ).then( (action) => {
+
       this.props.history.push(`/messages/channel/${action.payload._id}`)
 
     })
@@ -106,23 +112,36 @@ class ChannelDisplay extends Component {
 
  }
  renderChannels(){
+
+
+
    if(!this.state.currentChannel ){
-     return;
+     return null;
    }
 
-   let currentChannel = this.state.currentChannel;
+   // console.log("channels list",this.props.channels);
+
+
+   // console.log(this.state.currentChannel);
+
+   console.log(this.props.channels);
 
    return(
      <ul className="ul-channel-messages">
 
       {this.props.channels.map( (channel) => {
 
-        let bool = (channel === currentChannel)? true: false;
+        let formatted_Channel = Object.values(channel)[0];
+
+        let bool = (formatted_Channel === this.state.currentChannel)? true: false;
+
+
+
 
         return(
            <ChannelIndexItem
-           key={channel._id}
-           channel={channel}
+           key={formatted_Channel._id}
+           channel={formatted_Channel}
            active={bool}
            onToggle={this.toggleActive}
            />
@@ -136,7 +155,9 @@ class ChannelDisplay extends Component {
 
 
   render(){
-
+    // if(this.state.loading){
+    //   return null;
+    // }
 
     const { open } = this.state;
     return(

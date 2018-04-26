@@ -29,7 +29,7 @@
 } */
 
 .ul-channel-messages li:hover:not(:focus){
-  background-color: gray;
+  background-color: #666;
 }
 
 

@@ -10,10 +10,10 @@ export const fetchChannels = () => async dispatch => {
 
   try{
     const res = await axios.get('/api/channels');
-    return dispatch({type: RECEIVE_CHANNELS, payload: res.response.data});
+    return dispatch({type: RECEIVE_CHANNELS, payload: res.data});
 
   }catch(error){
-    return dispatch({type:RECEIVE_CHANNELS_ERRORS,payload:error.response.data});
+    return dispatch({type:RECEIVE_CHANNELS_ERRORS,payload:error.data});
   }
 
 
@@ -22,7 +22,7 @@ export const fetchChannels = () => async dispatch => {
 export const fetchUser = () => async dispatch => {
       const res = await axios.get('/api/current_user');
 
-      return dispatch({type: RECEIVE_USER, payload: res.response.data});
+      return dispatch({type: RECEIVE_USER, payload: res.data});
 };
 
 
@@ -34,7 +34,7 @@ export const createChannel = (channel) => async dispatch => {
       channel
       );
 
-      return dispatch({type: CREATE_CHANNEL, payload: res.response.data});
+      return dispatch({type: CREATE_CHANNEL, payload: res.data});
 };
 
 export const login = (username,password) => async dispatch => {
@@ -46,12 +46,12 @@ export const login = (username,password) => async dispatch => {
 
 
 
-      return dispatch({type: RECEIVE_USER, payload: res.response.data});
+      return dispatch({type: RECEIVE_USER, payload: res.data});
 
     } catch (error) {
 
       // catch errors from fetch
-      dispatch({type:RECEIVE_SESSION_ERRORS, payload:error.response.data});
+      dispatch({type:RECEIVE_SESSION_ERRORS, payload:error.data});
     }
 
 
@@ -65,11 +65,11 @@ export const signup = (username,password) => async dispatch => {
 
     const res = await axios.post('/api/local-signup', {username:username,password:password});
 
-    return dispatch({type: RECEIVE_USER, payload: res.response.data});
+    return dispatch({type: RECEIVE_USER, payload: res.data});
 
   }catch(error){
 
-      dispatch({type: RECEIVE_SESSION_ERRORS, payload: error.response.data});
+      dispatch({type: RECEIVE_SESSION_ERRORS, payload: error.data});
 
   }
 

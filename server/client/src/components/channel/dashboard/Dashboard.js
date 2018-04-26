@@ -18,7 +18,13 @@ class DashBoard extends Component {
   render(){
     return(
       <section className="col s2">
-        <div className="workspace-div"> Workspace </div>
+        <div className="workspace-div"> Workspace
+        <a href= "/api/logout">
+          <span> Logout </span>
+        </a>
+
+        </div>
+
         <section className="dashboard-message">
 
           <ChannelDisplay />

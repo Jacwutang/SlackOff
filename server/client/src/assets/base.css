@@ -13,7 +13,8 @@ ul{
 
 ::-webkit-scrollbar {
     width: 7px;
-    height: 10px;
+    height: 1px;
+
 }
 
 ::-webkit-scrollbar-track{
@@ -22,5 +23,7 @@ ul{
 ::-webkit-scrollbar-thumb{
     background: #888;
     border-radius: 10px;
+    height: 1px;
+    width: 10px;
 
 }

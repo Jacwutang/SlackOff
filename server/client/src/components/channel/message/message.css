@@ -7,7 +7,7 @@
 
 
 .ul-messages{
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   height: calc(100vh - 17vh);
   margin-right: 3px;
@@ -16,12 +16,12 @@
   border-bottom: none;
   margin-top: 10px;
   margin-bottom: 10px;
+  position: relative;
+  left: 5px;
 }
 
-/* ::webkit-scrollbar{
-  width: 6px;
-  background-color: blue;
-} */
+
+
 
 
 

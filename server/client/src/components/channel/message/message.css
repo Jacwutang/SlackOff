@@ -6,6 +6,22 @@
 }
 
 
+.ul-messages{
+  overflow: scroll;
+  height: calc(100vh - 12vh - 15px);
+  margin-right: 3px;
+  width: 95%;
+  margin: 0 auto;
+  
+}
+
+/* ::webkit-scrollbar{
+  width: 6px;
+  background-color: blue;
+} */
+
+
+
 
 .top-row{
   width:100%;

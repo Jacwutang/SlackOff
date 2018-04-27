@@ -55,7 +55,7 @@ class Message extends Component {
   renderConversations(){
 
     return (
-      <ul>
+      <ul className="ul-messages">
       { this.props.messages.map( (message) =>
         <MessageListItem
           key={message._id}

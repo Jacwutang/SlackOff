@@ -8,7 +8,7 @@ function mapStateToProps(state,ownProps){
 
   return (
     {
-    
+      auth: state.auth,
     }
   )
 };

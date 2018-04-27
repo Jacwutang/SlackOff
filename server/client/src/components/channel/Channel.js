@@ -15,13 +15,19 @@ class Channel extends Component {
   }
 
   componentDidMount(){
-    console.log("CHANNEL CONTAINER MOUNTED");
+    if(!this.props.auth){
+      this.props.history.push('/');
+    }
   }
 
 
 
-  render(){
 
+
+  render(){
+    if(!this.props.auth){
+      return null;
+    }
 
     return(
 

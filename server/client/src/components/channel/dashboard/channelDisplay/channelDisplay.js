@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { withRouter } from 'react-router';
 import Modal from 'react-responsive-modal';
-
+import { RECEIVE_CHANNEL_ERRORS } from '../../../../actions/types';
 import axios from 'axios';
 
 import ChannelIndexItem from './channelIndexItem';
@@ -30,10 +30,18 @@ class ChannelDisplay extends Component {
      console.log("CHANNEL DISPLAY MOUNTED");
      if(this.props.auth_type){
 
-      this.props.fetchChannels().then((action) => this.props.history.push(`/messages/channel/${action.payload[0]._id}`));
+      this.props.fetchChannels().then( (action) => {
+
+        if(action.payload.length !== 0){
+          this.props.history.push(`/messages/channel/${action.payload[0]._id}`);
+        }
+
+
+      });
     }
 
   }
+
    componentWillReceiveProps(nextProps){
 
 

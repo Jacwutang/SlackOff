@@ -81,7 +81,7 @@ export const login = (username,password) => async dispatch => {
 
 
       // catch errors from fetch
-      dispatch({type:RECEIVE_SESSION_ERRORS, payload: error.response.data});
+      return dispatch({type:RECEIVE_SESSION_ERRORS, payload: error.response.data});
     }
 
 
@@ -99,7 +99,7 @@ export const signup = (username,password) => async dispatch => {
 
   }catch(error){
 
-      dispatch({type: RECEIVE_SESSION_ERRORS, payload: error.response.data});
+      return dispatch({type: RECEIVE_SESSION_ERRORS, payload: error.response.data});
 
   }
 

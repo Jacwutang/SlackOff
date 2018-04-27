@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Header from '../header/header_container';
 import Footer from '../footer/Footer';
-// import {RECEIVE_USER} from '../../action.types';
+import {RECEIVE_SESSION_ERRORS} from '../../actions/types';
 import './session.css';
 
 
@@ -58,7 +58,7 @@ class SessionForm extends Component{
     this.setState({username: '',password:''});
   }
 
-  
+
 
   animateDemo(e){
     e.preventDefault();
@@ -98,12 +98,24 @@ class SessionForm extends Component{
 
 
   handleSubmit(e){
+
     e.preventDefault();
     e.target.blur();
     console.log("WTF GHOST SUBMIT");
 
-    (this.props.form_type === "login")? this.props.login(this.state.username,this.state.password):
-    this.props.signup(this.state.username,this.state.password);
+    (this.props.form_type === "login")? this.props.login(this.state.username,this.state.password).then((action) => {
+      console.log(action)
+      if(action.type !== RECEIVE_SESSION_ERRORS){
+        this.props.history.push('/messages');
+      }
+    })
+    :
+    this.props.signup(this.state.username,this.state.password).then((action) => {
+      if(action.type !== RECEIVE_SESSION_ERRORS){
+        this.props.history.push('/messages');
+      }
+    });
+
   }
 
 

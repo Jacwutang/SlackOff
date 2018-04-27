@@ -1,6 +1,8 @@
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
 import Message from './Message';
+import { createMessage, fetchMessages } from '../../../actions/index';
+
 
 
 function checkValidMessages(state){
@@ -38,7 +40,8 @@ function mapStateToProps(state,ownProps){
 
 function mapDispatchToProps(dispatch){
   return{
-    dispatch
+    createMessage: (body, channel_id) => dispatch(createMessage(body,channel_id)),
+    fetchMessages: (channel_id) => dispatch(fetchMessages(channel_id)),
   }
 
 

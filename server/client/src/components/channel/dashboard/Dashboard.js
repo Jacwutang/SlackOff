@@ -19,6 +19,11 @@ class DashBoard extends Component {
     console.log("DASHBOARD MOUNTED");
   }
 
+  componentWillReceiveProps(){
+    console.log("DASHBOARD RECIEVED PROPS");
+    
+  }
+
   render(){
     return(
       <section className="col s2">

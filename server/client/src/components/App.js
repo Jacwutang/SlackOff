@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 import Landing from './Landing';
-import Channel from './channel/channel_container';
+import Channel from './channel/Channel';
 import SessionForm from './session/session_form_container';
 import Header from './header/Header';
 import Footer from './footer/Footer';

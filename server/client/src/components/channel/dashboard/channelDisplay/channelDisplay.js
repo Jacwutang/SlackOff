@@ -27,7 +27,7 @@ class ChannelDisplay extends Component {
   }
 
    componentDidMount(){
-
+     console.log("CHANNEL DISPLAY MOUNTED");
      if(this.props.auth_type){
 
       this.props.fetchChannels().then((action) => this.props.history.push(`/messages/channel/${action.payload[0]._id}`));

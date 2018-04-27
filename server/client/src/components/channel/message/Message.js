@@ -5,6 +5,7 @@ import socketIOClient from "socket.io-client";
 import './message.css';
 import MessageListItem from './messageListItem';
 import axios from 'axios';
+import isEqual  from 'lodash/isEqual';
 import { RECEIVE_ALL_MESSAGES, RECEIVE_MESSAGE } from '../../../actions/types';
 
 class Message extends Component {
@@ -22,24 +23,31 @@ class Message extends Component {
 
   }
 
-  async componentDidMount(){
-    // console.log("COMPONENT DID MOUNT");
+   componentDidMount(){
+    console.log("MESSAGE MOUNTED",this.props);
+
+
     // let res = await axios.post('/api/message/new', {body: "the follow up message", channel_id: "5adfbef8db2f763976c5bea7"});
     //
     // return this.props.dispatch({type: RECEIVE_MESSAGE, payload: res.data});
+    // this.props.fetchMessages(this.props.type_id);
 
   }
 
-  async componentWillReceiveProps(nextProps){
+  componentWillReceiveProps(nextProps){
+    console.log(this.props, "THIS PROPS");
+    console.log(nextProps, "NEXT PROPS");
+    if( (nextProps.type_id !== this.props.type_id) &&
+    ( isEqual(this.props.channel,nextProps.channel) === false) ){
 
-    if(nextProps.type_id !== this.props.type_id){
 
-      let res = await axios.get('/api/messages/room_id', {params: {room_id: nextProps.type_id}});
+      this.props.fetchMessages(nextProps.type_id);
 
-      return this.props.dispatch({type: RECEIVE_ALL_MESSAGES, payload: res.data});
 
 
     }
+
+
   }
 
 
@@ -49,7 +57,7 @@ class Message extends Component {
       <ul>
       { this.props.messages.map( (message) =>
         <MessageListItem
-          key={message.id}
+          key={message._id}
           author={message.author}
           body={message.body}
           timestamp={message.timestamp} />

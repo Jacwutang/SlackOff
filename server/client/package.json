@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "lodash": "^4.17.10",
     "materialize-css": "^0.100.2",
     "radium": "^0.22.1",
     "react": "^16.2.0",

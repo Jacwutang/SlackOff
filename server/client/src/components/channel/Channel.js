@@ -15,13 +15,13 @@ class Channel extends Component {
   }
 
   componentDidMount(){
-
+    console.log("CHANNEL CONTAINER MOUNTED");
   }
 
 
 
   render(){
-    
+
 
     return(
 

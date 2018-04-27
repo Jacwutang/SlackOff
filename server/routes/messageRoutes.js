@@ -42,15 +42,15 @@ module.exports = (app) => {
     });
 
 
-  app.get('/api/messages/room_id', (req,res) => {
+  app.get('/api/messages/channel_id', (req,res) => {
     console.log("/api/messages/room_id route hit")
 
 
     // room_id 5adfbef8db2f763976c5bea
-    const {room_id} = req.query;
-    console.log(room_id, "ROOM ID IS");
+    const {channel_id} = req.query;
+    // console.log(room_id, "ROOM ID IS");
 
-    Message.find({channel: room_id}, (err,docs) => {
+    Message.find({channel: channel_id}, (err,docs) => {
       if(err){
         res.send(400, err.msg);
 

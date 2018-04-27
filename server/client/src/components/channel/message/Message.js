@@ -35,6 +35,7 @@ class Message extends Component {
   }
 
   componentWillReceiveProps(nextProps){
+    console.log("COMPONENT WILL RECIEVE PROPS");
     console.log(this.props, "THIS PROPS");
     console.log(nextProps, "NEXT PROPS");
     if( (nextProps.type_id !== this.props.type_id) &&
@@ -77,14 +78,23 @@ class Message extends Component {
     );
   }
 
-  async handleSubmit(e){
-    // e.preventDefault();
+   handleSubmit(e){
+    e.preventDefault();
     // const socket = socketIOClient("http://localhost:5000");
     // socket.emit('chat message', this.state.input);
 
-    let res = await axios.post('/api/message/new', {body: this.state.input, channel_id: this.props.type_id});
+    // let res = await axios.post('/api/message/new', {body: this.state.input, channel_id: this.props.type_id});
+    //
+    // return this.props.dispatch({type: RECEIVE_MESSAGE, payload: res.data});
 
-    return this.props.dispatch({type: RECEIVE_MESSAGE, payload: res.data});
+    this.props.createMessage(this.state.input, this.props.type_id).then(() => {
+      console.log(this.props, "CURRENT PROPS");
+
+      this.setState({input: ''});
+
+
+
+    })
 
 
 
@@ -120,7 +130,13 @@ class Message extends Component {
             </button>
             <input
             id="msg-input"
-            placeholder="Message"
+            placeholder=
+            { (this.props.type_id === undefined)?
+              `Message `:
+              `Message #${this.props.channel.name}`
+
+            }
+
 
 
             value={this.state.input}

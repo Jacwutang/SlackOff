@@ -8,7 +8,7 @@ export default function(state = {}, action){
 
   switch(action.type){
     case "RECEIVE_MESSAGE":
-      return Object.assign({}, {[action.payload._id]: action.payload });
+      return Object.assign({}, state, {[action.payload._id]: action.payload });
 
 
 

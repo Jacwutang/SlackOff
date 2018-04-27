@@ -7,12 +7,15 @@
 
 
 .ul-messages{
-  overflow: scroll;
-  height: calc(100vh - 12vh - 15px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: calc(100vh - 17vh);
   margin-right: 3px;
   width: 95%;
   margin: 0 auto;
-  
+  border-bottom: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 /* ::webkit-scrollbar{

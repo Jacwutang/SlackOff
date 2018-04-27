@@ -20,8 +20,9 @@ module.exports = (app) => {
       return next(err);
     }
     if (!user){
+      console.log("/api/local-loign NO USER FOUND")
 
-      return res.status(401).send(info);
+      return res.status(403).send(info);
     }
     req.logIn(user, function(err) {
       if (err){

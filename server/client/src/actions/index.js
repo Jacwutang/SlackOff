@@ -13,7 +13,7 @@ export const fetchChannels = () => async dispatch => {
     return dispatch({type: RECEIVE_ALL_CHANNELS, payload: res.data});
 
   }catch(error){
-    return dispatch({type:RECEIVE_CHANNELS_ERRORS,payload:error.data});
+    return dispatch({type:RECEIVE_CHANNELS_ERRORS,payload:error.response.data});
   }
 
 
@@ -75,14 +75,13 @@ export const login = (username,password) => async dispatch => {
       // wait for the fetch to finish then dispatch the result
       const res = await axios.post('/api/local-login', {username:username,password:password});
 
-
-
       return dispatch({type: RECEIVE_USER, payload: res.data});
 
     } catch (error) {
 
+
       // catch errors from fetch
-      dispatch({type:RECEIVE_SESSION_ERRORS, payload: error.data});
+      dispatch({type:RECEIVE_SESSION_ERRORS, payload: error.response.data});
     }
 
 
@@ -100,7 +99,7 @@ export const signup = (username,password) => async dispatch => {
 
   }catch(error){
 
-      dispatch({type: RECEIVE_SESSION_ERRORS, payload: error.data});
+      dispatch({type: RECEIVE_SESSION_ERRORS, payload: error.response.data});
 
   }
 

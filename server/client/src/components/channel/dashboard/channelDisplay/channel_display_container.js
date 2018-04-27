@@ -8,7 +8,7 @@ function checkValidChannels(state){
     if(Object.keys(state.channels).length > 0){
 
       let objSpread = Object.keys(state.channels).map((key) => {
-        return {[key]: state.channels[key] }
+        return state.channels[key];
 
       });
 
@@ -23,8 +23,7 @@ function checkValidChannels(state){
 
 function mapStateToProps(state,ownProps){
   const { channels,auth } = state;
-  // console.log(state.auth, "INSIDE CONTAINER");
-  // console.log(ownProps.match.params, "WHERE AM I");
+
   return {
     channels: checkValidChannels(state),
     auth_type: Object.keys(auth)[0],

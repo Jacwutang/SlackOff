@@ -13,7 +13,6 @@ class Message extends Component {
     super();
     this.state = {
       input: "",
-      messages: ["hey", "yo"],
       loaded: false
     }
 
@@ -28,6 +27,7 @@ class Message extends Component {
     // let res = await axios.post('/api/message/new', {body: "the follow up message", channel_id: "5adfbef8db2f763976c5bea7"});
     //
     // return this.props.dispatch({type: RECEIVE_MESSAGE, payload: res.data});
+
   }
 
   async componentWillReceiveProps(nextProps){
@@ -44,23 +44,22 @@ class Message extends Component {
 
 
   renderConversations(){
-    // console.log("HERE",this.state.messages);
-    return(
+
+    return (
       <ul>
-      { this.state.messages.map( (message) => (
+      { this.props.messages.map( (message) =>
         <MessageListItem
-        key={message.id}
-        author={message.author}
-        body={message.body}
-        timestamp={message.timestamp}/>
-      )) }
+          key={message.id}
+          author={message.author}
+          body={message.body}
+          timestamp={message.timestamp} />
+        )
+      }
+
       </ul>
-    );
+    )
 
-
-
- }
-
+}
 
 
 
@@ -70,19 +69,26 @@ class Message extends Component {
     );
   }
 
-  handleSubmit(e){
-    e.preventDefault();
-    const socket = socketIOClient("http://localhost:5000");
-    window.alert("SUBMITEED");
-    socket.emit('chat message', this.state.input);
+  async handleSubmit(e){
+    // e.preventDefault();
+    // const socket = socketIOClient("http://localhost:5000");
+    // socket.emit('chat message', this.state.input);
+
+    let res = await axios.post('/api/message/new', {body: this.state.input, channel_id: this.props.type_id});
+
+    return this.props.dispatch({type: RECEIVE_MESSAGE, payload: res.data});
 
 
-    //create a new message
+
+
+
 
   }
 
 
   render(){
+
+
 
 
     return(
@@ -102,16 +108,12 @@ class Message extends Component {
         <div className="bottom-row">
           <form onSubmit={this.handleSubmit} className="msg-input-wrapper">
             <button type="button" className="msg-input-gif">
-              <i class="fas fa-keyboard"></i>
+              <i className="fas fa-keyboard"></i>
             </button>
             <input
             id="msg-input"
-            placeholder=
-            { (this.props.type_id === undefined)?
-              `Message `:
-              `Message #${this.props.channel.name}`
+            placeholder="Message"
 
-            }
 
             value={this.state.input}
             onChange={this.handleInput('input')} />

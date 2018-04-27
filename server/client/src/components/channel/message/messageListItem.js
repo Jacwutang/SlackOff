@@ -6,7 +6,7 @@ class MessageListItem extends Component{
   }
 
   componentDidMount(){
-    
+    console.log(this.props, "MESSAGE LIST ITEM");
   }
 
   render(){

@@ -8,7 +8,7 @@ function mapStateToProps(state,ownProps){
 
   return (
     {
-      type_id: ownProps.match.params.type_id,
+    
     }
   )
 };

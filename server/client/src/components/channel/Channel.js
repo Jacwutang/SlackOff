@@ -21,9 +21,7 @@ class Channel extends Component {
 
 
   render(){
-    // if(!this.props.type_id){
-    //   return null;
-    // }
+    
 
     return(
 

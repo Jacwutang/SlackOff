@@ -28,9 +28,7 @@ class ChannelDisplay extends Component {
 
    componentDidMount(){
 
-  
-
-    if(this.props.auth_type){
+     if(this.props.auth_type){
 
       this.props.fetchChannels().then((action) => this.props.history.push(`/messages/channel/${action.payload[0]._id}`));
     }
@@ -48,14 +46,10 @@ class ChannelDisplay extends Component {
 
     if(nextProps.channels.length !== this.props.channels.length){
 
-
-
-
-
       // For active channel highlighting, 2 cases to test for. Initial fetch and subsequent adds
       let currentChannel = (this.props.channels.length === 0)?
-      Object.values(nextProps.channels.slice(0)[0])[0]:
-      Object.values(nextProps.channels.slice(-1)[0])[0];
+      nextProps.channels[0]:
+      nextProps.channels.slice(-1)[0];
 
 
 
@@ -126,17 +120,12 @@ class ChannelDisplay extends Component {
 
       {this.props.channels.map( (channel) => {
 
-        let formatted_Channel = Object.values(channel)[0];
-
-        let bool = (formatted_Channel === this.state.currentChannel)? true: false;
-
-
-
+        let bool = (channel === this.state.currentChannel)? true: false;
 
         return(
            <ChannelIndexItem
-           key={formatted_Channel._id}
-           channel={formatted_Channel}
+           key={channel._id}
+           channel={channel}
            active={bool}
            onToggle={this.toggleActive}
            />
@@ -150,9 +139,7 @@ class ChannelDisplay extends Component {
 
 
   render(){
-    // if(this.state.loading){
-    //   return null;
-    // }
+
 
     const { open } = this.state;
     return(

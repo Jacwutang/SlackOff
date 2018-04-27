@@ -115,7 +115,18 @@ class Message extends Component {
 
         <div className="top-row">
 
-        Top Row
+          <div className="top-row-left">
+            <span>Top Row </span>
+
+          </div>
+
+          <div className="top-row-right">
+            <span> Search Container </span>
+
+          </div>
+
+
+
 
         </div>
 

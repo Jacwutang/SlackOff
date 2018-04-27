@@ -27,9 +27,18 @@
 
 
 .top-row{
-  width:100%;
+  width: 100%;
   border-bottom: 1px solid #C0C0C0;
   height: 7vh;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.top-row-left{
+
+}
+.top-row-right{
 
 
 }

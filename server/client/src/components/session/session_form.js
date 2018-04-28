@@ -91,7 +91,12 @@ class SessionForm extends Component{
 
     if(this.demoUsername.length === 0 && this.demoPassword.length === 0){
 
-      this.props.login(this.state.username,this.state.password).then(() => this.props.history.push('/messages'))
+      this.props.login(this.state.username,this.state.password).then((action) => {
+        if(action.type !== RECEIVE_SESSION_ERRORS){
+          this.props.history.push('/messages');
+        }
+
+      })
     }
 
   }
@@ -101,11 +106,12 @@ class SessionForm extends Component{
 
     e.preventDefault();
     e.target.blur();
-    console.log("WTF GHOST SUBMIT");
+
 
     (this.props.form_type === "login")? this.props.login(this.state.username,this.state.password).then((action) => {
-      console.log(action)
+
       if(action.type !== RECEIVE_SESSION_ERRORS){
+
         this.props.history.push('/messages');
       }
     })

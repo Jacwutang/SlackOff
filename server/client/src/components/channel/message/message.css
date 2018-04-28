@@ -32,14 +32,19 @@
 }
 
 .timestamp-div{
-  color: gray;
-  font-size: 12px !important;
+  color: #b2c2bf;
+  font-weight: lighter;
+  font-size: 15px;
+  margin-bottom: 2px;
+
+
 
 }
 
+
 .author-div{
   color: black;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   margin-right: 5px;
   font-family: 'Black-Han-Sans';
@@ -50,6 +55,7 @@
 .li-message{
   display: flex;
   justify-content: flex-start;
+  margin-bottom: 5px;
 
 }
 
@@ -76,8 +82,7 @@
   margin-bottom: 10px;
   position: relative;
   left: 5px;
-  display: flex;
-  flex-direction: column;
+
 }
 
 

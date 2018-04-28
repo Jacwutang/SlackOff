@@ -69,7 +69,7 @@ class MessageListItem extends Component{
         <div className="message-details">
           <div className="name-and-date">
             <div className="author-div"> {author} </div>
-            <div className="timestamp-div"> {this.formatTime()} </div>
+            <div className="timestamp-div">  {this.formatTime()} </div>
           </div>
 
           <span> {body} </span>

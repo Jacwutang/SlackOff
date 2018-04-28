@@ -37,7 +37,18 @@
   font-size: 15px;
   margin-bottom: 2px;
 
+}
 
+.img-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.thumbnail-img{
+  margin-right: 5px;
+  border-radius: 5px;
+  height: 35px;
+  width: 35px;
 
 }
 

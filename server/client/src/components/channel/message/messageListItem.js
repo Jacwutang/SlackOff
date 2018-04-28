@@ -1,14 +1,23 @@
 import React, {Component} from 'react';
-
+import axios from 'axios';
 
 
 class MessageListItem extends Component{
   constructor(props){
     super();
+    this.state = {
+      loaded: false,
+      picture: '',
+    }
   }
 
-  componentDidMount(){
-    console.log("STOP FUKING RENDERING");
+  async componentDidMount(){
+    let res = await axios.get('https://randomuser.me/api/');
+
+    let picture = res.data.results[0].picture.thumbnail;
+
+    this.setState({loaded:true, picture: picture});
+
   }
 
   formatTime(){
@@ -30,7 +39,7 @@ class MessageListItem extends Component{
     // console.log(local_time, "local_time ISOString");
     let local_time = new Date(local_time_str.slice(0,-1));
 
-    console.log(local_time);
+
 
 
     let hour = (local_time.getHours() > 12 )?
@@ -61,11 +70,16 @@ class MessageListItem extends Component{
 
 
     render(){
-
+      if(!this.state.loaded){
+        return null;
+      }
     const {body,author} = this.props;
 
     return(
       <li className="li-message">
+        <div className="img-container">
+          <img className="thumbnail-img" src={this.state.picture} />
+        </div>
         <div className="message-details">
           <div className="name-and-date">
             <div className="author-div"> {author} </div>

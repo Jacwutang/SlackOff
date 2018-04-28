@@ -14,12 +14,14 @@ class Message extends Component {
     super();
     this.state = {
       input: "",
+      search: "",
       loaded: false
     }
 
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.renderConversations = this.renderConversations.bind(this);
+    this.triggerInputCSS = this.triggerInputCSS.bind(this);
+    this.exitInputCSS = this.exitInputCSS.bind(this);
 
   }
 
@@ -88,21 +90,45 @@ class Message extends Component {
     // return this.props.dispatch({type: RECEIVE_MESSAGE, payload: res.data});
 
     this.props.createMessage(this.state.input, this.props.type_id).then(() => {
-      console.log(this.props, "CURRENT PROPS");
-
       this.setState({input: ''});
-
-
-
     })
-
-
-
-
-
-
   }
 
+  triggerInputCSS(e){
+    e.preventDefault();
+
+    e.currentTarget.classList.add("selected");
+  };
+
+  exitInputCSS(e){
+    e.preventDefault();
+    
+    e.currentTarget.classList.remove("selected");
+  }
+
+
+  renderTopRowLeft(){
+    return(
+      <span> Top Left </span>
+    )
+  }
+
+  renderTopRowRight(){
+    return (
+        <form  className="msg-input-wrapper search-container" onClick={this.triggerInputCSS} onBlur={this.exitInputCSS}>
+          <button type="button" className="msg-input-gif">
+            <i className="fas fa-search"></i>
+          </button>
+          <input
+          id="msg-input"
+          placeholder="Search"
+
+          value={this.state.search}
+          onChange={this.handleInput('search')} />
+
+        </form>
+    );
+  }
 
   render(){
 
@@ -116,12 +142,13 @@ class Message extends Component {
         <div className="top-row">
 
           <div className="top-row-left">
-            <span>Top Row </span>
+
+            {this.renderTopRowLeft()}
 
           </div>
 
           <div className="top-row-right">
-            <span> Search Container </span>
+            {this.renderTopRowRight()}
 
           </div>
 

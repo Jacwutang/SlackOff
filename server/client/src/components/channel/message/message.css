@@ -10,6 +10,20 @@
 }
 
 
+/* .spinner-wrapper{
+  height:100%;
+} */
+.spinner-wrapper{
+  margin: 0 auto;
+  margin-top: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
 
 
 .ul-messages{

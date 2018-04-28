@@ -8,6 +8,10 @@ import axios from 'axios';
 import isEqual  from 'lodash/isEqual';
 import { RECEIVE_ALL_MESSAGES, RECEIVE_MESSAGE } from '../../../actions/types';
 
+// var Spinner = require('react-spinkit');
+import {FoldingCube} from 'better-react-spinkit';
+
+
 class Message extends Component {
 
   constructor(props){
@@ -27,14 +31,7 @@ class Message extends Component {
 
    componentDidMount(){
     console.log("MESSAGE MOUNTED",this.props);
-
-
-    // let res = await axios.post('/api/message/new', {body: "the follow up message", channel_id: "5adfbef8db2f763976c5bea7"});
-    //
-    // return this.props.dispatch({type: RECEIVE_MESSAGE, payload: res.data});
-    // this.props.fetchMessages(this.props.type_id);
-
-  }
+    }
 
   componentWillReceiveProps(nextProps){
     console.log("COMPONENT WILL RECIEVE PROPS");
@@ -45,21 +42,26 @@ class Message extends Component {
 
 
       this.props.fetchMessages(nextProps.type_id).then( () => {
-        this.props.fetchUsers()
+        this.props.fetchUsers().then( setTimeout( () => {
+            this.setState({loaded:true});
+        },3500));
 
 
       });
-
-
-
     }
-
-
   }
 
 
   renderConversations(){
+    if(!this.state.loaded){
+      return(
+        <div className="spinner-wrapper">
+          <FoldingCube size={75} color='purple'/>
+        </div>
 
+      )
+
+    }
     return (
 
         this.props.messages.map( (message) =>
@@ -108,7 +110,7 @@ class Message extends Component {
 
 
   renderTopRowLeft(){
-    if(this.props.channel === undefined){
+    if(!this.state.loaded){
       return;
     }
 
@@ -121,7 +123,7 @@ class Message extends Component {
       </h4>
 
       <span className="channel-people">
-        <i class="fas fa-users fa-2x"></i>
+        <i className="fas fa-users fa-2x"></i>
       </span>
 
       </div>
@@ -130,7 +132,7 @@ class Message extends Component {
   }
 
   renderTopRowRight(){
-    if(this.props.channel === undefined){
+    if(!this.state.loaded){
       return;
     }
 
@@ -154,7 +156,9 @@ class Message extends Component {
   }
 
   render(){
-
+    // if(!this.state.loaded){
+    //   <Spinner name='double-bounce' color="red" />
+    // }
     return(
 
       <div className="col s10">

@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "better-react-spinkit": "^2.0.4",
     "lodash": "^4.17.10",
     "materialize-css": "^0.100.2",
     "radium": "^0.22.1",
@@ -21,6 +22,7 @@
     "react-responsive-modal": "^2.0.1",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1",
+    "react-spinkit": "^3.0.0",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",

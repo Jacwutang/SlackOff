@@ -19,7 +19,7 @@ class ChannelDisplay extends Component {
       open: false,
       input: '',
       currentChannel: '',
-      loading: true
+      loaded: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);

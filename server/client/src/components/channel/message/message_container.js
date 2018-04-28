@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
 import Message from './Message';
-import { createMessage, fetchMessages } from '../../../actions/index';
+import { createMessage, fetchMessages, fetchUsers } from '../../../actions/index';
 
 
 
@@ -42,6 +42,7 @@ function mapDispatchToProps(dispatch){
   return{
     createMessage: (body, channel_id) => dispatch(createMessage(body,channel_id)),
     fetchMessages: (channel_id) => dispatch(fetchMessages(channel_id)),
+    fetchUsers: () => dispatch(fetchUsers()),
   }
 
 

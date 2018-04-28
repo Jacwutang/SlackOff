@@ -44,7 +44,11 @@ class Message extends Component {
     ( isEqual(this.props.channel,nextProps.channel) === false) ){
 
 
-      this.props.fetchMessages(nextProps.type_id);
+      this.props.fetchMessages(nextProps.type_id).then( () => {
+        this.props.fetchUsers()
+
+
+      });
 
 
 

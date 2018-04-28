@@ -58,7 +58,7 @@ module.exports = (app) => {
 
     const {user} = req;
     // const {type} = req.query;
-    console.log("Channel ROUTE HIT");
+    console.log("api/channels ROUTE HIT");
 
 
     User

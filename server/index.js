@@ -55,25 +55,14 @@ require('./services/passport');
 
 
 mongoose.connect(keys.mongoURI);
-// mongoose.Promise = global.Promise;
 
 
 
 
 
-// next 3 functions are middlewares
-
-//makes use of cookies. (serializeUser, deserializeUser)
-// app.use(
-//   cookieSession({
-//     name: 'session',
-//     maxAge: 30 * 24 * 60 * 60 * 1000,
-//     keys: [keys.cookieKey]
-//   })
-// );
 app.use(cookieParser());
 app.use(session({
-  secret: 'cat',
+  secret: 'slack',
   resave: true,
   saveUninitialized: true,
   cookie: { secure: false }
@@ -91,6 +80,7 @@ app.use(flash());
 require('./routes/authRoutes')(app);
 require('./routes/channelRoutes')(app);
 require('./routes/messageRoutes')(app);
+require('./routes/userRoutes')(app);
 
 
 

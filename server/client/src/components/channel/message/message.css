@@ -49,7 +49,12 @@
   border-radius: 5px;
   height: 35px;
   width: 35px;
+  filter: brightness(100%);
+  transition: .2s;
+}
 
+.thumbnail-img:hover{
+  opacity: 0.5;
 }
 
 

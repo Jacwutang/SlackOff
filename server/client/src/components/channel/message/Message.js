@@ -130,6 +130,10 @@ class Message extends Component {
   }
 
   renderTopRowRight(){
+    if(this.props.channel === undefined){
+      return;
+    }
+
     return (
       <div className="top-row-right">
 

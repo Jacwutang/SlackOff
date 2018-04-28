@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 import socketIOClient from "socket.io-client";
 
 import './message.css';
-import MessageListItem from './messageListItem';
+import MessageListItem from './MessageListItem';
+import MessageInput from './MessageInput';
 import axios from 'axios';
 import isEqual  from 'lodash/isEqual';
 import { RECEIVE_ALL_MESSAGES, RECEIVE_MESSAGE } from '../../../actions/types';
@@ -17,7 +18,6 @@ class Message extends Component {
   constructor(props){
     super();
     this.state = {
-      input: "",
       search: "",
       loaded: false
     }
@@ -52,6 +52,8 @@ class Message extends Component {
   }
 
 
+
+
   renderConversations(){
     if(!this.state.loaded){
       return(
@@ -75,7 +77,8 @@ class Message extends Component {
             key={message._id}
             author={users[message.author].username}
             body={message.body}
-            timestamp={message.timestamp} />
+            timestamp={message.timestamp}
+            time_zone={message.time_zone} />
         )
 
      );
@@ -90,16 +93,14 @@ class Message extends Component {
     );
   }
 
-   handleSubmit(e){
-    e.preventDefault();
+   handleSubmit(input){
+
     // const socket = socketIOClient("http://localhost:5000");
     // socket.emit('chat message', this.state.input);
 
 
 
-    this.props.createMessage(this.state.input, this.props.type_id).then(() => {
-      this.setState({input: ''});
-    })
+    this.props.createMessage(input,this.props.type_id);
   }
 
   triggerInputCSS(e){
@@ -163,9 +164,9 @@ class Message extends Component {
   }
 
   render(){
-    // if(!this.state.loaded){
-    //   <Spinner name='double-bounce' color="red" />
-    // }
+
+    const {channel, type_id} = this.props;
+
     return(
 
       <div className="col s10">
@@ -183,32 +184,15 @@ class Message extends Component {
 
         </ul>
 
+        <MessageInput
+        channel={channel}
+        type_id={type_id}
+        submit={this.handleSubmit}
+        />
 
 
 
-        <div className="bottom-row">
-          <form onSubmit={this.handleSubmit} className="msg-input-wrapper">
-            <button type="button" className="msg-input-gif">
-              <i className="fas fa-keyboard"></i>
-            </button>
-            <input
-            id="msg-input"
-            placeholder=
-            { (this.props.type_id === undefined)?
-              `Message `:
-              `Message #${this.props.channel.name}`
 
-            }
-
-
-
-            value={this.state.input}
-            onChange={this.handleInput('input')} />
-
-          </form>
-
-
-        </div>
       </div>
 
     );
@@ -218,11 +202,3 @@ class Message extends Component {
 };
 
 export default Message;
-
-
-
-// { (this.props.type_id === undefined)?
-//   `Message `:
-//   `Message # ${this.props.channel.name}`
-//
-// }

@@ -29,7 +29,16 @@ module.exports = (app) => {
             console.log("error saving message", err);
             res.send(400, err.msg);
           } else{
-            console.log("message saved successfully")
+            console.log("message saved successfully", newMessage);
+
+
+
+                let offset = new Date(newMessage.timestamp) - (newMessage.time_zone*60000);
+
+                let local_time = new Date(offset);
+
+                console.log(local_time);
+
             res.send(newMessage);
           }
 
@@ -65,7 +74,7 @@ module.exports = (app) => {
 
   });
 
-  
+
 
 
 }; //end of function

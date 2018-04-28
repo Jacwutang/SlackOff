@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 
-// var options = { discriminatorKey: 'kind' };
+
 
 var now = new Date();
 

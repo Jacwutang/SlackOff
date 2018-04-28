@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
-
+//placeholder msg
 class MessageListItem extends Component{
   constructor(props){
     super();
@@ -9,6 +9,7 @@ class MessageListItem extends Component{
       loaded: false,
       picture: '',
     }
+
   }
 
   async componentDidMount(){

@@ -57,20 +57,18 @@ class Message extends Component {
   renderConversations(){
 
     return (
-      <ul className="ul-messages">
-      { this.props.messages.map( (message) =>
-        <MessageListItem
-          key={message._id}
-          author={message.author}
-          body={message.body}
-          timestamp={message.timestamp} />
+
+        this.props.messages.map( (message) =>
+          <MessageListItem
+            key={message._id}
+            author={message.author}
+            body={message.body}
+            timestamp={message.timestamp} />
         )
-      }
 
-      </ul>
-    )
+     );
 
-}
+   };
 
 
 
@@ -85,9 +83,7 @@ class Message extends Component {
     // const socket = socketIOClient("http://localhost:5000");
     // socket.emit('chat message', this.state.input);
 
-    // let res = await axios.post('/api/message/new', {body: this.state.input, channel_id: this.props.type_id});
-    //
-    // return this.props.dispatch({type: RECEIVE_MESSAGE, payload: res.data});
+
 
     this.props.createMessage(this.state.input, this.props.type_id).then(() => {
       this.setState({input: ''});
@@ -102,19 +98,37 @@ class Message extends Component {
 
   exitInputCSS(e){
     e.preventDefault();
-    
+
     e.currentTarget.classList.remove("selected");
   }
 
 
   renderTopRowLeft(){
+    if(this.props.channel === undefined){
+      return;
+    }
+
     return(
-      <span> Top Left </span>
-    )
+
+      <div className="top-row-left">
+
+      <h4 className="channel-name-header">
+        {` # ${this.props.channel.name}`}
+      </h4>
+
+      <span className="channel-people">
+        <i class="fas fa-users fa-2x"></i>
+      </span>
+
+      </div>
+    );
+
   }
 
   renderTopRowRight(){
     return (
+      <div className="top-row-right">
+
         <form  className="msg-input-wrapper search-container" onClick={this.triggerInputCSS} onBlur={this.exitInputCSS}>
           <button type="button" className="msg-input-gif">
             <i className="fas fa-search"></i>
@@ -122,18 +136,16 @@ class Message extends Component {
           <input
           id="msg-input"
           placeholder="Search"
-
           value={this.state.search}
           onChange={this.handleInput('search')} />
-
         </form>
+
+      </div>
+
     );
   }
 
   render(){
-
-
-
 
     return(
 
@@ -141,24 +153,18 @@ class Message extends Component {
 
         <div className="top-row">
 
-          <div className="top-row-left">
-
-            {this.renderTopRowLeft()}
-
-          </div>
-
-          <div className="top-row-right">
-            {this.renderTopRowRight()}
-
-          </div>
-
-
-
+          {this.renderTopRowLeft()}
+          {this.renderTopRowRight()}
 
         </div>
 
+        <ul className="ul-messages">
 
-        {this.renderConversations()}
+            {this.renderConversations()}
+
+        </ul>
+
+
 
 
         <div className="bottom-row">

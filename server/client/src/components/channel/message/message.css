@@ -5,6 +5,12 @@
   position: relative;
 }
 
+.channel-name-header{
+  font-weight: bold;
+}
+
+
+
 
 .ul-messages{
   overflow-y: auto;
@@ -25,22 +31,18 @@
   height: 4vh;
   width: 85%;
   transition: 1s;
+  box-shadow: none;
 }
 
 .msg-input-wrapper.search-container.selected {
 
-  width: 100%;
+  width: 95%;
   transition: 1s;
 }
 
 .msg-input-wrapper.search-container input {
-  /* border-radius: 100px; */
-  border-left: none !important;
-
+    border-left: none !important;
 }
-
-
-
 
 
 .top-row{
@@ -54,9 +56,14 @@
 
 .top-row-left{
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-grow: 1;
+  align-items: center;
+
+
 }
+
 .top-row-right{
   display: flex;
   justify-content: center;
@@ -95,6 +102,7 @@
   border-bottom-right-radius: 5px;
   border: 2px solid #717274;
   text-indent: 10px;
+  box-shadow: none;
 
 }
 

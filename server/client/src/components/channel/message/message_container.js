@@ -29,10 +29,16 @@ function mapStateToProps(state,ownProps){
   // console.log("state", state);
   // console.log("type_id", ownProps.match.params.type_id);
   // console.log("channel", state.channels[ownProps.match.params.type_id]);
+
+  console.log(state.channel, "channel");
+  console.log(state.messages, "MESSAGES");
+  console.log(state.users, "USERS");
+
   return{
     type_id: ownProps.match.params.type_id,
     channel: state.channels[ownProps.match.params.type_id],
     messages: checkValidMessages(state),
+    users: state.users,
   }
 
 }

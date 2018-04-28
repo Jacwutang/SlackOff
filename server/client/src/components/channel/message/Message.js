@@ -44,7 +44,7 @@ class Message extends Component {
       this.props.fetchMessages(nextProps.type_id).then( () => {
         this.props.fetchUsers().then( setTimeout( () => {
             this.setState({loaded:true});
-        },3500));
+        },3000));
 
 
       });
@@ -56,18 +56,24 @@ class Message extends Component {
     if(!this.state.loaded){
       return(
         <div className="spinner-wrapper">
-          <FoldingCube size={75}/>
+          <FoldingCube size={75} color='gray'/>
         </div>
 
       )
 
     }
+
+    const {users} = this.props;
+    // console.log("HERE",users);
+    // console.log(this.props.channel);
+    // console.log(this.props.messages);
+
     return (
 
         this.props.messages.map( (message) =>
           <MessageListItem
             key={message._id}
-            author={message.author}
+            author={users[message.author].username}
             body={message.body}
             timestamp={message.timestamp} />
         )
@@ -123,7 +129,8 @@ class Message extends Component {
       </h4>
 
       <span className="channel-people">
-        <i className="fas fa-users fa-2x"></i>
+        <i className="far fa-user fa-2x"></i>
+        <span> <strong> {this.props.channel.members.length} </strong> </span>
       </span>
 
       </div>

@@ -21,9 +21,47 @@
   justify-content: center;
 }
 
+.name-and-date{
+  color: black;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  font-size: 24px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.timestamp-div{
+  color: gray;
+  font-size: 12px !important;
+
+}
+
+.author-div{
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 5px;
+  font-family: 'Black-Han-Sans';
+}
 
 
 
+.li-message{
+  display: flex;
+  justify-content: flex-start;
+
+}
+
+.li-message:hover{
+  background-color: light-gray;
+}
+
+.message-details{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
 
 
 .ul-messages{
@@ -38,6 +76,8 @@
   margin-bottom: 10px;
   position: relative;
   left: 5px;
+  display: flex;
+  flex-direction: column;
 }
 
 

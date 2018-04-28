@@ -1,7 +1,7 @@
 import { RECEIVE_ALL_USERS } from '../actions/types';
 
 
-export default function(state = [], action){
+export default function(state = {}, action){
 
   Object.freeze(state);
 
@@ -26,7 +26,7 @@ export default function(state = [], action){
 
 
     default:
-      return [];
+      return state;
 
   }
 

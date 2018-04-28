@@ -6,17 +6,24 @@ class MessageListItem extends Component{
   }
 
   componentDidMount(){
-    
+    console.log(this.props);
   }
 
   render(){
 
-    let {body} = this.props
+    let {body,author,timestamp} = this.props
 
     return(
-      <li>
+      <li className="li-message">
+        <div className="message-details">
+          <div className="name-and-date">
+            <div className="author-div"> {author} </div>
+            <div className="timestamp-div"> {timestamp} </div>
+          </div>
 
-      {body}
+          <span> {body} </span>
+        </div>
+
 
       </li>
     );

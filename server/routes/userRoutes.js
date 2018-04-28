@@ -20,16 +20,16 @@ module.exports = (app) => {
 
         if(user.google.displayName){
 
-          return ({ [user._id]: {username: user.google.displayName, _id: user._id} });
+          return ( {username: user.google.displayName, _id: user._id} );
         } else if(user.local.username){
 
 
-          return ({ [user._id]: {username: user.local.username, _id: user._id} });
+          return ( {username: user.local.username, _id: user._id} );
         }
 
       });
 
-      
+
       res.send(formatted_users_array);
 
 

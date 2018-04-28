@@ -7,8 +7,22 @@ export default function(state = [], action){
 
 
   switch(action.type){
-    case "RECEIVE_ALL_USERS":
-      return [];
+    case RECEIVE_ALL_USERS:
+      // let newObj = {};
+      //
+      // action.payload.map( (user) => {
+      //   return newObj[user._id] = user;
+      // });
+
+      const newObj = {};
+      action.payload.map((user) => {
+          newObj[user._id] = user
+      });
+
+      return newObj;
+
+
+
 
 
     default:

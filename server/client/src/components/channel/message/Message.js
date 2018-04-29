@@ -165,7 +165,7 @@ class Message extends Component {
       </h4>
 
       <span className="channel-people">
-        <i className="far fa-user fa-2x"></i>
+        <i className="far fa-user fa-2x" aria-hidden="true"></i>
         <span> <strong> {this.props.channel.members.length} </strong> </span>
       </span>
 

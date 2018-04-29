@@ -5,7 +5,7 @@ import Modal from 'react-responsive-modal';
 import './dashboard.css';
 
 import ChannelDisplay from './channelDisplay/channel_display_container';
-import DirectMessageDisplay from './directMessageDisplay/directMessageDisplay';
+import DirectMessageDisplay from './DirectMessageDisplay/DirectMessageDisplayContainer';
 
 
 
@@ -21,7 +21,7 @@ class DashBoard extends Component {
 
   componentWillReceiveProps(){
     console.log("DASHBOARD RECIEVED PROPS");
-    
+
   }
 
   render(){

@@ -54,10 +54,12 @@ class Message extends Component {
 
 
   componentWillReceiveProps(nextProps){
-    console.log("COMPONENT WILL RECIEVE PROPS");
+
 
     if( (nextProps.type_id !== this.props.type_id) &&
     ( isEqual(this.props.channel,nextProps.channel) === false) ){
+
+      this.setState({loaded: false});
 
       //only fetch Messages and fetch Users if it's initial channel loading.
 
@@ -67,6 +69,7 @@ class Message extends Component {
       socket.on('subscribedChannel', (payload) => {
 
       });
+
 
 
       this.props.fetchMessages(nextProps.type_id).then( () => {
@@ -112,11 +115,13 @@ class Message extends Component {
 
     }
 
-    const {subscribers} = this.props;
+    const {subscribers,messages} = this.props;
 
-    console.log("SUBSCRIBERS ARE", subscribers);
+
+
 
     return (
+
 
         this.props.messages.map( (message) =>
           <MessageListItem

@@ -29,7 +29,7 @@ function checkValidMessages(state){
 
 function formatSubscribers(state,ownProps){
   // console.log("state.users", state.users);
-
+  
   if(state.channels[ownProps.match.params.type_id] === undefined || state.users === undefined) return {};
 
 

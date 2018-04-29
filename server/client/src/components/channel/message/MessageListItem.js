@@ -12,7 +12,7 @@ class MessageListItem extends Component{
   }
 
     componentDidMount(){
-      
+
       axios.get('/api/avatars').then(resp => {
 
         let picture = resp.data.results[0].picture.thumbnail;

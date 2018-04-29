@@ -7,8 +7,11 @@ const bodyParser = require('body-parser');
 const flash    = require('connect-flash');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
+const axios = require('axios');
 
 const app = express();
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -32,7 +35,7 @@ io.on('connection', (socket) => {
 
   socket.on('joinChannel', (channel) => {
     socket.join(channel._id);
-    
+
 
   });
 
@@ -41,7 +44,8 @@ io.on('connection', (socket) => {
 
   socket.on('broadcastMessage', (message) => {
     //broadcast message to 'id', which is created during a "join" operation
-    socket.broadcast.to(message.channel._id).emit('receiveMessage', message);
+
+    socket.broadcast.to(message.channel_id).emit('receiveMessage', message);
     console.log("Message emitted",message)
   });
 
@@ -91,7 +95,7 @@ app.use(session({
 app.use(passport.initialize());
 //passport.session middleware is a Passport Strategy which will load the user object onto req.user or req.session? if a serialised user object was found in the server.
 app.use(passport.session());
-app.use(flash());
+// app.use(flash());
 
 //load route handlers
 require('./routes/authRoutes')(app);
@@ -99,6 +103,20 @@ require('./routes/channelRoutes')(app);
 require('./routes/messageRoutes')(app);
 require('./routes/userRoutes')(app);
 
+app.get('/api/avatars', (req,res) => {
+  console.log("api/avatars route hit");
+
+  const url = "https://randomuser.me/api/";
+
+  let results = axios.get(url).then((response) => {
+    return response.data
+  })
+  .then(resp => {
+    res.send(resp);
+  });
+
+
+});
 
 
 if (process.env.NODE_ENV === 'production') {

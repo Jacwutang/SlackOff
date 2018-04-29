@@ -11,12 +11,16 @@ class MessageListItem extends Component{
 
   }
 
-  async componentDidMount(){
-    let res = await axios.get('https://randomuser.me/api/');
+    componentDidMount(){
+    // let res = await axios.get('https://randomuser.me/api/');
+      axios.get('/api/avatars').then(resp => {
 
-    let picture = res.data.results[0].picture.thumbnail;
+        let picture = resp.data.results[0].picture.thumbnail;
+        this.setState({loaded:true, picture: picture});
 
-    this.setState({loaded:true, picture: picture});
+    });
+
+
 
   }
 

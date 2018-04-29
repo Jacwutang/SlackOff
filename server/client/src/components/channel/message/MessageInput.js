@@ -30,13 +30,13 @@ class MessageInput extends Component {
     e.preventDefault();
 
 
-    this.props.createMessage(this.state.input, this.props.channel._id).then( (action) => {
-      this.props.socket.emit('broadcastMessage', {body: action.payload.body, channel_id: this.props.channel._id } );
-
-      this.setState({input: ''})
-
-
-    });
+    // this.props.createMessage(this.state.input, this.props.channel._id).then( (action) => {
+    //   this.props.socket.emit('broadcastMessage', {body: action.payload.body, channel_id: this.props.channel._id } );
+    //
+    //   this.setState({input: ''})
+    //
+    //
+    // });
 
   }
 

@@ -26,7 +26,7 @@ class Message extends Component {
     }
 
     this.handleInput = this.handleInput.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+
     this.triggerInputCSS = this.triggerInputCSS.bind(this);
     this.exitInputCSS = this.exitInputCSS.bind(this);
 
@@ -183,6 +183,7 @@ class Message extends Component {
         channel={channel}
         type_id={type_id}
         createMessage={this.props.createMessage}
+        socket={this.props.socket}
         />
 
 

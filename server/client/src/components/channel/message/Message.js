@@ -33,7 +33,7 @@ class Message extends Component {
   }
 
    componentDidMount(){
-    
+
     }
 
   componentWillReceiveProps(nextProps){
@@ -96,16 +96,7 @@ class Message extends Component {
     );
   }
 
-   handleSubmit(input){
 
-
-    this.props.createMessage(input,this.props.type_id).then((action) => {
-
-      // this.props.socket.emit('sendMessage', {message: action.payload, channel: this.props.channel._id});
-
-
-    });
-  }
 
   triggerInputCSS(e){
     e.preventDefault();
@@ -191,7 +182,7 @@ class Message extends Component {
         <MessageInput
         channel={channel}
         type_id={type_id}
-        submit={this.handleSubmit}
+        createMessage={this.props.createMessage}
         />
 
 

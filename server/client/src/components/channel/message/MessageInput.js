@@ -15,13 +15,8 @@ class MessageInput extends Component {
 
   componentDidMount(){
     console.log("MESSAGE INPUT COMPONENT MOUNTED");
-    
-  }
 
-  componentWillReceiveProps(nextProps){
-    this.setState({input: ''});
   }
-
 
   handleInput(field){
 
@@ -33,7 +28,15 @@ class MessageInput extends Component {
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.submit(this.state.input);
+
+
+    this.props.createMessage(this.state.input, this.props.channel._id).then( (action) => {
+      this.props.socket.emit('broadcastMessage', {body: action.payload.body, channel_id: this.props.channel._id } );
+
+      this.setState({input: ''})
+
+
+    });
 
   }
 

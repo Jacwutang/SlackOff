@@ -27,13 +27,25 @@ http.listen(PORT, () => {
 });
 
 io.on('connection', (socket) => {
-  console.log('a user connected');
 
 
-  socket.on('sendMessage', (msg) => {
-    io.emit('message', msg);
-    console.log("Message emitted",msg)
+
+  socket.on('joinChannel', (channel) => {
+    socket.join(channel._id);
+    
+
   });
+
+
+
+
+  socket.on('broadcastMessage', (message) => {
+    //broadcast message to 'id', which is created during a "join" operation
+    socket.broadcast.to(message.channel._id).emit('receiveMessage', message);
+    console.log("Message emitted",message)
+  });
+
+
 
   socket.on('disconnect', () => {
     console.log("SOMEBODY  LEFT");

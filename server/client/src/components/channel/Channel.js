@@ -6,9 +6,6 @@ import './channel.css';
 import DashBoard from './dashboard/Dashboard';
 import Message from './message/message_container';
 import { withRouter } from 'react-router';
-import socketIOClient from "socket.io-client";
-const HOST = window.location.origin;
-const socket = socketIOClient("http://localhost:5000");
 
 class Channel extends Component {
   constructor(){
@@ -35,8 +32,8 @@ class Channel extends Component {
 
     <div className="row">
 
-      <DashBoard socket={socket}/>
-      <Message socket={socket}/>
+      <DashBoard />
+      <Message />
 
 
     </div>

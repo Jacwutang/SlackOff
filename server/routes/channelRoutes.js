@@ -27,15 +27,15 @@ module.exports = (app) => {
           console.log("create channel failed");
           res.status(400).send({message: "Error creating channel"});
         } else{
-          console.log("create channel succeded");
-          console.log(channel);
+          // console.log("create channel succeded");
+          // console.log(channel);
 
           User.update({"_id": req.user.id},
           {$push: {channels: channel._id}}, (err,success) => {
             if(err){
               console.log("error update user");
             } else{
-              
+
             }
 
           });
@@ -58,7 +58,7 @@ module.exports = (app) => {
 
     const {user} = req;
     // const {type} = req.query;
-    console.log("api/channels ROUTE HIT");
+    // console.log("api/channels ROUTE HIT");
 
 
     User

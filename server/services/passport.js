@@ -95,7 +95,7 @@ passport.use('local-signup', new LocalStrategy({
         passReqToCallback : true // allows us to pass back the entire request to the callback
     },
     function(req, username, password, done) { // callback with username and password from our form
-      console.log("LOCAL-LOGIN")
+      // console.log("LOCAL-LOGIN")
 
         // find a user whose username is the same as the forms username
         // we are checking to see if the user trying to login already exists
@@ -123,7 +123,7 @@ passport.use('local-signup', new LocalStrategy({
             }
 
             // all is well, return successful user
-            console.log("WE FOUND YOU RETURN USER")
+            // console.log("WE FOUND YOU RETURN USER")
             return done(null, user);
         });
 

@@ -34,19 +34,18 @@ io.on('connection', (socket) => {
 
 
   socket.on('joinChannel', (channel) => {
+    console.log("CHANNEL JOINED");
+    // console.log(channel);
     socket.join(channel._id);
-
-
+    socket.emit("subscribedChannel", channel);
   });
 
 
+  socket.on('broadcastMessage', (payload) => {
+    //broadcast payload to 'id', which is created during a "join" operation
 
-
-  socket.on('broadcastMessage', (message) => {
-    //broadcast message to 'id', which is created during a "join" operation
-
-    socket.broadcast.to(message.channel_id).emit('receiveMessage', message);
-    console.log("Message emitted",message)
+    io.emit('receiveMessage', payload);
+    console.log("Message received backend",payload)
   });
 
 
@@ -104,12 +103,12 @@ require('./routes/messageRoutes')(app);
 require('./routes/userRoutes')(app);
 
 app.get('/api/avatars', (req,res) => {
-  console.log("api/avatars route hit");
+  // console.log("api/avatars route hit");
 
   const url = "https://randomuser.me/api/";
 
   let results = axios.get(url).then((response) => {
-    return response.data
+    return response.data;
   })
   .then(resp => {
     res.send(resp);

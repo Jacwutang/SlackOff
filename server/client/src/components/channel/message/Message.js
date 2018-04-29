@@ -9,8 +9,12 @@ import axios from 'axios';
 import isEqual  from 'lodash/isEqual';
 import { RECEIVE_ALL_MESSAGES, RECEIVE_MESSAGE } from '../../../actions/types';
 
-
+import socketIOClient from "socket.io-client";
 import {FoldingCube} from 'better-react-spinkit';
+
+
+const HOST = window.location.origin;
+const socket = socketIOClient("http://localhost:5000");
 
 
 
@@ -22,28 +26,48 @@ class Message extends Component {
     super();
     this.state = {
       search: "",
-      loaded: false
+      loaded: false,
+      temp: false
     }
 
-    this.handleInput = this.handleInput.bind(this);
 
+    this.handleInput = this.handleInput.bind(this);
     this.triggerInputCSS = this.triggerInputCSS.bind(this);
     this.exitInputCSS = this.exitInputCSS.bind(this);
 
-  }
 
-   componentDidMount(){
 
     }
 
+    componentDidMount(){
+      console.log("MY PROPS ARE", this.props);
+
+      socket.on('receiveMessage', (payload) => {
+        this.props.fetchMessage(payload);
+
+
+      });
+
+
+    }
+
+
+
   componentWillReceiveProps(nextProps){
     console.log("COMPONENT WILL RECIEVE PROPS");
-    console.log(this.props, "THIS PROPS");
-    console.log(nextProps, "NEXT PROPS");
+
     if( (nextProps.type_id !== this.props.type_id) &&
     ( isEqual(this.props.channel,nextProps.channel) === false) ){
 
       //only fetch Messages and fetch Users if it's initial channel loading.
+
+      //setup a socket here
+
+      socket.emit('joinChannel', {channel: nextProps.channel});
+      socket.on('subscribedChannel', (payload) => {
+
+      });
+
 
       this.props.fetchMessages(nextProps.type_id).then( () => {
         this.props.fetchUsers().then( setTimeout( () => {
@@ -52,8 +76,27 @@ class Message extends Component {
 
 
       });
+    } else{
+
+      // if(this.props.channel && this.props.messages){
+      //
+      //   socket.on('receiveMessage', (payload) => {
+      //     console.log("THE PAYLOAD IS", payload);
+      //     this.props.createMessage(payload.body, payload.channel_id)
+      //
+      //   });
+      //
+      // }
+
     }
+
+
+
   }
+
+
+
+
 
 
 
@@ -183,7 +226,7 @@ class Message extends Component {
         channel={channel}
         type_id={type_id}
         createMessage={this.props.createMessage}
-        socket={this.props.socket}
+        socket={socket}
         />
 
 

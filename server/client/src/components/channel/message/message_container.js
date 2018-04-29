@@ -49,12 +49,6 @@ function formatSubscribers(state,ownProps){
 };
 
 function mapStateToProps(state,ownProps){
-  // console.log("state", state);
-  // console.log("type_id", ownProps.match.params.type_id);
-  // console.log("channel", state.channels[ownProps.match.params.type_id]);
-
-
-
 
 
   return{
@@ -71,7 +65,9 @@ function mapDispatchToProps(dispatch){
   return{
     createMessage: (body, channel_id) => dispatch(createMessage(body,channel_id)),
     fetchMessages: (channel_id) => dispatch(fetchMessages(channel_id)),
+    fetchMessage: (message) => dispatch({type: "RECEIVE_MESSAGE", payload: message }),
     fetchUsers: () => dispatch(fetchUsers()),
+
   }
 
 

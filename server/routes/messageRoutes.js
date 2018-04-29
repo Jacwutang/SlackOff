@@ -8,9 +8,9 @@ module.exports = (app) => {
   app.post('/api/message/new', (req,res) => {
 
       const {body, channel_id } = req.body;
-      console.log(body, "BODY");
-      console.log(channel_id,"channel_id");
-      console.log(req.user, "USER IS");
+      // console.log(body, "BODY");
+      // console.log(channel_id,"channel_id");
+      // console.log(req.user, "USER IS");
 
 
       Channel.findOne({"_id": channel_id}, (err,channel) => {
@@ -29,7 +29,7 @@ module.exports = (app) => {
             console.log("error saving message", err);
             res.send(400, err.msg);
           } else{
-            console.log("message saved successfully", newMessage);
+            // console.log("message saved successfully", newMessage);
 
 
 
@@ -37,7 +37,7 @@ module.exports = (app) => {
 
                 let local_time = new Date(offset);
 
-                console.log(local_time);
+
 
             res.send(newMessage);
           }
@@ -52,7 +52,7 @@ module.exports = (app) => {
 
 
   app.get('/api/messages/channel_id', (req,res) => {
-    console.log("/api/messages/room_id route hit")
+    // console.log("/api/messages/room_id route hit")
 
 
     // room_id 5adfbef8db2f763976c5bea

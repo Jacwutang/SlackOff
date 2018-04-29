@@ -20,7 +20,7 @@ module.exports = (app) => {
       return next(err);
     }
     if (!user){
-      console.log("/api/local-loign NO USER FOUND")
+      
 
       return res.status(403).send(info);
     }
@@ -94,11 +94,11 @@ module.exports = (app) => {
 
     if(req.user.google.displayName){
       user.displayName = req.user.google.displayName;
-      console.log("GOOGLE USER SENT BACK")
+      // console.log("GOOGLE USER SENT BACK")
       return res.send({google:user});
     } else{
       user.username = req.user.local.username;
-      console.log("LOCAL USER SENT BACK")
+      // console.log("LOCAL USER SENT BACK")
       return res.send({local:user});
     }
   });

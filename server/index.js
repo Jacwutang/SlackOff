@@ -44,7 +44,10 @@ io.on('connection', (socket) => {
   socket.on('broadcastMessage', (payload) => {
     //broadcast payload to 'id', which is created during a "join" operation
 
-    io.emit('receiveMessage', payload);
+    // io.emit('receiveMessage', payload);
+
+    //broadcast to everybody except me.
+    socket.broadcast.to(payload.channel._id).emit('receiveMessage',payload);
     console.log("Message received backend",payload)
   });
 

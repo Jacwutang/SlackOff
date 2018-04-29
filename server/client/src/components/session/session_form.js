@@ -12,6 +12,7 @@ class SessionForm extends Component{
     this.animateDemo = this.animateDemo.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.otherLogin = this.otherLogin.bind(this);
 
     this.demoUsername = ['d','e','m','o'];
     this.demoPassword = ['p','a','s','s','w','o','r','d'];
@@ -217,6 +218,10 @@ class SessionForm extends Component{
     )
   }
 
+  otherLogin(){
+    this.props.login("new_user", "password").then(() => this.props.history.push('/messages'));
+  }
+
 
   render(){
 
@@ -231,6 +236,11 @@ class SessionForm extends Component{
 
           <div className="session-container">
               {this.renderErrors()}
+
+              <button type="button" onClick={this.otherLogin}> other login
+
+
+              </button>
 
               <form className="session-form" onSubmit={this.handleSubmit}>
 

@@ -72,7 +72,7 @@ class Message extends Component {
       this.props.fetchMessages(nextProps.type_id).then( () => {
         this.props.fetchUsers().then( setTimeout( () => {
             this.setState({loaded:true});
-        },3000));
+        },2500));
 
 
       });

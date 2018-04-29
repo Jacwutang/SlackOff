@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import socketIOClient from "socket.io-client";
+
 
 import './message.css';
 import MessageListItem from './MessageListItem';
@@ -11,6 +11,9 @@ import { RECEIVE_ALL_MESSAGES, RECEIVE_MESSAGE } from '../../../actions/types';
 
 
 import {FoldingCube} from 'better-react-spinkit';
+
+
+
 
 
 class Message extends Component {
@@ -30,9 +33,7 @@ class Message extends Component {
   }
 
    componentDidMount(){
-    console.log("MESSAGE MOUNTED");
-      socketIOClient("http://localhost:5000").emit('message', "hello world");
-
+    
     }
 
   componentWillReceiveProps(nextProps){
@@ -42,6 +43,7 @@ class Message extends Component {
     if( (nextProps.type_id !== this.props.type_id) &&
     ( isEqual(this.props.channel,nextProps.channel) === false) ){
 
+      //only fetch Messages and fetch Users if it's initial channel loading.
 
       this.props.fetchMessages(nextProps.type_id).then( () => {
         this.props.fetchUsers().then( setTimeout( () => {
@@ -96,12 +98,13 @@ class Message extends Component {
 
    handleSubmit(input){
 
-    // const socket = socketIOClient("http://localhost:5000");
-    // socket.emit('chat message', this.state.input);
+
+    this.props.createMessage(input,this.props.type_id).then((action) => {
+
+      // this.props.socket.emit('sendMessage', {message: action.payload, channel: this.props.channel._id});
 
 
-
-    this.props.createMessage(input,this.props.type_id);
+    });
   }
 
   triggerInputCSS(e){

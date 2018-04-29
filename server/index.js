@@ -30,7 +30,7 @@ io.on('connection', (socket) => {
   console.log('a user connected');
 
 
-  socket.on('message', (msg) => {
+  socket.on('sendMessage', (msg) => {
     io.emit('message', msg);
     console.log("Message emitted",msg)
   });

@@ -15,10 +15,11 @@
 } */
 .spinner-wrapper{
   margin: 0 auto;
-  margin-top: 50%;
+  margin-top: 25%;
   position: relative;
   display: flex;
   justify-content: center;
+
 }
 
 .name-and-date{

@@ -59,7 +59,7 @@ class Message extends Component {
     if(!this.state.loaded){
       return(
         <div className="spinner-wrapper">
-          <FoldingCube size={75} color='gray'/>
+          <FoldingCube size={80} color='gray'/>
         </div>
 
       )

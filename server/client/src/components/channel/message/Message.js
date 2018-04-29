@@ -30,7 +30,8 @@ class Message extends Component {
   }
 
    componentDidMount(){
-    console.log("MESSAGE MOUNTED",this.props);
+    console.log("MESSAGE MOUNTED");
+
     }
 
   componentWillReceiveProps(nextProps){
@@ -66,9 +67,7 @@ class Message extends Component {
     }
 
     const {users} = this.props;
-    // console.log("HERE",users);
-    // console.log(this.props.channel);
-    // console.log(this.props.messages);
+
 
     return (
 

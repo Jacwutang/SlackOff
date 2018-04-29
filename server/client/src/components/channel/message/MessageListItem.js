@@ -77,7 +77,7 @@ class MessageListItem extends Component{
 
     return(
       <li className="li-message">
-        <div className="img-container">
+        <div className="img-container-channel-thumbnail">
           <img className="thumbnail-img" src={this.state.picture} />
         </div>
         <div className="message-details">
@@ -86,7 +86,7 @@ class MessageListItem extends Component{
             <div className="timestamp-div">  {this.formatTime()} </div>
           </div>
 
-          <span> {body} </span>
+          <div> {body} </div>
         </div>
 
 

@@ -39,16 +39,18 @@
 
 }
 
-.img-container{
+.img-container-channel-thumbnail{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  margin-right: 10px;
+  flex-shrink: 0;
 }
 .thumbnail-img{
-  margin-right: 5px;
+
   border-radius: 5px;
-  height: 35px;
-  width: 35px;
+  height: 40px;
+  width: 40px;
   filter: brightness(100%);
   transition: .2s;
 }
@@ -76,13 +78,15 @@
 }
 
 .li-message:hover{
-  background-color: light-gray;
+  background: #f3f3f3;
 }
 
 .message-details{
   display: flex;
   justify-content: center;
   flex-direction: column;
+  position: relative;
+  bottom: 5px;
 }
 
 

@@ -24,8 +24,10 @@ module.exports = (app) => {
 
       Channel.create(newChannel, (err,channel) => {
         if(err){
-          console.log("create channel failed");
-          res.status(400).send({message: "Error creating channel"});
+
+          res.status(400).send(
+          { message: err.errors.name.message });
+
         } else{
           // console.log("create channel succeded");
           // console.log(channel);

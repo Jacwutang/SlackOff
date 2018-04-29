@@ -77,12 +77,20 @@ export const fetchUser = () => async dispatch => {
 
 
 export const createChannel = (channel,type) => async dispatch => {
-
+    try{
       const res =  await axios.post(
       '/api/channel/new', {name: channel,type: type}
       );
 
       return dispatch({type: RECEIVE_CHANNEL, payload: res.data});
+
+
+    }catch(error){
+
+      return dispatch({type:RECEIVE_CHANNEL_ERRORS, payload: error.response.data});
+
+    }
+
 };
 
 export const login = (username,password) => async dispatch => {

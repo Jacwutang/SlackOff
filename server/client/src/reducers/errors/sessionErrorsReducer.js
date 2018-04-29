@@ -1,4 +1,4 @@
-import { RECEIVE_SESSION_ERRORS, RECEIVE_USER } from '../actions/types';
+import { RECEIVE_SESSION_ERRORS, RECEIVE_USER } from '../../actions/types';
 
 
 

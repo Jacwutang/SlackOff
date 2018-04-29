@@ -10,6 +10,7 @@ import ChannelIndexItem from './channelIndexItem';
 import './channelDisplay.css';
 import '../dashboard.css';
 import '../animation.css';
+import '../../../session/session.css';
 
 class ChannelDisplay extends Component {
   constructor(props){
@@ -62,10 +63,6 @@ class ChannelDisplay extends Component {
       nextProps.channels.slice(-1)[0];
 
 
-
-
-
-
       return this.setState({
         currentChannel: currentChannel
       });
@@ -78,19 +75,21 @@ class ChannelDisplay extends Component {
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.createChannel(
-      this.state.input,
-      this.props.type
-    ).then( (action) => {
 
-      this.props.history.push(`/messages/channel/${action.payload._id}`)
+    this.props.createChannel(this.state.input,this.props.type).then( (action) => {
 
-    })
+      if(action.type !== RECEIVE_CHANNEL_ERRORS){
+        this.setState({input: '',open: false}).then( () =>
+        this.props.history.push(`/messages/channel/${action.payload._id}`))
 
-    this.setState({
-      input: '',
-      open: false,
-    })
+      }
+
+
+
+
+    });
+
+
   }
 
   handleInput(field){
@@ -101,10 +100,12 @@ class ChannelDisplay extends Component {
 
 
   onOpenModal(){
+   this.props.clearErrors();
    this.setState({ open: true });
   };
 
  onCloseModal(){
+
    this.setState({ open: false });
   };
 
@@ -147,6 +148,41 @@ class ChannelDisplay extends Component {
   );
  }
 
+ renderModalContent(){
+   return(
+     <div className="modal-content">
+        <ul className="errors-ul">
+          {this.props.errors.map( (err,idx) => (
+            <li className="errors-li" key={idx}>
+              {err}
+            </li>
+
+          ))
+          }
+
+        </ul>
+
+       <h3>Create a new Channel</h3>
+
+       <div className="modal-form">
+         <input
+           placeholder="Enter channel name"
+           type="text"
+           required
+           value={this.state.input}
+           onChange={this.handleInput('input')}
+          />
+          <a onClick={(e) => this.handleSubmit(e)}>
+            <i class="fa fa-paper-plane fa-2x"></i>
+          </a>
+
+      </div>
+
+
+     </div>
+  );
+ }
+
 
   render(){
 
@@ -156,27 +192,21 @@ class ChannelDisplay extends Component {
       <div>
         <div className="message-display-add">
           <span className="message-type-header"> Channels </span>
-          <button onClick={() => this.onOpenModal() }> + </button>
+          <span> <i className="fas fa-search search-channel" color="white"></i>  </span>
+
+          <a onClick={() => this.onOpenModal() }>
+            <i className="fas fa-user-plus"></i>
+          </a>
+
+
+
           <Modal
             open={open}
             onClose={() => this.onCloseModal()}
-            little
-            classNames={{
-                  transitionEnter: 'transition-enter',
-                  transitionEnterActive: 'transition-enter-active',
-                  transitionExit: 'transition-exit-active',
-                  transitionExitActive: 'transition-exit-active',
+            little >
+            {this.renderModalContent()}
 
-                }}
-            animationDuration={1000} >
 
-            <h2>Create a new Channel</h2>
-            <button onClick={(e) => this.handleSubmit(e)}> Submit </button>
-            <input
-              placeholder="Enter channel name"
-              value={this.state.input}
-              onChange={this.handleInput('input')}
-            />
 
           </Modal>
 
@@ -190,3 +220,6 @@ class ChannelDisplay extends Component {
 };
 
 export default ChannelDisplay;
+
+
+//

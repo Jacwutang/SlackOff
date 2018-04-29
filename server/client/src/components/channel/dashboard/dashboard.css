@@ -36,14 +36,24 @@
 
 .message-display-add{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-top: 15px;
-  margin-left: 10px;
+
 }
 
-/* ul li:hover:not(:focus){
-  background-color: gray;
-} */
+.modal-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.modal-form{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+}
 
 .ul-channel-messages li:hover:not(:focus){
   background-color: #666;
@@ -65,27 +75,28 @@
   line-height: 1.5em;
 }
 
+.search-channel{
+  color: white;
+}
 
+.fa-user-plus{
+  cursor: pointer;
+}
 
+.fa-paper-plane{
+  color: black;
+}
 
-
-/*
-.channel-index-item li:focus:not(:hover){
-  background-color: red;
+.fa-paper-plane{
+  cursor: pointer;
 }
 
 
-.channel-index-item li:focus{
-  background-color: red;
+
+
+
+
+
+.fa-search:hover{
+  cursor: pointer;
 }
-
-
-.channel-index-item li:hover:not(:focus){
-  background-color: gray;
-}
-
-
-.channel-index-item a:last-of-type li{
-  background-color: red;
-
-} */

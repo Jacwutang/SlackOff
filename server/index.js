@@ -13,31 +13,36 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-// const http = require('http').Server(app);
-// const io = require('socket.io')(http);
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 
 
-//any-time a new user connects
-// io.on('connection', function(socket){
-//   console.log('a user connected');
-// })
-
-
-
-//listen to port 3000, which is default react port
+//listen to port 5000, which is default react port
 const PORT = process.env.PORT ||  5000;
 
-// http.listen(PORT, function(){
-//   console.log('listening on *:5000');
-// });
-//
-// io.on('connection', function(socket){
-//   console.log('a user connected');
-//   socket.on('chat message', function(msg){
-//     io.emit('chat message', msg);
-//     console.log(msg);
-//   });
-// });
+
+
+http.listen(PORT, () => {
+  console.log('listening on *:5000');
+});
+
+io.on('connection', (socket) => {
+  console.log('a user connected');
+
+
+  socket.on('message', (msg) => {
+    io.emit('message', msg);
+    console.log("Message emitted",msg)
+  });
+
+  socket.on('disconnect', () => {
+    console.log("SOMEBODY  LEFT");
+
+  });
+
+
+
+});
 
 
 
@@ -99,4 +104,4 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
-app.listen(PORT);
+// app.listen(PORT);

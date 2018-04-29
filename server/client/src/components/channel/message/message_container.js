@@ -6,11 +6,13 @@ import { createMessage, fetchMessages, fetchUsers } from '../../../actions/index
 
 
 function checkValidMessages(state){
+
+
+  // return messages, and remove of the outer key for each message.
   if(Object.keys(state.messages).length > 0){
 
-    let objSpread = Object.keys(state.messages).map((key,idx) => {
-      // return {[key]: state.messages[key] }
-      return state.messages[key];
+    let objSpread = Object.keys(state.messages).map((key) => {
+        return state.messages[key];
 
     });
 
@@ -25,6 +27,27 @@ function checkValidMessages(state){
 };
 
 
+function formatSubscribers(state,ownProps){
+  // console.log("state.users", state.users);
+
+  if(state.channels[ownProps.match.params.type_id] === undefined || state.users === undefined) return {};
+
+
+  // we have users and channels now.
+
+  let user_ids = state.channels[ownProps.match.params.type_id].members;
+
+  const newObj = {};
+
+  user_ids.map((user_id) => {
+    newObj[user_id] = state.users[user_id]
+
+  });
+
+  return newObj;
+
+};
+
 function mapStateToProps(state,ownProps){
   // console.log("state", state);
   // console.log("type_id", ownProps.match.params.type_id);
@@ -32,11 +55,13 @@ function mapStateToProps(state,ownProps){
 
 
 
+
+
   return{
     type_id: ownProps.match.params.type_id,
     channel: state.channels[ownProps.match.params.type_id],
     messages: checkValidMessages(state),
-    users: state.users,
+    subscribers: formatSubscribers(state,ownProps),
   }
 
 }

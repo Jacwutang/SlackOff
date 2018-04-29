@@ -9,7 +9,7 @@ import axios from 'axios';
 import isEqual  from 'lodash/isEqual';
 import { RECEIVE_ALL_MESSAGES, RECEIVE_MESSAGE } from '../../../actions/types';
 
-// var Spinner = require('react-spinkit');
+
 import {FoldingCube} from 'better-react-spinkit';
 
 
@@ -31,6 +31,7 @@ class Message extends Component {
 
    componentDidMount(){
     console.log("MESSAGE MOUNTED");
+      socketIOClient("http://localhost:5000").emit('message', "hello world");
 
     }
 
@@ -66,15 +67,16 @@ class Message extends Component {
 
     }
 
-    const {users} = this.props;
+    const {subscribers} = this.props;
 
+    console.log("SUBSCRIBERS ARE", subscribers);
 
     return (
 
         this.props.messages.map( (message) =>
           <MessageListItem
             key={message._id}
-            author={users[message.author].username}
+            author={subscribers[message.author].username}
             body={message.body}
             timestamp={message.timestamp}
             time_zone={message.time_zone} />

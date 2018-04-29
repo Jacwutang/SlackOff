@@ -1,6 +1,6 @@
 import {withRouter} from 'react-router';
 import {connect} from 'react-redux';
-import ChannelDisplay from './channelDisplay';
+import ChannelDisplay from './ChannelDisplay';
 
 import { createChannel, fetchChannels } from '../../../../actions/index';
 import {RECEIVE_CHANNEL} from '../../../../actions/types';

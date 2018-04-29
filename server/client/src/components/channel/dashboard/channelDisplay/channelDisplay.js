@@ -5,7 +5,8 @@ import Modal from 'react-responsive-modal';
 import { RECEIVE_CHANNEL_ERRORS } from '../../../../actions/types';
 import axios from 'axios';
 
-import ChannelIndexItem from './channelIndexItem';
+import ChannelIndexItem from './ChannelIndexItem';
+import ChannelSearch from './ChannelSearch';
 
 import './channelDisplay.css';
 import '../dashboard.css';
@@ -118,8 +119,6 @@ class ChannelDisplay extends Component {
  }
  renderChannels(){
 
-
-
    if(!this.state.currentChannel ){
      return null;
    }
@@ -192,7 +191,10 @@ class ChannelDisplay extends Component {
       <div>
         <div className="message-display-add">
           <span className="message-type-header"> Channels </span>
-          <span> <i className="fas fa-search search-channel" color="white"></i>  </span>
+
+          <ChannelSearch
+          />
+
 
           <a onClick={() => this.onOpenModal() }>
             <i className="fas fa-user-plus"></i>

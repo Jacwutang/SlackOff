@@ -3,6 +3,8 @@
   min-height: 100vh;
   padding: 0;
   position: relative;
+  /* max-width: 75vw; */
+  margin-left:0 !important;
 }
 
 .channel-name-header{

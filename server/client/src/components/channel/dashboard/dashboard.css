@@ -26,6 +26,8 @@
   display: flex;
   flex-direction: column;
   min-width: 220px;
+  max-width: 250px;
+  margin-left:0 !important;
 
 }
 
@@ -46,12 +48,14 @@
   flex-direction: column;
   align-items: center;
 
+
 }
 
 .modal-form{
   display: flex;
   flex-direction: row;
   width: 100%;
+  height: 15vh;
 
 }
 

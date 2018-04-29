@@ -27,6 +27,8 @@ class ChannelDisplay extends Component {
   }
 
    componentDidMount(){
+     axios.get('/api/channels');
+
      console.log("CHANNEL DISPLAY MOUNTED");
      if(this.props.auth_type){
 

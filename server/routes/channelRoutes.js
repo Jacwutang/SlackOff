@@ -50,11 +50,11 @@ module.exports = (app) => {
 
 
 
-  });
+  }); //create channel
 
-  //fetch your channels
-  app.get('/api/channels', (req,res) => {
-    // dot versus [].
+
+  app.get('/api/channels/user', (req,res) => {
+
 
     const {user} = req;
     // const {type} = req.query;
@@ -77,8 +77,27 @@ module.exports = (app) => {
 
 
 
-});
+}); // get user's Channels
 
+
+  app.get('/api/channels', (req,res) => {
+
+    Channel.find({}, (err,docs) => {
+      if(docs){
+        let newObj = {};
+        docs.map( (doc) => {
+           return newObj[doc._id] = { name: doc.name, _id: doc._id};
+
+        });
+
+        console.log("formattedChannels", newObj);
+        res.send(newObj);
+      }
+
+    });
+
+
+  }); // grab all channels
 
 
 

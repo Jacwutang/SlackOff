@@ -9,7 +9,7 @@ export const fetchChannels = () => async dispatch => {
 
 
   try{
-    const res = await axios.get('/api/channels');
+    const res = await axios.get('/api/channels/user');
     return dispatch({type: RECEIVE_ALL_CHANNELS, payload: res.data});
 
   }catch(error){

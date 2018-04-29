@@ -61,7 +61,7 @@ class Message extends Component {
 
       this.setState({loaded: false});
 
-      //only fetch Messages and fetch Users if it's initial channel loading.
+
 
       //setup a socket here
 
@@ -71,7 +71,7 @@ class Message extends Component {
       });
 
 
-
+        //only fetch Messages and fetch Users if it's initial channel loading.
       this.props.fetchMessages(nextProps.type_id).then( () => {
         this.props.fetchUsers().then( setTimeout( () => {
             this.setState({loaded:true});
@@ -81,15 +81,7 @@ class Message extends Component {
       });
     } else{
 
-      // if(this.props.channel && this.props.messages){
-      //
-      //   socket.on('receiveMessage', (payload) => {
-      //     console.log("THE PAYLOAD IS", payload);
-      //     this.props.createMessage(payload.body, payload.channel_id)
-      //
-      //   });
-      //
-      // }
+
 
     }
 

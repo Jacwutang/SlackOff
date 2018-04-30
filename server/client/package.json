@@ -16,14 +16,12 @@
     "better-react-spinkit": "^2.0.4",
     "lodash": "^4.17.10",
     "materialize-css": "^0.100.2",
-    "radium": "^0.22.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-responsive-modal": "^2.0.1",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1",
-    "react-spinkit": "^3.0.0",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
@@ -35,7 +33,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "devDependencies": {
-    "case-sensitive-paths-webpack-plugin": "^2.1.2"
-  }
+  "devDependencies": {}
 }

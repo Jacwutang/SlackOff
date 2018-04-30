@@ -47,11 +47,8 @@ class ChannelAdd extends Component{
 
       if(action.type !== RECEIVE_CHANNEL_ERRORS){
 
-           this.setState({input: '', open: false}).then( (resp) => {
-
-             console.log("RESPONSE", resp)
-           // } this.props.toggleActive(action.payload))
-         });
+           this.setState({input: '', open: false});
+           this.props.toggleActive(action.payload);
 
       }
 
@@ -99,7 +96,7 @@ class ChannelAdd extends Component{
            onChange={this.handleInput('input')}
           />
           <a onClick={this.handleSubmit}>
-            <i class="fa fa-paper-plane fa-2x"></i>
+            <i className="fa fa-paper-plane fa-2x"></i>
           </a>
 
       </form>

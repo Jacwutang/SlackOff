@@ -5,8 +5,8 @@ import { RECEIVE_CHANNEL_ERRORS } from '../../../../actions/types';
 import axios from 'axios';
 
 import ChannelIndexItem from './ChannelIndexItem';
-// import ChannelSearch from './ChannelSearch';
-// import ChannelAdd from './ChannelAdd';
+import ChannelSearch from './ChannelSearch';
+import ChannelAdd from './ChannelAdd';
 
 import './channelDisplay.css';
 import '../dashboard.css';
@@ -79,8 +79,7 @@ class ChannelDisplay extends Component {
     e.preventDefault();
 
     this.props.createChannel(this.state.input, this.props.type).then( (action) => {
-      console.log(typeof action);
-      console.log("action", action);
+
 
       if(action.type !== RECEIVE_CHANNEL_ERRORS){
         this.setState({input: '',open: false});
@@ -107,6 +106,8 @@ class ChannelDisplay extends Component {
    this.setState({
      currentChannel: channel
    });
+   console.log("CHANNEL RETURNED IS", channel);
+   this.props.history.push(`/messages/channel/${channel._id}`);
 
  }
  renderChannels(){
@@ -156,30 +157,14 @@ class ChannelDisplay extends Component {
       <div>
         <div className="message-display-add">
           <span className="message-type-header"> Channels </span>
+           <ChannelSearch/>
 
-          <button onClick={() => this.onOpenModal() }> + </button>
-          <Modal
-            open={open}
-            onClose={() => this.onCloseModal()}
-            little
-            classNames={{
-                  transitionEnter: 'transition-enter',
-                  transitionEnterActive: 'transition-enter-active',
-                  transitionExit: 'transition-exit-active',
-                  transitionExitActive: 'transition-exit-active',
-
-                }}
-            animationDuration={1000} >
-
-            <h2>Create a new Channel</h2>
-            <button onClick={(e) => this.handleSubmit(e)}> Submit </button>
-            <input
-              placeholder="Enter channel name"
-              value={this.state.input}
-              onChange={this.handleInput('input')}
-            />
-
-          </Modal>
+           <ChannelAdd
+           errors={this.props.errors}
+           createChannel={this.props.createChannel}
+           type={this.props.type}
+           toggleActive={this.toggleActive}
+           />
 
         </div>
 
@@ -198,19 +183,3 @@ class ChannelDisplay extends Component {
 };
 
 export default ChannelDisplay;
-
-
-// <ChannelAdd
-// errors={this.props.errors}
-// createChannel={this.props.createChannel}
-// type={this.props.type}
-// toggleActive={this.toggleActive}
-// />
-
-// <button type="button" onClick={this.handleSubmit}>
-//   <i className="fa fa-paper-plane fa-2x"></i>
-// </button>
-
-
-// <ChannelSearch
-// />

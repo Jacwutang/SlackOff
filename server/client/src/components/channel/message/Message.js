@@ -40,7 +40,7 @@ class Message extends Component {
     }
 
     componentDidMount(){
-      console.log("MY PROPS ARE", this.props);
+
 
       socket.on('receiveMessage', (payload) => {
         this.props.fetchMessage(payload);

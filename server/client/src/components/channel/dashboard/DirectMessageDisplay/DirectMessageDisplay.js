@@ -29,7 +29,7 @@ class DirectMessageDisplay extends Component {
     window.setTimeout( () => {
       this.setState({loaded:true})
 
-    },5000);
+    },4500);
   }
 
   onOpenModal(){

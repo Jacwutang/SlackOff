@@ -44,7 +44,7 @@ class ChannelDisplay extends Component {
         setTimeout( () => {
           this.setState({loaded:true})
 
-        },5000);
+        },3500);
 
       });
 

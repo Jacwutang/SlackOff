@@ -14,6 +14,8 @@ class Channel extends Component {
   }
 
   componentDidMount(){
+
+    console.log("CHANNEL MOUNTED", this.props);
     if(!this.props.auth){
       this.props.history.push('/');
     }
@@ -34,6 +36,7 @@ class Channel extends Component {
 
       <DashBoard />
       <Message />
+
 
 
     </div>

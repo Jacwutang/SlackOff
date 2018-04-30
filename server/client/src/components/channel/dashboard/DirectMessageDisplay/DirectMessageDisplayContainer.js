@@ -13,7 +13,9 @@ function mapStateToProps(state,ownProps){
 }
 
 function mapDispatchToProps(dispatch){
-
+  return {
+    dispatch
+  }
 
 
 }

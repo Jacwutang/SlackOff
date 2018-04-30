@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
-import { withRouter } from 'react-router';
+
 import Modal from 'react-responsive-modal';
 import { RECEIVE_CHANNEL_ERRORS } from '../../../../actions/types';
 import axios from 'axios';
 
 import ChannelIndexItem from './ChannelIndexItem';
-import ChannelSearch from './ChannelSearch';
+// import ChannelSearch from './ChannelSearch';
+// import ChannelAdd from './ChannelAdd';
 
 import './channelDisplay.css';
 import '../dashboard.css';
@@ -31,7 +31,6 @@ class ChannelDisplay extends Component {
    componentDidMount(){
      axios.get('/api/channels');
 
-     console.log("CHANNEL DISPLAY MOUNTED");
      if(this.props.auth_type){
 
       this.props.fetchChannels().then( (action) => {
@@ -42,12 +41,14 @@ class ChannelDisplay extends Component {
 
 
       });
-    }
 
+
+    }
   }
 
-   componentWillReceiveProps(nextProps){
 
+   componentWillReceiveProps(nextProps){
+     console.log(nextProps,"nextProps");
 
     if(this.props.auth_type !== nextProps.auth_type){
       //Google Oauth's props comes in later
@@ -77,11 +78,13 @@ class ChannelDisplay extends Component {
   handleSubmit(e){
     e.preventDefault();
 
-    this.props.createChannel(this.state.input,this.props.type).then( (action) => {
+    this.props.createChannel(this.state.input, this.props.type).then( (action) => {
+      console.log(typeof action);
+      console.log("action", action);
 
       if(action.type !== RECEIVE_CHANNEL_ERRORS){
-        this.setState({input: '',open: false}).then( () =>
-        this.props.history.push(`/messages/channel/${action.payload._id}`))
+        this.setState({input: '',open: false});
+        this.props.history.push(`/messages/channel/${action.payload._id}`);
 
       }
 
@@ -99,18 +102,7 @@ class ChannelDisplay extends Component {
     )
   }
 
-
-  onOpenModal(){
-   this.props.clearErrors();
-   this.setState({ open: true });
-  };
-
- onCloseModal(){
-
-   this.setState({ open: false });
-  };
-
- toggleActive(channel){
+  toggleActive(channel){
 
    this.setState({
      currentChannel: channel
@@ -147,41 +139,14 @@ class ChannelDisplay extends Component {
   );
  }
 
- renderModalContent(){
-   return(
-     <div className="modal-content">
-        <ul className="errors-ul">
-          {this.props.errors.map( (err,idx) => (
-            <li className="errors-li" key={idx}>
-              {err}
-            </li>
 
-          ))
-          }
+  onOpenModal(){
+   this.setState({ open: true });
+  };
 
-        </ul>
-
-       <h3>Create a new Channel</h3>
-
-       <div className="modal-form">
-         <input
-           placeholder="Enter channel name"
-           type="text"
-           required
-           value={this.state.input}
-           onChange={this.handleInput('input')}
-          />
-          <a onClick={(e) => this.handleSubmit(e)}>
-            <i class="fa fa-paper-plane fa-2x"></i>
-          </a>
-
-      </div>
-
-
-     </div>
-  );
- }
-
+ onCloseModal(){
+   this.setState({ open: false });
+  };
 
   render(){
 
@@ -192,36 +157,60 @@ class ChannelDisplay extends Component {
         <div className="message-display-add">
           <span className="message-type-header"> Channels </span>
 
-          <ChannelSearch
-          />
-
-
-          <a onClick={() => this.onOpenModal() }>
-            <i className="fas fa-user-plus"></i>
-          </a>
-
-
-
+          <button onClick={() => this.onOpenModal() }> + </button>
           <Modal
             open={open}
             onClose={() => this.onCloseModal()}
-            little >
-            {this.renderModalContent()}
+            little
+            classNames={{
+                  transitionEnter: 'transition-enter',
+                  transitionEnterActive: 'transition-enter-active',
+                  transitionExit: 'transition-exit-active',
+                  transitionExitActive: 'transition-exit-active',
 
+                }}
+            animationDuration={1000} >
 
+            <h2>Create a new Channel</h2>
+            <button onClick={(e) => this.handleSubmit(e)}> Submit </button>
+            <input
+              placeholder="Enter channel name"
+              value={this.state.input}
+              onChange={this.handleInput('input')}
+            />
 
           </Modal>
 
         </div>
 
-        {this.renderChannels()}
+       {this.renderChannels()}
 
-      </div>
-    )
+
+
+    </div>
+
+  );
   }
+
+
+
+
 };
 
 export default ChannelDisplay;
 
 
-//
+// <ChannelAdd
+// errors={this.props.errors}
+// createChannel={this.props.createChannel}
+// type={this.props.type}
+// toggleActive={this.toggleActive}
+// />
+
+// <button type="button" onClick={this.handleSubmit}>
+//   <i className="fa fa-paper-plane fa-2x"></i>
+// </button>
+
+
+// <ChannelSearch
+// />

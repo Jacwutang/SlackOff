@@ -17,10 +17,10 @@ function mapStateToProps(state,ownProps){
 function mapDispatchToProps(dispatch){
   return(
     {
-
+      dispatch
     }
   )
 
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(Channel);
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Channel));

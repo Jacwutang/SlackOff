@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import ReactDOM from 'react-dom';
+import {withRouter} from 'react-router';
 import {connect} from 'react-redux';
 import Modal from 'react-responsive-modal';
 import './dashboard.css';
@@ -17,6 +17,7 @@ class DashBoard extends Component {
 
   componentDidMount(){
     console.log("DASHBOARD MOUNTED");
+    console.log("DASHBOARD PROPS", this.props);
   }
 
   componentWillReceiveProps(){
@@ -55,7 +56,7 @@ class DashBoard extends Component {
 
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(DashBoard);
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(DashBoard));
 
 function mapStateToProps(state){
   return (
@@ -69,7 +70,7 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
   return(
     {
-
+      dispatch
     }
   )
 

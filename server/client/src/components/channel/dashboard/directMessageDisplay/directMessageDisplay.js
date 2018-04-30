@@ -49,7 +49,7 @@ class DirectMessageDisplay extends Component {
       <div className="message-display-add">
         <span className="message-type-header">Direct Messages</span>
         <a onClick={() => this.onOpenModal()}>
-          <i class="fa fa-users fa-2x"></i>
+          <i className="fa fa-users fa-2x"></i>
         </a>
 
         <Modal

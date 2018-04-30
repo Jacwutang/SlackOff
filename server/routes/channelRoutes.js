@@ -10,27 +10,29 @@ module.exports = (app) => {
   app.post('/api/channel/new', (req,res) => {
 
       const { name,type } = req.body;
-
+      console.log("channel route hit");
+      console.log(name,"name");
+      console.log(type,"type");
+      console.log(req.user);
 
       //create channel with 1 user
 
       let newChannel = {
         name: name,
         members: [req.user],
-        is_dm: type
-
+        is_dm: false
 
       }
 
       Channel.create(newChannel, (err,channel) => {
         if(err){
-
-          res.status(400).send(
-          { message: err.errors.name.message });
+          console.log("ERROR IS", err);
+          // res.status(400).send(
+          // { message: err.errors.name.message });
 
         } else{
-          // console.log("create channel succeded");
-          // console.log(channel);
+          console.log("create channel succeded");
+          console.log(channel);
 
           User.update({"_id": req.user.id},
           {$push: {channels: channel._id}}, (err,success) => {
@@ -53,6 +55,11 @@ module.exports = (app) => {
 
 
   }); //create channel
+
+  app.post('/api/channel/test', (req,res) => {
+    console.log("TEST ROUTE HIT");
+
+  });
 
 
   app.get('/api/channels/user', (req,res) => {
@@ -92,7 +99,7 @@ module.exports = (app) => {
 
         });
 
-        console.log("formattedChannels", newObj);
+        // console.log("formattedChannels", newObj);
         res.send(newObj);
       }
 

@@ -10,10 +10,10 @@ module.exports = (app) => {
   app.post('/api/channel/new', (req,res) => {
 
       const { name,type } = req.body;
-      console.log("channel route hit");
-      console.log(name,"name");
-      console.log(type,"type");
-      console.log(req.user);
+      // console.log("channel route hit");
+      // console.log(name,"name");
+      // console.log(type,"type");
+      // console.log(req.user);
 
       //create channel with 1 user
 
@@ -27,8 +27,8 @@ module.exports = (app) => {
       Channel.create(newChannel, (err,channel) => {
         if(err){
           console.log("ERROR IS", err);
-          // res.status(400).send(
-          // { message: err.errors.name.message });
+          res.status(400).send(
+          { message: err.errors.name.message });
 
         } else{
           console.log("create channel succeded");
@@ -38,8 +38,6 @@ module.exports = (app) => {
           {$push: {channels: channel._id}}, (err,success) => {
             if(err){
               console.log("error update user");
-            } else{
-
             }
 
           });

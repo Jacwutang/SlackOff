@@ -26,6 +26,8 @@ class DashBoard extends Component {
   }
 
   render(){
+
+
     return(
       <section className="col s2">
         <div className="workspace-div">
@@ -61,6 +63,7 @@ export default withRouter(connect(mapStateToProps,mapDispatchToProps)(DashBoard)
 function mapStateToProps(state){
   return (
     {
+      
 
     }
   )

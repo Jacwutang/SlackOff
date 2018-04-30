@@ -8,6 +8,9 @@ import './directMessageDisplay.css';
 import '../dashboard.css';
 import '../animation.css';
 
+
+import {ThreeBounce} from 'better-react-spinkit';
+
 class DirectMessageDisplay extends Component {
   constructor(props){
     super(props);
@@ -15,9 +18,18 @@ class DirectMessageDisplay extends Component {
     this.state = {
       open: false,
       input: '',
+      loaded: false,
     };
 
 
+  }
+
+  componentDidMount(){
+
+    window.setTimeout( () => {
+      this.setState({loaded:true})
+
+    },5000);
   }
 
   onOpenModal(){
@@ -44,6 +56,16 @@ class DirectMessageDisplay extends Component {
 
 
   render(){
+    if(!this.state.loaded){
+
+          return( <div className="spinner-wrapper-messages">
+            <ThreeBounce size={35} color="white" />
+            </div>
+          );
+
+
+    }
+
     const { open } = this.state;
     return(
       <div className="message-display-add">
@@ -71,7 +93,7 @@ class DirectMessageDisplay extends Component {
                 onChange={this.handleInput('input')}
                />
                <a onClick={(e) => this.handleSubmit(e)}>
-                 <i class="fas fa-arrow-alt-circle-right"></i>
+                 <i className="fas fa-arrow-alt-circle-right"></i>
                </a>
 
            </div>

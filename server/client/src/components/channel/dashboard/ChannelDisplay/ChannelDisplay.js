@@ -7,12 +7,13 @@ import axios from 'axios';
 import ChannelIndexItem from './ChannelIndexItem';
 import ChannelSearch from './ChannelSearch';
 import ChannelAdd from './ChannelAdd';
+import {Wave} from 'better-react-spinkit';
 
-//
 import './channelDisplay.css';
 import '../dashboard.css';
 import '../animation.css';
 import '../../../session/session.css';
+
 
 class ChannelDisplay extends Component {
   constructor(props){
@@ -40,6 +41,10 @@ class ChannelDisplay extends Component {
           this.props.history.push(`/messages/channel/${action.payload[0]._id}`);
         }
 
+        setTimeout( () => {
+          this.setState({loaded:true})
+
+        },5000);
 
       });
 
@@ -53,7 +58,8 @@ class ChannelDisplay extends Component {
 
     if(this.props.auth_type !== nextProps.auth_type){
       //Google Oauth's props comes in later
-       this.props.fetchChannels();
+
+       this.props.fetchChannels().then(() => this.setState({loaded:true}))
     }
 
     //fetched channels came back
@@ -66,11 +72,14 @@ class ChannelDisplay extends Component {
       nextProps.channels.slice(-1)[0];
 
 
-      return this.setState({
-        currentChannel: currentChannel
-      });
 
-    }
+      setTimeout( () => {
+         this.setState({currentChannel: currentChannel,loaded: true})
+       },5000);
+
+      }
+
+
 
   }
 
@@ -113,8 +122,14 @@ class ChannelDisplay extends Component {
  }
  renderChannels(){
 
-   if(!this.state.currentChannel ){
-     return null;
+   // if(!this.state.currentChannel ){
+   //   return null;
+   // }
+   if(!this.state.loaded){
+     return (<div className="spinner-wrapper-channels">
+              <Wave size={50} color="black" />
+            </div>
+          );
    }
 
 
@@ -162,6 +177,7 @@ class ChannelDisplay extends Component {
 
            <ChannelAdd
            errors={this.props.errors}
+           clearErrors={this.props.clearErrors}
            createChannel={this.props.createChannel}
            type={this.props.type}
            toggleActive={this.toggleActive}

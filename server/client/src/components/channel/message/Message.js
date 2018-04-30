@@ -59,6 +59,7 @@ class Message extends Component {
     if( (nextProps.type_id !== this.props.type_id) &&
     ( isEqual(this.props.channel,nextProps.channel) === false) ){
 
+      //stop spinning once props load
       this.setState({loaded: false});
 
 

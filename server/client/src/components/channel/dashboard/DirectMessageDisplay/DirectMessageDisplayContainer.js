@@ -5,7 +5,7 @@ import DirectMessageDisplay from './DirectMessageDisplay';
 
 function mapStateToProps(state,ownProps){
   return {
-    users: state.users,
+    channels: state.channels,
 
   }
 

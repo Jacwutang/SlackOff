@@ -14,6 +14,12 @@
 }
 
 
+.spinner-wrapper-messages{
+  display: flex;
+  justify-content: center;
+  margin-top: 50vh;
+}
+
 .search-li{
   display: flex;
   flex-direction: row;

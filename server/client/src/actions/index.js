@@ -61,7 +61,7 @@ export const createMessage = (body,channel_id) => async dispatch => {
     return dispatch({type: RECEIVE_MESSAGE, payload: res.data});
 
   }catch(error){
-    // return dispatch({type:RECEIVE_CHANNELS_ERRORS,payload:error.data});
+    return dispatch({type:RECEIVE_CHANNEL_ERRORS,payload:error.response.data});
 
   }
 

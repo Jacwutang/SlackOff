@@ -9,6 +9,9 @@ export default function(state = {}, action){
 
   switch(action.type){
     case RECEIVE_CHANNEL:
+      if(Array.isArray(action.payload))
+        return state;
+
       const newChannel =  { [action.payload._id]: action.payload};
 
       return Object.assign({},state, newChannel);

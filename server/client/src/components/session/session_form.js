@@ -27,6 +27,7 @@ class SessionForm extends Component{
   componentDidMount(){
     if(this.props.auth){
       //if there is a currentUser already, re-direct them home
+      
       this.props.history.push('/');
 
     }
@@ -40,11 +41,12 @@ class SessionForm extends Component{
 
   componentWillReceiveProps(nextProps){
     //for demo login + custom login.
-    // if(nextProps.auth){
-    //   //if a user signs on, re-direct them to messages
-    //
-    //   this.props.history.push('/messages');
-    // }
+
+    if(nextProps.auth){
+      //if a user signs on, re-direct them to messages
+
+      this.props.history.push('/messages');
+    }
 
 
 
@@ -237,10 +239,7 @@ class SessionForm extends Component{
           <div className="session-container">
               {this.renderErrors()}
 
-              <button type="button" onClick={this.otherLogin}> other login
 
-
-              </button>
 
               <form className="session-form" onSubmit={this.handleSubmit}>
 
@@ -269,3 +268,9 @@ class SessionForm extends Component{
 }
 
 export default SessionForm;
+
+
+// <button type="button" onClick={this.otherLogin}> other login
+//
+//
+// </button>

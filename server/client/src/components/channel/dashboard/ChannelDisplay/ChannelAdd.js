@@ -28,6 +28,10 @@ class ChannelAdd extends Component{
     console.log(this, "MOUNTED THIS");
   }
 
+  componentWillReceiveProps(nextProps){
+
+  }
+
 
 
   onOpenModal(){
@@ -36,13 +40,14 @@ class ChannelAdd extends Component{
   };
 
   onCloseModal(){
-
    this.setState({ open: false });
+   
+
   };
 
   handleSubmit(e) {
     e.preventDefault();
-
+    console.log("SUBMITED");
     this.props.createChannel(this.state.input,this.props.type).then( (action) => {
 
       if(action.type !== RECEIVE_CHANNEL_ERRORS){

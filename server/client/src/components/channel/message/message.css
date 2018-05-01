@@ -102,9 +102,13 @@
   margin: 0 auto;
   border-bottom: none;
   margin-top: 10px;
-  margin-bottom: 10px;
   position: relative;
   left: 5px;
+
+}
+
+.ul-messages:last-child{
+  margin-bottom: 0;
 
 }
 

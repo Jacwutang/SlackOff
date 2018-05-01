@@ -1,6 +1,6 @@
 //DATA LAYER
 import 'materialize-css/dist/css/materialize.min.css';
-import styles from './assets/base.css';
+// import styles from './assets/base.css';
 
 
 import React from 'react';

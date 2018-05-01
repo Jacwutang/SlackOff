@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './message.css';
+import 'assets/css/Message/message.css';
 
 
 class MessageInput extends Component {

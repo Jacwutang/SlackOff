@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import Header from '../header/header_container';
 import Footer from '../footer/Footer';
 import {RECEIVE_SESSION_ERRORS} from '../../actions/types';
-import './session.css';
+import 'assets/css/SessionForm/sessionForm.css';
 
 
 class SessionForm extends Component{
@@ -27,7 +27,7 @@ class SessionForm extends Component{
   componentDidMount(){
     if(this.props.auth){
       //if there is a currentUser already, re-direct them home
-      
+
       this.props.history.push('/');
 
     }

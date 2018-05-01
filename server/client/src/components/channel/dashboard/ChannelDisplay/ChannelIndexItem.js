@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
 
 
-import '../dashboard.css';
+import 'assets/css/Dashboard/dashboard.css';
 
 
 

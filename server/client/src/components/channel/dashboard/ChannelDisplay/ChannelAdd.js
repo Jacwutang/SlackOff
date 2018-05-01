@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import Modal from 'react-responsive-modal';
 import { RECEIVE_CHANNEL_ERRORS } from '../../../../actions/types';
 
-import '../dashboard.css';
-import '../../../session/session.css';
-import '../../message/message.css';
-import '../DirectMessageDisplay/directMessageDisplay.css';
+import 'assets/css/Dashboard/dashboard.css';
+import 'assets/css/SessionForm/sessionForm.css';
+import 'assets/css/Message/message.css';
+import 'assets/css/DirectMessageDisplay/directMessageDisplay.css';
 
 
 class ChannelAdd extends Component{
@@ -41,7 +41,7 @@ class ChannelAdd extends Component{
 
   onCloseModal(){
    this.setState({ open: false });
-   
+
 
   };
 

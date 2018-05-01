@@ -4,9 +4,9 @@ import Modal from 'react-responsive-modal';
 import DirectMessageSearch from './DirectMessageSearch';
 
 
-import './directMessageDisplay.css';
-import '../dashboard.css';
-import '../animation.css';
+import 'assets/css/DirectMessageDisplay/directMessageDisplay.css';
+import 'assets/css/Dashboard/dashboard.css';
+import 'assets/css/animation.css';
 
 
 import {ThreeBounce} from 'better-react-spinkit';

@@ -4,11 +4,11 @@ import axios from 'axios';
 
 
 
-import './channelDisplay.css';
-import '../dashboard.css';
-import '../../../session/session.css';
-import '../../message/message.css';
-import '../DirectMessageDisplay/directMessageDisplay.css';
+import 'assets/css/ChannelDisplay/channelDisplay.css';
+import 'assets/css/Dashboard/dashboard.css';
+import 'assets/css/SessionForm/sessionForm.css';
+import 'assets/css/Message/message.css';
+import 'assets/css/DirectMessageDisplay/directMessageDisplay.css';
 
 
 class ChannelSearch extends Component{

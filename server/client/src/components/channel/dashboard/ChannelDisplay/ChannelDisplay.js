@@ -9,10 +9,10 @@ import ChannelSearch from './ChannelSearch';
 import ChannelAdd from './ChannelAdd';
 import {Wave} from 'better-react-spinkit';
 
-import './channelDisplay.css';
-import '../dashboard.css';
-import '../animation.css';
-import '../../../session/session.css';
+import 'assets/css/ChannelDisplay/channelDisplay.css';
+import 'assets/css/Dashboard/dashboard.css';
+import 'assets/css/animation.css';
+import 'assets/css/SessionForm/sessionForm.css';
 
 
 class ChannelDisplay extends Component {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './directMessageDisplay.css';
-import '../../message/message.css';
+import 'assets/css/DirectMessageDisplay/directMessageDisplay.css';
+import 'assets/css/Message/message.css';
 
 
 class DirectMessageSearch extends Component{
@@ -17,7 +17,7 @@ class DirectMessageSearch extends Component{
       </div>
 
       <ul className="search-ul">
-      
+
 
       </ul>
 

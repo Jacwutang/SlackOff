@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
 
-import './channel.css';
+import 'assets/css/Channel/channel.css';
 import DashBoard from './dashboard/Dashboard';
 import Message from './message/message_container';
 import { withRouter } from 'react-router';
@@ -25,9 +25,7 @@ class Channel extends Component {
 
 
   render(){
-    if(!this.props.auth){
-      return null;
-    }
+
 
     return(
 

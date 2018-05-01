@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {withRouter} from 'react-router';
 import {connect} from 'react-redux';
 import Modal from 'react-responsive-modal';
-import './dashboard.css';
+import 'assets/css/Dashboard/dashboard.css';
 
 import ChannelDisplay from './ChannelDisplay/ChannelDisplayContainer';
 import DirectMessageDisplay from './DirectMessageDisplay/DirectMessageDisplayContainer';
@@ -63,7 +63,7 @@ export default withRouter(connect(mapStateToProps,mapDispatchToProps)(DashBoard)
 function mapStateToProps(state){
   return (
     {
-      
+
 
     }
   )

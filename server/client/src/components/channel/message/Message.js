@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
 
-import './message.css';
+import 'assets/css/Message/message.css';
 import MessageListItem from './MessageListItem';
 import MessageInput from './MessageInput';
 import axios from 'axios';
@@ -26,8 +26,7 @@ class Message extends Component {
     super();
     this.state = {
       search: "",
-      loaded: false,
-      temp: false
+      loaded: false
     }
 
 
@@ -76,8 +75,7 @@ class Message extends Component {
         //only fetch Messages and fetch Users if it's initial channel loading.
       this.props.fetchMessages(nextProps.type_id).then( () => {
         this.props.fetchUsers().then( setTimeout( () => {
-          const messages = document.querySelector('.ul-messages');
-          messages.scrollTop = messages.scrollHeight;
+
           this.setState({loaded:true});
         },2500));
 
@@ -85,20 +83,11 @@ class Message extends Component {
 
 
       });
-    } else{
-
-
-
     }
 
 
 
   }
-
-
-
-
-
 
 
 
@@ -202,31 +191,31 @@ class Message extends Component {
   }
 
 
-  componentWillUpdate() {
-    let list = this.refs.list;
-
-    this.shouldScroll =
-      list.scrollTop + list.offsetHeight === list.scrollHeight;
-  }
-
-  componentDidUpdate() {
-    if (this.shouldScroll) {
-
-      console.log("Component Did Update.SHOULD SCROLL", this.shouldScroll);
-      this.scrollToBottom();
-    }
-  }
-
-  scrollToBottom() {
-    let list = this.refs.list;
-
-    console.log(list.scrollTop, "scrollTop");
-    console.log(list.scrollHeight, "scrollheight");
-    // 0 = 700
-    list.scrollTop = list.scrollHeight;
-
-    console.log(list.scrollTop, "new scrolltop");
-  }
+  // componentWillUpdate() {
+  //   let list = this.refs.list;
+  //
+  //   this.shouldScroll =
+  //     list.scrollTop + list.offsetHeight === list.scrollHeight;
+  // }
+  //
+  // componentDidUpdate() {
+  //   if (this.shouldScroll) {
+  //
+  //     console.log("Component Did Update.SHOULD SCROLL", this.shouldScroll);
+  //     this.scrollToBottom();
+  //   }
+  // }
+  //
+  // scrollToBottom() {
+  //   let list = this.refs.list;
+  //
+  //   console.log(list.scrollTop, "scrollTop");
+  //   console.log(list.scrollHeight, "scrollheight");
+  //   // 0 = 700
+  //   list.scrollTop = list.scrollHeight;
+  //
+  //   console.log(list.scrollTop, "new scrolltop");
+  // }
 
   render(){
 

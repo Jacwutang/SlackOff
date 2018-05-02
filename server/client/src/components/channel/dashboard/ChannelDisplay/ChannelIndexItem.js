@@ -13,13 +13,6 @@ class ChannelIndexItem extends Component{
 
   }
 
-  componentDidMount(){
-
-
-
-  }
-
-
   handleClick = () => {
     //this is preserved/unchanged. Otherwise it would be from the event handler
     this.props.onToggle(this.props.channel);

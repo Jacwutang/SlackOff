@@ -7,7 +7,7 @@ import Dashboard from './Dashboard';
 function mapStateToProps(state){
   return (
     {
-
+      auth: state.auth,
 
     }
   )

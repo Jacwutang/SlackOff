@@ -24,15 +24,20 @@ class Channel extends Component {
 
 
 
-  render(){
 
+
+  render(){
+    if(!this.props.auth){
+      return null;
+    }
 
     return(
 
     <div className="row">
 
-      <DashBoard />
-      <Message />
+    <DashBoard />
+    <Message />
+
 
 
 

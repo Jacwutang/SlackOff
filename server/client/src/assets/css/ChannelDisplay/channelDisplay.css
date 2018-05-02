@@ -1,0 +1,5 @@
+.spinner-wrapper-channels{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}

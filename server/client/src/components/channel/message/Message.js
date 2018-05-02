@@ -43,7 +43,7 @@ class Message extends Component {
 
     componentDidMount(){
 
-
+      console.log(this.props);
 
       socket.on('receiveMessage', (payload) => {
         this.props.fetchMessage(payload);
@@ -132,7 +132,7 @@ class Message extends Component {
 
   render(){
 
-    const {channel, subscribers, messages, type_id, createMessage} = this.props;
+    const {channel, arraySubscribers, subscribers, messages, type_id, createMessage} = this.props;
 
     if(!this.state.loaded){
       return(
@@ -164,7 +164,7 @@ class Message extends Component {
         {this.state.showComponent?
           <MessagePanelInfo
           channel={channel}
-          subscribers={subscribers}
+          subscribers={arraySubscribers}
           toggleShowComponent={this.showComponent}
           /> :
           null

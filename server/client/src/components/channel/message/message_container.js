@@ -29,7 +29,7 @@ function checkValidMessages(state){
 
 
 function formatSubscribers(state,ownProps){
-  // console.log("state.users", state.users);
+  // returns the subscribers to that channel
 
   if(state.channels[ownProps.match.params.type_id] === undefined || state.users === undefined) return {};
 
@@ -49,6 +49,18 @@ function formatSubscribers(state,ownProps){
 
 };
 
+function formatSubscribersToArray(state,ownProps){
+  if(state.channels[ownProps.match.params.type_id] === undefined || state.users === undefined) return [];
+
+  let user_ids = state.channels[ownProps.match.params.type_id].members;
+
+  let array = user_ids.map( (id) => state.users[id]);
+
+  return array;
+
+
+}
+
 function mapStateToProps(state,ownProps){
 
 
@@ -57,6 +69,8 @@ function mapStateToProps(state,ownProps){
     channel: state.channels[ownProps.match.params.type_id],
     messages: checkValidMessages(state),
     subscribers: formatSubscribers(state,ownProps),
+    arraySubscribers: formatSubscribersToArray(state,ownProps),
+
   }
 
 }

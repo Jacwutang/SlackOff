@@ -54,6 +54,19 @@ class MessagePanelInfo extends Component{
         </div>
 
         <ul className="members-list">
+          {
+            (this.props.subscribers).map( (user) =>
+            <li className="">
+              {user.username}
+
+            </li>
+
+
+          )
+
+
+          }
+
 
         </ul>
 

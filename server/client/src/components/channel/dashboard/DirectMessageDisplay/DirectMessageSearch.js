@@ -8,6 +8,13 @@ class DirectMessageSearch extends Component{
     super(props);
   }
 
+  handleInput(field){
+
+    return( (e) =>
+       this.setState({[field]: e.target.value})
+    );
+  }
+
   render(){
     return(
       <div className="search-results-container">

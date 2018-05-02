@@ -5,7 +5,7 @@ import Modal from 'react-responsive-modal';
 import 'assets/css/Dashboard/dashboard.css';
 
 import ChannelDisplay from './ChannelDisplay/ChannelDisplay';
-import DirectMessageDisplay from './DirectMessageDisplay/DirectMessageDisplayContainer';
+import DirectMessageDisplay from './DirectMessageDisplay/DirectMessageDisplay';
 
 
 
@@ -26,7 +26,7 @@ class Dashboard extends Component {
   }
 
   render(){
-    
+
 
     return(
       <section className="col s2">

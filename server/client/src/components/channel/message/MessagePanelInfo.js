@@ -3,9 +3,8 @@ import {connect} from 'react-redux';
 
 
 import 'assets/css/Message/message.css';
-import 'assets/css/Message/messageUserInfo.css';
-import MessageListItem from './MessageListItem';
-import MessageInput from './MessageInput';
+import 'assets/css/Message/messagePanelInfo.css';
+import MessagePanelList from './MessagePanelList';
 
 
 import axios from 'axios';
@@ -25,6 +24,10 @@ class MessagePanelInfo extends Component{
     super(props);
 
     this.togglePanelCSS = this.togglePanelCSS.bind(this);
+
+  }
+
+  componentDidMount(){
 
   }
 
@@ -56,15 +59,10 @@ class MessagePanelInfo extends Component{
         <ul className="members-list">
           {
             (this.props.subscribers).map( (user) =>
-            <li className="">
-              {user.username}
-
-            </li>
-
-
-          )
-
-
+            <MessagePanelList
+            key={user._id}
+            user={user}
+            /> )
           }
 
 

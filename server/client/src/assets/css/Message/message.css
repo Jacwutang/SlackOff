@@ -106,7 +106,7 @@
   height: calc(100vh - 17vh);
   /* margin-right: 3px; */
   width: 95%;
-  /* margin: 0 auto; */
+  margin: 0 auto;
   border-bottom: none;
   margin-top: 10px;
   position: relative;

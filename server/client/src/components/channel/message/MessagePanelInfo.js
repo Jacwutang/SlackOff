@@ -20,16 +20,16 @@ import {FoldingCube} from 'better-react-spinkit';
 
 
 
-class MessageUserInfo extends Component{
+class MessagePanelInfo extends Component{
   constructor(props){
     super(props);
 
-    this.triggerPanelCSS = this.triggerPanelCSS.bind(this);
+    this.togglePanelCSS = this.togglePanelCSS.bind(this);
 
   }
 
-  triggerPanelCSS(){
-    this.props.toggleShow();
+  togglePanelCSS(){
+    this.props.toggleShowComponent();
   }
 
 
@@ -42,16 +42,20 @@ class MessageUserInfo extends Component{
           <h4 className="channel-name-header">
           {`About # ${channel.name}`}
           </h4>
-          <a className="a-channel-info" onClick={this.triggerPanelCSS} >
+          <a className="a-channel-info" onClick={this.togglePanelCSS} >
             <h5> X </h5>
           </a>
         </div>
 
         <div className="members-list-info">
-          <i className="far fa-user" aria-hidden="true"></i>
+          <i className="far fa-user fa-2x" aria-hidden="true"></i>
           {Object.keys(this.props.subscribers).length}
           <span> Members </span>
         </div>
+
+        <ul className="members-list">
+
+        </ul>
 
 
 
@@ -64,4 +68,4 @@ class MessageUserInfo extends Component{
 
 };
 
-export default MessageUserInfo;
+export default MessagePanelInfo;

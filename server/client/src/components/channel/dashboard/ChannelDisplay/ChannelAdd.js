@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Modal from 'react-responsive-modal';
 import { RECEIVE_CHANNEL_ERRORS } from 'actions/types';
-// import { RECEIVE_CHANNEL_ERRORS } from '../../../../actions/types';
+
 
 import 'assets/css/Dashboard/dashboard.css';
 import 'assets/css/SessionForm/sessionForm.css';
@@ -25,49 +25,29 @@ class ChannelAdd extends Component{
 
   }
 
-  componentDidMount(){
-    console.log(this, "MOUNTED THIS");
-  }
-
-  componentWillReceiveProps(nextProps){
-
-  }
-
-
-
   onOpenModal(){
-
-   this.setState({ open: true });
+    this.setState({ open: true });
   };
 
   onCloseModal(){
    this.setState({ open: false });
 
-
   };
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log("SUBMITED");
+
     this.props.createChannel(this.state.input,this.props.type).then( (action) => {
 
       if(action.type !== RECEIVE_CHANNEL_ERRORS){
-
-           this.setState({input: '', open: false});
-           this.props.toggleActive(action.payload);
-
+        this.setState({input: '', open: false});
+        this.props.history.push(`/messages/channel/${action.payload._id}`);
       }
 
 
     });
 
   }
-
-
-
-
-
-
 
   handleInput(field){
     return( (e) => this.setState({[field]: e.target.value }));

@@ -28,6 +28,23 @@ class MessageList extends Component{
     }
 
   }
+  componentWillUpdate() {
+    let list = this.refs.list;
+
+    this.shouldScroll =
+      list.scrollTop + list.offsetHeight === list.scrollHeight;
+  }
+
+  componentDidUpdate() {
+    if (this.shouldScroll) {
+      this.scrollToBottom();
+    }
+  }
+
+  scrollToBottom() {
+    let list = this.refs.list;
+    list.scrollTop = list.scrollHeight;
+  }
 
 
 
@@ -37,7 +54,7 @@ class MessageList extends Component{
 
       return(
 
-          <ul className="ul-messages">
+          <ul className="ul-messages" ref="list">
             {this.props.messages.map( (message) =>
               <MessageListItem
               key={message._id}

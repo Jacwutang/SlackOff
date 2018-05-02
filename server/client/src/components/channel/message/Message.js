@@ -87,48 +87,15 @@ class Message extends Component {
 
       });
     }
-
-
-
   }
-
-
-
-
 
   showComponent(){
     let bool = (this.state.showComponent === true)? false:true;
 
     // if(bool === false)
     //   this.exitPanelCSS();
-
-
     this.setState({showComponent: bool});
   }
-  //
-  // triggerPanelCSS(){
-  //   let list = this.refs.list;
-  //   list.classList.add('active-panel');
-  //   // window.alert(list);
-  //   return(
-  //     <MessageRoomrInfo
-  //       subscribers={this.props.subscribers}
-  //       toggleShow={this.showComponent}
-  //       channel={this.props.channel}
-  //     />);
-  // }
-  //
-  // exitPanelCSS(){
-  //   let list = this.refs.list;
-  //   list.classList.remove('active-panel');
-  //
-  // }
-
-
-
-
-
-
 
   render(){
 
@@ -186,19 +153,3 @@ class Message extends Component {
 };
 
 export default Message;
-
-
-// <div className="main-message-area">
-//   <ul className="ul-messages" ref="list">
-//
-//       {this.renderConversations()}
-//
-//   </ul>
-//
-//     {this.state.showComponent?
-//
-//     this.triggerPanelCSS() : null
-//
-//     }
-//
-// </div>

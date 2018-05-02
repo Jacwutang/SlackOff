@@ -28,6 +28,11 @@ class MessageList extends Component{
     }
 
   }
+
+  componentDidMount(){
+    this.scrollToBottom();
+
+  }
   componentWillUpdate() {
     let list = this.refs.list;
 

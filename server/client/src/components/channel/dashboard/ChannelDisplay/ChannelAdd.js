@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Modal from 'react-responsive-modal';
-import { RECEIVE_CHANNEL_ERRORS } from '../../../../actions/types';
+import { RECEIVE_CHANNEL_ERRORS } from 'actions/types';
+// import { RECEIVE_CHANNEL_ERRORS } from '../../../../actions/types';
 
 import 'assets/css/Dashboard/dashboard.css';
 import 'assets/css/SessionForm/sessionForm.css';

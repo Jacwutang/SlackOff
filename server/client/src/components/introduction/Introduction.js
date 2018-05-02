@@ -1,6 +1,8 @@
 import React from 'react';
 import 'assets/css/Introduction/introduction.css';
 
+
+
 export default () => {
   return(
     <div className="div-intro">

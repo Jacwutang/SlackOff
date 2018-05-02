@@ -1,8 +1,9 @@
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
 import Message from './Message';
-import { createMessage, fetchMessages, fetchUsers } from '../../../actions/index';
+// import { createMessage, fetchMessages, fetchUsers } from '../../../actions/index';
 
+import {createMessage, fetchMessages, fetchUsers} from 'actions/index';
 
 
 function checkValidMessages(state){
@@ -29,7 +30,7 @@ function checkValidMessages(state){
 
 function formatSubscribers(state,ownProps){
   // console.log("state.users", state.users);
-  
+
   if(state.channels[ownProps.match.params.type_id] === undefined || state.users === undefined) return {};
 
 

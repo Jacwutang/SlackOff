@@ -9,7 +9,7 @@ import DirectMessageDisplay from './DirectMessageDisplay/DirectMessageDisplayCon
 
 
 
-class DashBoard extends Component {
+class Dashboard extends Component {
   constructor(props){
     super(props);
 
@@ -58,23 +58,4 @@ class DashBoard extends Component {
 
 }
 
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(DashBoard));
-
-function mapStateToProps(state){
-  return (
-    {
-
-
-    }
-  )
-};
-
-
-function mapDispatchToProps(dispatch){
-  return(
-    {
-      dispatch
-    }
-  )
-
-};
+export default Dashboard;

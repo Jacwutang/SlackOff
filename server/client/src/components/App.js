@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
+import * as actions from 'actions';
 
-import Landing from './Landing';
-import Channel from './channel/channel_container';
-import SessionForm from './session/session_form_container';
-import Header from './header/Header';
-import Footer from './footer/Footer';
+import Landing from 'components/Landing';
+import Channel from 'components/channel/channel_container';
+import SessionForm from 'components/session/session_form_container';
+import Header from 'components/header/Header';
+import Footer from 'components/footer/Footer';
 
 import axios from 'axios';
 
@@ -21,7 +21,7 @@ class App extends Component{
 
 
   render(){
-    
+
 
     return(
 

@@ -7,7 +7,8 @@ import MessageListItem from './MessageListItem';
 import MessageInput from './MessageInput';
 import axios from 'axios';
 import isEqual  from 'lodash/isEqual';
-import { RECEIVE_ALL_MESSAGES, RECEIVE_MESSAGE } from '../../../actions/types';
+// import { RECEIVE_ALL_MESSAGES, RECEIVE_MESSAGE } from '../../../actions/types';
+import {RECEIVE_ALL_MESSAGES, RECEIVE_MESSAGE} from 'actions/types';
 
 import socketIOClient from "socket.io-client";
 import {FoldingCube} from 'better-react-spinkit';

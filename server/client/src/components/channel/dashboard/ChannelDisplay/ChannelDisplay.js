@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 import Modal from 'react-responsive-modal';
-import { RECEIVE_CHANNEL_ERRORS } from '../../../../actions/types';
+// import { RECEIVE_CHANNEL_ERRORS } from '../../../../actions/types';
+import { RECEIVE_CHANNEL_ERRORS } from 'actions/types';
 import axios from 'axios';
 
 import ChannelIndexItem from './ChannelIndexItem';

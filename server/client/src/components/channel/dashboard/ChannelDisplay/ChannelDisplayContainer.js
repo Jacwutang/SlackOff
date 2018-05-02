@@ -2,8 +2,10 @@ import {withRouter} from 'react-router';
 import {connect} from 'react-redux';
 import ChannelDisplay from './ChannelDisplay';
 
-import { createChannel, fetchChannels } from '../../../../actions/index';
-import {RECEIVE_CHANNEL} from '../../../../actions/types';
+// import { createChannel, fetchChannels } from '../../../../actions/index';
+// import {RECEIVE_CHANNEL} from '../../../../actions/types';
+import {createChannel,fetchChannels} from 'actions/index';
+import {RECEIVE_CHANNEL} from 'actions/types';
 
 function checkValidChannels(state){
     if(Object.keys(state.channels).length > 0){
@@ -43,6 +45,7 @@ function mapDispatchToProps(dispatch){
       createChannel: (channel,type) => dispatch(createChannel(channel,type)),
       fetchChannels: () => dispatch(fetchChannels()),
       clearErrors: () => dispatch({type: RECEIVE_CHANNEL, payload: []}),
+
   };
 
 };

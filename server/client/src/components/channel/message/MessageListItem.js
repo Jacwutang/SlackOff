@@ -5,7 +5,6 @@ class MessageListItem extends Component{
   constructor(props){
     super();
     this.state = {
-      loaded: false,
       picture: '',
     }
 
@@ -16,7 +15,7 @@ class MessageListItem extends Component{
       axios.get('/api/avatars').then(resp => {
 
         let picture = resp.data.results[0].picture.thumbnail;
-        this.setState({loaded:true, picture: picture});
+        this.setState({ picture: picture});
 
     });
 
@@ -74,9 +73,9 @@ class MessageListItem extends Component{
 
 
     render(){
-      if(!this.state.loaded){
-        return null;
-      }
+      // if(!this.state.loaded){
+      //   return null;
+      // }
     const {body,author} = this.props;
 
     return(

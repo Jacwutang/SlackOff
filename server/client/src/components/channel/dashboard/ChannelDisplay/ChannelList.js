@@ -49,7 +49,7 @@ class ChannelList extends Component{
     if(nextProps.channels.length !== this.props.channels.length){
 
           //  For active channel highlighting, 2 cases to test for. Initial fetch and subsequent adds
-           let currentChannel = (nextProps.channels.length === 0)?
+           let currentChannel = (this.props.channels.length === 0)?
            nextProps.channels[0]:
            nextProps.channels.slice(-1)[0];
 

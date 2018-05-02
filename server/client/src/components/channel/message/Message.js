@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import 'assets/css/Message/message.css';
 import MessageListItem from './MessageListItem';
 import MessageInput from './MessageInput';
+import MessageUserInfo from './MessageUserInfo';
 import axios from 'axios';
 import isEqual  from 'lodash/isEqual';
 // import { RECEIVE_ALL_MESSAGES, RECEIVE_MESSAGE } from '../../../actions/types';
@@ -27,20 +28,22 @@ class Message extends Component {
     super();
     this.state = {
       search: "",
-      loaded: false
+      loaded: false,
+      showComponent: false,
     }
 
 
     this.handleInput = this.handleInput.bind(this);
     this.triggerInputCSS = this.triggerInputCSS.bind(this);
     this.exitInputCSS = this.exitInputCSS.bind(this);
+    this.showComponent = this.showComponent.bind(this);
 
 
 
     }
 
     componentDidMount(){
-      // this.scrollToBottom();
+
 
 
       socket.on('receiveMessage', (payload) => {
@@ -89,6 +92,8 @@ class Message extends Component {
 
 
   }
+
+
 
 
 
@@ -143,6 +148,33 @@ class Message extends Component {
     e.currentTarget.classList.remove("selected");
   }
 
+  showComponent(){
+    let bool = (this.state.showComponent === true)? false:true;
+    if(bool === false)
+      this.exitPanelCSS();
+
+
+    this.setState({showComponent: bool});
+  }
+
+  triggerPanelCSS(){
+    let list = this.refs.list;
+    list.classList.add('active-panel');
+    // window.alert(list);
+    return(
+      <MessageUserInfo
+        subscribers={this.props.subscribers}
+        toggleShow={this.showComponent}
+        channel={this.props.channel}
+      />);
+  }
+
+  exitPanelCSS(){
+    let list = this.refs.list;
+    list.classList.remove('active-panel');
+
+  }
+
 
   renderTopRowLeft(){
     if(!this.state.loaded){
@@ -161,6 +193,10 @@ class Message extends Component {
         <i className="far fa-user fa-2x" aria-hidden="true"></i>
         <span> <strong> {this.props.channel.members.length} </strong> </span>
       </span>
+
+      <a className="a-channel-info" onClick={this.showComponent}>
+        <i className="fas fa-info-circle fa-2x"></i>
+      </a>
 
       </div>
     );
@@ -192,31 +228,7 @@ class Message extends Component {
   }
 
 
-  // componentWillUpdate() {
-  //   let list = this.refs.list;
-  //
-  //   this.shouldScroll =
-  //     list.scrollTop + list.offsetHeight === list.scrollHeight;
-  // }
-  //
-  // componentDidUpdate() {
-  //   if (this.shouldScroll) {
-  //
-  //     console.log("Component Did Update.SHOULD SCROLL", this.shouldScroll);
-  //     this.scrollToBottom();
-  //   }
-  // }
-  //
-  // scrollToBottom() {
-  //   let list = this.refs.list;
-  //
-  //   console.log(list.scrollTop, "scrollTop");
-  //   console.log(list.scrollHeight, "scrollheight");
-  //   // 0 = 700
-  //   list.scrollTop = list.scrollHeight;
-  //
-  //   console.log(list.scrollTop, "new scrolltop");
-  // }
+
 
   render(){
 
@@ -233,13 +245,20 @@ class Message extends Component {
 
         </div>
 
-        <ul className="ul-messages" ref="list">
+        <div className="main-message-area">
+          <ul className="ul-messages" ref="list">
 
-            {this.renderConversations()}
+              {this.renderConversations()}
 
+          </ul>
 
+            {this.state.showComponent?
 
-        </ul>
+            this.triggerPanelCSS() : null
+
+            }
+
+        </div>
 
 
 

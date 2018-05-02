@@ -9,12 +9,18 @@
 
 .channel-name-header{
   font-weight: bold;
+  font-size: 18px;
 }
 
 
-/* .spinner-wrapper{
-  height:100%;
-} */
+.a-channel-info{
+  color: black;
+}
+
+
+
+
+
 .spinner-wrapper{
   margin: 0 auto;
   margin-top: 25%;
@@ -77,6 +83,7 @@
   display: flex;
   justify-content: flex-start;
   margin-bottom: 5px;
+  word-break: break-all;
 
 }
 
@@ -97,9 +104,9 @@
   overflow-y: auto;
   overflow-x: hidden;
   height: calc(100vh - 17vh);
-  margin-right: 3px;
+  /* margin-right: 3px; */
   width: 95%;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   border-bottom: none;
   margin-top: 10px;
   position: relative;

@@ -1,0 +1,63 @@
+.channel-people{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+
+.a-channel-info{
+  color: black;
+}
+
+.a-channel-info:hover{
+  cursor: pointer;
+}
+
+
+.members-list-info{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 5px;
+  align-items: center;
+}
+
+.members-list{
+
+  
+}
+
+.fa-user{
+  color: green;
+}
+
+
+.about-channel{
+  display: flex;
+  justify-content: space-around;
+  background: #D3D3D3;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid gray;
+}
+
+.channel-info-panel{
+  height: calc(100vh - 17vh);
+  width: 20vw;
+  border: 1px solid gray;
+  border-top:none;
+  border-right:none;
+  border-bottom:none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  margin-top: 7vh;
+  margin-bottom: 5vh;
+  background: white;
+  transition: 0.5s;
+}
+
+.active-panel{
+  margin-right: 21vw;
+}

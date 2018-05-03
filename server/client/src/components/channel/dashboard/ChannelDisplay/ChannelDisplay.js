@@ -29,7 +29,7 @@ class ChannelDisplay extends Component{
       <div>
          <div className="message-display-add">
            <span className="message-type-header"> Channels </span>
-           <ChannelSearchModal/>
+           <ChannelSearchModal />
            <ChannelAddModal/>
          </div>
 

@@ -24,7 +24,7 @@ class ChannelSearch extends Component{
   }
 
   componentDidMount(){
-    this.props.fetchAllChannels();
+    this.props.fetchAllChannels().then(() => this.setState({results: this.props.channels}))
   }
 
   handleInput(e,field){
@@ -80,6 +80,7 @@ class ChannelSearch extends Component{
          key={channel._id}
          match={this.state.input}
          channel={channel}
+         onToggle={this.props.toggleActive}
          />
        )}
        </ul>

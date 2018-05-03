@@ -24,6 +24,7 @@
 
 .li-search-results:hover{
   background: #e6e6e6;
+  cursor: pointer;
 }
 
 .highlight-name{

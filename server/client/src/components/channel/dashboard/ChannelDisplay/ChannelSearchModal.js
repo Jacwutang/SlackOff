@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {withRouter} from 'react-router';
+import {connect} from 'react-redux';
 import Modal from 'react-responsive-modal';
 import axios from 'axios';
 
@@ -28,6 +30,12 @@ class ChannelSearchModal extends Component{
 
   }
 
+  componentWillReceiveProps(nextProps){
+    if(!this.props.type_id !== nextProps.type_id){
+      this.setState({open:false});
+    }
+  }
+
   onOpenModal(){
 
    this.setState({ open: true });
@@ -42,20 +50,7 @@ class ChannelSearchModal extends Component{
     return( (e) => this.setState({[field]: e.target.value }));
   }
 
-  // renderSearchResults(){
-  //   return(
-  //
-  //     <ul className="search-ul">
-  //     {this.state.results.map( (channel) =>
-  //       <ChannelSearchListItem
-  //       channel={channel}
-  //       />
-  //     )}
-  //
-  //
-  //
-  //   </ul>);
-  // }
+
 
   render(){
 
@@ -87,4 +82,13 @@ class ChannelSearchModal extends Component{
   }
 };
 
-export default ChannelSearchModal;
+
+
+
+export default withRouter(connect(mapStateToProps,null)(ChannelSearchModal));
+
+function mapStateToProps(state,ownProps){
+  return{
+    type_id: ownProps.match.params.type_id,
+  }
+}

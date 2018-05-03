@@ -59,9 +59,18 @@ class ChannelList extends Component{
               this.setState({currentChannel: currentChannel})
             },500);
 
-           }
+    } else if(nextProps.type_id !== this.props.type_id){
+      this.setState({currentChannel: nextProps.channelsObj[nextProps.type_id]});
+
+    }
+
+
+
 
   }
+
+
+
 
   toggleActive(channel){
 

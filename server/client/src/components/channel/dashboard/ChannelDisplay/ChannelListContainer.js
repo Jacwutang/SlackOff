@@ -28,6 +28,7 @@ function mapStateToProps(state,ownProps){
 
   return {
     channels: checkValidChannels(state),
+    channelsObj: channels,
     auth_type: Object.keys(auth)[0],
     type: ownProps.match.params.type,
     type_id: ownProps.match.params.type_id

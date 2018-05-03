@@ -38,10 +38,11 @@ class Message extends Component {
       });
 
 
-      // this.props.socket.on('subscribedChannel', (payload) => {
-      //   console.log(payload,"payload CLIENT")
-      //   this.props.fetchSingleChannel(payload._id);
-      // });
+      this.props.socket.on('subscribedChannel', (payload) => {
+        console.log(payload,"payload CLIENT")
+        // "53232sdsff"
+        this.props.fetchSingleChannel(payload._id);
+      });
 
     }
 

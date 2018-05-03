@@ -33,7 +33,7 @@ export const fetchAllChannels = () => async dispatch => {
 };
 
 export const fetchSingleChannel = (channel_id) => async dispatch => {
-
+  console.log(channel_id, "CHANNEL_ID ACTION CREATOR")
 
   try{
     const res = await axios.get('/api/channel/channel_id', {params: {channel_id: channel_id}});

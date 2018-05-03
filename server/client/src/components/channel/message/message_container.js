@@ -91,7 +91,7 @@ function mapDispatchToProps(dispatch){
     fetchMessages: (channel_id) => dispatch(fetchMessages(channel_id)),
     fetchMessage: (message) => dispatch({type: "RECEIVE_MESSAGE", payload: message }),
     fetchUsers: () => dispatch(fetchUsers()),
-    fetchSingleChannel: (channel_id) => dispatch(fetchSingleChannel()),
+    fetchSingleChannel: (channel_id) => dispatch(fetchSingleChannel(channel_id)),
 
   }
 

@@ -94,10 +94,16 @@ module.exports = (app) => {
 
   app.get('/api/channel/channel_id', (req,res) => {
     const {user} = req;
-    const {channel_id} = req.body;
+    const {channel_id} = req.query;
+    console.log(channel_id, "CHANNEL_ID BACKEND api/channel/channel_id");
+    Channel.findOne({"_id": channel_id}, (err,doc) => {
+      if(doc){
+        console.log(doc, "The SINGLE Channel fetched is", doc);
+        res.send(doc);
+      }else{
+        console.log("ERROR FETCHING SINGLE CHANNEL")
+      }
 
-    Channel.findOne({"_id": channel_id}, (req,doc) => {
-      res.send(doc);
 
     });
 

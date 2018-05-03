@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Modal from 'react-responsive-modal';
-import axios from 'axios';
+
+import ChannelSearchListItem from './ChannelSearchListItem';
 
 
 
@@ -9,92 +9,87 @@ import 'assets/css/Dashboard/dashboard.css';
 import 'assets/css/SessionForm/sessionForm.css';
 import 'assets/css/Message/message.css';
 import 'assets/css/DirectMessageDisplay/directMessageDisplay.css';
-
+import 'assets/css/Channel/channelSearch.css';
 
 class ChannelSearch extends Component{
   constructor(props){
     super(props);
-
-    this.state = {
-      open: false,
+    this.state ={
       input: '',
       results: [],
 
-    };
+    }
+
+    // this.handleInput = this.handleInput.bind(this);
+  }
+
+  componentDidMount(){
+    this.props.fetchAllChannels();
+  }
+
+  handleInput(e,field){
+      const {channels} = this.props;
+
+      this.setState( {[field]: e.target.value}, () => {
+        this.setState({results: this.findMatches(this.state.input, channels)})
+
+      });
 
 
-    // this.handleSubmit = this.handleSubmit.bind(this);
-    // this.toggleActive = this.toggleActive.bind(this);
+
+      // this.setState({results: this.findMatches(this.state.input, channels)});
 
   }
 
-  onOpenModal(){
+  findMatches(word, channels){
+    return channels.filter( (channel) => {
+      const regex = new RegExp(word, 'gi');
+      return channel.name.match(regex);
 
-   this.setState({ open: true });
-  };
+    })
 
-  onCloseModal(){
 
-   this.setState({ open: false });
-  };
-
-  handleInput(field){
-    return( (e) => this.setState({[field]: e.target.value }));
   }
 
-  renderSearchResults(){
-    return(<ul className="search-ul"> Hi </ul>);
-  }
-
-  renderModalContent(){
-   return(
-     <div className="modal-content">
-
-       <h5> Browse Channels </h5>
-       <div className="msg-input-wrapper search-container">
-         <button type="button" className="msg-input-gif">
-           <i className="fas fa-search"></i>
-         </button>
-         <input
-         id="msg-input"
-         placeholder="Search"
-         value={this.state.input}
-         onChange={this.handleInput('input')}
-        />
-       </div>
-
-       {this.renderSearchResults()}
-
-     </div>
-
-    );
-  }
 
 
   render(){
 
-    const{open} = this.state;
 
     return(
-      <div>
-      <a onClick={() => this.onOpenModal()}>
-        <i className="fas fa-search search-channel" color="white"></i>
-      </a>
+      <div className="search-results-wrapper">
 
-      <Modal
-        open={open}
-        onClose={() => this.onCloseModal()}
-        little >
+      <div className="msg-input-wrapper search-container">
+        <button type="button" className="msg-input-gif">
+          <i className="fas fa-search"></i>
+        </button>
+        <input
+        id="msg-input"
+        placeholder="Search"
+        value={this.state.input}
+        onChange={(e) => this.handleInput(e,'input')}
+       />
 
-        {this.renderModalContent()}
+      </div>
 
-      </Modal>
+
+
+       <ul className="ul-channels-search">
+       {this.state.results.map( (channel) =>
+         <ChannelSearchListItem
+         key={channel._id}
+         match={this.state.input}
+         channel={channel}
+         />
+       )}
+       </ul>
 
 
 
       </div>
-    );
+    )
   }
+
 };
 
 export default ChannelSearch;

@@ -1,6 +1,6 @@
 import {withRouter} from 'react-router';
 import {connect} from 'react-redux';
-import ChannelAdd from './ChannelAdd';
+import ChannelAddModal from './ChannelAddModal';
 import {RECEIVE_CHANNEL} from 'actions/types';
 import {createChannel} from 'actions/index';
 
@@ -20,4 +20,4 @@ function mapDispatchToProps(dispatch){
   }
 }
 
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(ChannelAdd));
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(ChannelAddModal));

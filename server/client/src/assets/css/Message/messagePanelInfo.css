@@ -9,6 +9,10 @@
   color: black;
 }
 
+.fa-info-circle{
+  color: gray;
+}
+
 .a-channel-info:hover{
   cursor: pointer;
 }
@@ -34,6 +38,11 @@
   margin-bottom: 5px;
   overflow:hidden;
   text-overflow: ellipsis;
+
+}
+
+.members-li:hover{
+  background: #f3f3f3;
 
 }
 

@@ -1,0 +1,33 @@
+.search-results-wrapper{
+  display: flex;
+  flex-direction: column;
+  height:45vh;
+  width:45vw;
+  align-items: center;
+  justify-content: flex-start;
+}
+.ul-channels-search{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 85%;
+}
+
+.li-search-results{
+  margin-bottom: 10px;
+  border-bottom: 1px solid gray;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.li-search-results:hover{
+  background: #e6e6e6;
+}
+
+.highlight-name{
+  background: yellow;
+  font-size: 22px;
+  font-weight: bold;
+}

@@ -1,9 +1,26 @@
 import axios from 'axios';
-import { RECEIVE_USER, RECEIVE_ALL_USERS, RECEIVE_USER_ERRORS,RECEIVE_SESSION_ERRORS, RECEIVE_ALL_CHANNELS,RECEIVE_CHANNEL,RECEIVE_CHANNEL_ERRORS, RECEIVE_ALL_MESSAGES, RECEIVE_MESSAGE, RECEIVE_MESSAGE_ERRORS } from './types';
+import { RECEIVE_USER, RECEIVE_ALL_USERS, RECEIVE_USER_ERRORS,RECEIVE_SESSION_ERRORS, RECEIVE_ALL_CHANNELS,RECEIVE_CHANNEL,RECEIVE_CHANNEL_ERRORS, RECEIVE_ALL_MESSAGES, RECEIVE_MESSAGE, RECEIVE_MESSAGE_ERRORS, RECEIVE_ALL_SEARCH_CHANNELS } from './types';
 
 // axios pings back-end with a http request.
 // res is what the back-end returns
 // dispatch a regular pojo contained within res
+
+export const fetchAllChannels = () => async dispatch => {
+
+
+  try{
+    const res = await axios.get('/api/channels');
+    return dispatch({type: RECEIVE_ALL_SEARCH_CHANNELS, payload: res.data});
+
+  }catch(error){
+    return dispatch({type:RECEIVE_CHANNEL_ERRORS,payload:error.response.data});
+  }
+
+
+};
+
+
+
 
 export const fetchChannels = () => async dispatch => {
 

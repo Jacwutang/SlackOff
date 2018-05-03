@@ -54,10 +54,6 @@ module.exports = (app) => {
 
   }); //create channel
 
-  app.post('/api/channel/test', (req,res) => {
-    console.log("TEST ROUTE HIT");
-
-  });
 
 
   app.get('/api/channels/user', (req,res) => {
@@ -91,14 +87,15 @@ module.exports = (app) => {
 
     Channel.find({}, (err,docs) => {
       if(docs){
-        let newObj = {};
-        docs.map( (doc) => {
-           return newObj[doc._id] = { name: doc.name, _id: doc._id};
-
-        });
-
-        // console.log("formattedChannels", newObj);
-        res.send(newObj);
+        // let newObj = {};
+        // docs.map( (doc) => {
+        //    return newObj[doc._id] = { name: doc.name, _id: doc._id};
+        //
+        // });
+        //
+        //
+        // res.send(newObj);
+        res.send(docs);
       }
 
     });

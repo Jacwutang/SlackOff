@@ -6,8 +6,8 @@ import { RECEIVE_CHANNEL_ERRORS } from 'actions/types';
 import axios from 'axios';
 
 // import ChannelIndexItem from './ChannelIndexItem';
-import ChannelSearch from './ChannelSearch';
-import ChannelAdd from './ChannelAddContainer';
+import ChannelSearchModal from './ChannelSearchModal';
+import ChannelAddModal from './ChannelAddContainer';
 import ChannelList from './ChannelListContainer';
 // import {Wave} from 'better-react-spinkit';
 
@@ -29,8 +29,8 @@ class ChannelDisplay extends Component{
       <div>
          <div className="message-display-add">
            <span className="message-type-header"> Channels </span>
-           <ChannelSearch/>
-           <ChannelAdd/>
+           <ChannelSearchModal/>
+           <ChannelAddModal/>
          </div>
 
         <ChannelList/>

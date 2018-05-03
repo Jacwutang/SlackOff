@@ -9,7 +9,7 @@ import 'assets/css/Message/message.css';
 import 'assets/css/DirectMessageDisplay/directMessageDisplay.css';
 
 
-class ChannelAdd extends Component{
+class ChannelAddModal extends Component{
   constructor(props){
     super(props);
 
@@ -120,4 +120,4 @@ class ChannelAdd extends Component{
   }
 };
 
-export default ChannelAdd;
+export default ChannelAddModal;

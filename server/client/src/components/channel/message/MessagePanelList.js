@@ -29,7 +29,7 @@ class MessagePanelList extends Component{
     const {user} = this.props;
     return(
       <li className="members-li">
-        <i class="fas fa-circle"></i>
+        <i className="fas fa-circle"></i>
         <img className="search-thumbnail-img" src={this.state.picture}></img>
         <span className="channel-name-header"> {user.username} </span>
 

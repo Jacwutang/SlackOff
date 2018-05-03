@@ -89,6 +89,10 @@ class Message extends Component {
     }
   }
 
+  componentWillUnmount(){
+
+  }
+
   showComponent(){
     let bool = (this.state.showComponent === true)? false:true;
 

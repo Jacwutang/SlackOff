@@ -23,12 +23,6 @@ export default function(state = {}, action){
           newObj[channel._id] = channel
       });
 
-
-
-
-
-
-
       return newObj;
 
 

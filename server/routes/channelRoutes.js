@@ -83,6 +83,9 @@ module.exports = (app) => {
 }); // get user's Channels
 
 
+
+
+
   app.get('/api/channels', (req,res) => {
 
     Channel.find({}, (err,docs) => {
@@ -103,6 +106,31 @@ module.exports = (app) => {
 
   }); // grab all channels
 
+
+  app.post('/api/channel/join', (req,res) => {
+    const {user} = req;
+    const {channel_id} = req.body;
+
+    console.log("/api/channel/join route hit");
+    console.log(channel_id);
+
+
+    Channel.findOne({"_id": channel_id}, (err,channel) => {
+      if(channel){
+        channel.members.push(user);
+
+        User.update({"_id": user.id}, {$push: {channels: channel._id}});
+
+        res.send(channel);
+      }
+
+
+
+
+    });
+
+
+  });
 
 
 

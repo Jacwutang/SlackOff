@@ -5,6 +5,19 @@ import { RECEIVE_USER, RECEIVE_ALL_USERS, RECEIVE_USER_ERRORS,RECEIVE_SESSION_ER
 // res is what the back-end returns
 // dispatch a regular pojo contained within res
 
+export const joinChannel = (channel_id) => async dispatch => {
+  try{
+    const res = await axios.post('/api/channel/join', {channel_id: channel_id});
+    return dispatch({type: RECEIVE_CHANNEL, payload: res.data});
+
+  }catch(error){
+    return dispatch({type:RECEIVE_CHANNEL_ERRORS,payload:error.response.data});
+  }
+
+
+}
+
+
 export const fetchAllChannels = () => async dispatch => {
 
 

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import ChannelList from './ChannelList';
 
 
-import {createChannel,fetchChannels} from 'actions/index';
+import {fetchChannels} from 'actions/index';
 import {RECEIVE_CHANNEL} from 'actions/types';
 
 function checkValidChannels(state){
@@ -29,6 +29,7 @@ function mapStateToProps(state,ownProps){
   return {
     channels: checkValidChannels(state),
     channelsObj: channels,
+    searchChannels: state.search,
     auth_type: Object.keys(auth)[0],
     type: ownProps.match.params.type,
     type_id: ownProps.match.params.type_id
@@ -43,6 +44,7 @@ function mapDispatchToProps(dispatch){
   return{
 
       fetchChannels: () => dispatch(fetchChannels()),
+
 
 
   };

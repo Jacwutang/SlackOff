@@ -20,7 +20,7 @@ class ChannelSearch extends Component{
 
     }
 
-    // this.handleInput = this.handleInput.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount(){
@@ -49,6 +49,10 @@ class ChannelSearch extends Component{
     })
 
 
+  }
+
+  handleClick(channel_id){
+    this.props.history.push(`/messages/channel/${channel_id}`);
   }
 
 
@@ -80,7 +84,9 @@ class ChannelSearch extends Component{
          key={channel._id}
          match={this.state.input}
          channel={channel}
-         onToggle={this.props.toggleActive}
+         channels={this.props.channelsObject}
+         handleClick={this.handleClick}
+         joinChannel={this.props.joinChannel}
          />
        )}
        </ul>

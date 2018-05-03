@@ -62,9 +62,10 @@ class ChannelList extends Component{
     } else if(nextProps.type_id !== this.props.type_id){
       this.setState({currentChannel: nextProps.channelsObj[nextProps.type_id]});
 
+    } else{
+
+      // this.props.joinChannel(this.props.searchChannels[nextProps.type_id]._id);
     }
-
-
 
 
   }

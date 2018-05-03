@@ -32,7 +32,19 @@ export const fetchAllChannels = () => async dispatch => {
 
 };
 
+export const fetchSingleChannel = (channel_id) => async dispatch => {
 
+
+  try{
+    const res = await axios.get('/api/channel/channel_id', {params: {channel_id: channel_id}});
+    return dispatch({type: RECEIVE_CHANNEL, payload: res.data});
+
+  }catch(error){
+    return dispatch({type:RECEIVE_CHANNEL_ERRORS,payload:error.response.data});
+  }
+
+
+};
 
 
 export const fetchChannels = () => async dispatch => {

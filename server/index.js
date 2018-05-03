@@ -29,31 +29,29 @@ http.listen(PORT, () => {
   console.log('listening on *:5000');
 });
 
+
 io.on('connection', (socket) => {
 
 
 
-  socket.on('joinChannel', (channel) => {
-
-    socket.join(channel._id);
-    socket.emit("subscribedChannel", channel);
+  socket.on('joinChannel', (payload) => {
+    console.log(payload, "PAYLOAD BACKEND");
+    socket.join(payload._id);
+    socket.broadcast.to(payload._id).emit('subscribedChannel', payload);
   });
 
 
   socket.on('broadcastMessage', (payload) => {
-    //broadcast payload to 'id', which is created during a "join" operation
 
-    // io.emit('receiveMessage', payload);
 
     //broadcast to everybody except me.
-    socket.broadcast.to(payload.channel._id).emit('receiveMessage',payload);
+    socket.broadcast.to(payload.channel).emit('receiveMessage',payload);
     console.log("Message received backend",payload)
   });
 
 
 
   socket.on('disconnect', () => {
-    console.log("SOMEBODY  LEFT");
 
   });
 

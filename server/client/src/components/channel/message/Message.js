@@ -12,12 +12,8 @@ import isEqual  from 'lodash/isEqual';
 // import { RECEIVE_ALL_MESSAGES, RECEIVE_MESSAGE } from '../../../actions/types';
 import {RECEIVE_ALL_MESSAGES, RECEIVE_MESSAGE} from 'actions/types';
 
-import socketIOClient from "socket.io-client";
+
 import {FoldingCube} from 'better-react-spinkit';
-
-
-const HOST = window.location.origin;
-const socket = socketIOClient("http://localhost:5000");
 
 
 
@@ -37,16 +33,22 @@ class Message extends Component {
     componentDidMount(){
 
 
-      socket.on('receiveMessage', (payload) => {
+      this.props.socket.on('receiveMessage', (payload) => {
         this.props.fetchMessage(payload);
       });
+
+
+      // this.props.socket.on('subscribedChannel', (payload) => {
+      //   console.log(payload,"payload CLIENT")
+      //   this.props.fetchSingleChannel(payload._id);
+      // });
 
     }
 
 
 
   componentWillReceiveProps(nextProps){
-    console.log(this.props, nextProps);
+
 
     if( (nextProps.type_id !== this.props.type_id) &&
     ( isEqual(this.props.channel,nextProps.channel) === false) ){
@@ -56,12 +58,12 @@ class Message extends Component {
 
 
 
-      //setup a socket here
+      // tell server that I am in a new channel.
+      //1) Switching over to a new channel --> fetch that updated Channel
 
-      socket.emit('joinChannel', {channel: nextProps.channel});
-      // socket.on('subscribedChannel', (payload) => {
-      //
-      // });
+
+      this.props.socket.emit('joinChannel', nextProps.channel);
+
 
 
 
@@ -89,7 +91,7 @@ class Message extends Component {
 
   render(){
 
-    const {channel, arraySubscribers, subscribers, messages, type_id, createMessage} = this.props;
+    const {channel, socket, arraySubscribers, subscribers, messages, type_id, createMessage} = this.props;
 
     if(!this.state.loaded){
       return(

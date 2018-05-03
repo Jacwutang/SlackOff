@@ -29,16 +29,6 @@ class MessageInput extends Component {
   handleSubmit(e){
     e.preventDefault();
 
-    // this.props.createMessage(this.state.input, this.props.channel._id).then( (action) => {
-    //   this.props.socket.emit('broadcastMessage', action.payload);
-    //
-    //   this.setState({input: ''})
-    //
-    //
-    // });
-
-
-
     this.props.createMessage(this.state.input, this.props.channel._id).then( (action) => {
       this.props.socket.emit('broadcastMessage', action.payload);
       this.setState({input: ''})

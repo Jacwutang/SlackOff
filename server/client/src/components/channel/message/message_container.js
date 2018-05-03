@@ -3,7 +3,7 @@ import {withRouter} from 'react-router';
 import Message from './Message';
 // import { createMessage, fetchMessages, fetchUsers } from '../../../actions/index';
 
-import {createMessage, fetchMessages, fetchUsers} from 'actions/index';
+import {createMessage, fetchMessages, fetchUsers, fetchSingleChannel} from 'actions/index';
 
 
 function checkValidMessages(state){
@@ -75,6 +75,7 @@ function mapStateToProps(state,ownProps){
   return{
     type_id: ownProps.match.params.type_id,
     channel: state.channels[ownProps.match.params.type_id],
+
     messages: checkValidMessages(state),
     subscribers: formatSubscribers(state,ownProps),
     arraySubscribers: formatSubscribersToArray(state,ownProps),
@@ -90,6 +91,7 @@ function mapDispatchToProps(dispatch){
     fetchMessages: (channel_id) => dispatch(fetchMessages(channel_id)),
     fetchMessage: (message) => dispatch({type: "RECEIVE_MESSAGE", payload: message }),
     fetchUsers: () => dispatch(fetchUsers()),
+    fetchSingleChannel: (channel_id) => dispatch(fetchSingleChannel()),
 
   }
 

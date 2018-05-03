@@ -87,6 +87,8 @@ class ChannelSearch extends Component{
          channels={this.props.myChannels}
          handleClick={this.handleClick}
          joinChannel={this.props.joinChannel}
+         socket={this.props.socket}
+
          />
        )}
        </ul>

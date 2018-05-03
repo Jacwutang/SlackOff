@@ -42,7 +42,7 @@ module.exports = (app) => {
             if(err){
               console.log("error populating channel users");
             }else{
-              console.log("populated", docs);
+
               res.send(docs)
             }
 
@@ -92,7 +92,16 @@ module.exports = (app) => {
 }); // get user's Channels
 
 
+  app.get('/api/channel/channel_id', (req,res) => {
+    const {user} = req;
+    const {channel_id} = req.body;
 
+    Channel.findOne({"_id": channel_id}, (req,doc) => {
+      res.send(doc);
+
+    });
+
+  });
 
 
   app.get('/api/channels', (req,res) => {
@@ -110,6 +119,8 @@ module.exports = (app) => {
   }); // grab all channels
 
 
+
+
   app.post('/api/channel/join', (req,res) => {
     const {user} = req;
     const {channel_id} = req.body;
@@ -124,9 +135,9 @@ module.exports = (app) => {
     Channel.findOneAndUpdate( {"_id": channel_id} , { $push: {members: {"_id": user.id} } }, {new:true}, (err,channel) => {
 
       if(channel){
-        console.log(channel, "BEFORE");
-
-        console.log(channel, "AFTER");
+        // console.log(channel, "BEFORE");
+        //
+        // console.log(channel, "AFTER");
 
         User.update({"_id": user.id}, {$push: {channels: {"_id": channel_id}} },{new:true});
 

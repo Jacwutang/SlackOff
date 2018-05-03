@@ -17,7 +17,7 @@ class MessageRoomInfo extends Component{
   }
 
   componentDidMount(){
-    console.log("MOUNTED", this.props);
+    console.log("MOUNTED ROOM INFO", this.props);
   }
 
   triggerInputCSS(e){
@@ -56,7 +56,7 @@ class MessageRoomInfo extends Component{
 
         <span className="channel-people">
           <i className="far fa-user fa-2x" aria-hidden="true">
-            
+
           </i>
           <span> <strong> {this.props.channel.members.length} </strong> </span>
         </span>
@@ -96,6 +96,7 @@ class MessageRoomInfo extends Component{
 
 
   render(){
+
 
 
     return(

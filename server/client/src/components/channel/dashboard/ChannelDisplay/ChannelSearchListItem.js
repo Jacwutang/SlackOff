@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import {withRouter} from 'react-router';
 import 'assets/css/Channel/channelSearch.css';
 
+
 class ChannelSearchListItem extends Component{
   constructor(props){
     super(props);
@@ -15,10 +16,21 @@ class ChannelSearchListItem extends Component{
   }
 
   handleClick(){
-    const {channel} = this.props;
+    const {channel, socket} = this.props;
+    
 
     if(Object.keys(this.props.channels).length === 0 || !this.props.channels[channel._id]){
-      this.props.joinChannel(channel._id).then( () => this.props.handleClick(channel._id));
+
+      this.props.joinChannel(channel._id).then( (action) => {
+        console.log("action payload ChannelSearchItem", action);
+        socket.emit('joinChannel', action.payload);
+
+        this.props.handleClick(channel._id);
+
+
+      })
+
+
     } else{
       this.props.handleClick(channel._id);
     }
@@ -30,9 +42,7 @@ class ChannelSearchListItem extends Component{
 
     const {channel, match} = this.props;
 
-    // if(match === ""){
-    //   return null;
-    // }
+
 
     const regex = new RegExp(match, 'gi');
 

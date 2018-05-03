@@ -42,7 +42,7 @@ class Dashboard extends Component {
 
         <section className="dashboard-message">
 
-          <ChannelDisplay />
+          <ChannelDisplay socket={this.props.socket}/>
           <DirectMessageDisplay />
 
 

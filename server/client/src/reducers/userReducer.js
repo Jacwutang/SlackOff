@@ -1,4 +1,4 @@
-import { RECEIVE_ALL_USERS } from '../actions/types';
+import { RECEIVE_ALL_USERS, RECEIVE_USER } from '../actions/types';
 
 
 export default function(state = {}, action){
@@ -7,19 +7,21 @@ export default function(state = {}, action){
 
 
   switch(action.type){
-    case RECEIVE_ALL_USERS:
-      // let newObj = {};
-      //
-      // action.payload.map( (user) => {
-      //   return newObj[user._id] = user;
-      // });
 
-      const newObj = {};
+
+    case RECEIVE_ALL_USERS:
+
+    const newObj = {};
       action.payload.map((user) => {
-          newObj[user._id] = user
+        newObj[user._id] = user
       });
 
-      return newObj;
+    return newObj;
+
+    case RECEIVE_USER:
+
+    return Object.assign({}, state, { [action.payload._id]: action.payload});
+
 
 
 

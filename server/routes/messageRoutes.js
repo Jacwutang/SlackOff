@@ -64,7 +64,7 @@ module.exports = (app) => {
         res.send(400, err.msg);
 
       } else{
-        console.log("MESSAGES FETCHED FOR ROOM", channel_id, docs);
+        // console.log("MESSAGES FETCHED FOR ROOM", channel_id, docs);
         res.send(docs);
       }
 

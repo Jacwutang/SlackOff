@@ -69,7 +69,7 @@ class ChannelSearchModal extends Component{
           <div className="modal-content">
 
             <h5> Browse Channels </h5>
-            <ChannelSearch />
+            <ChannelSearch socket={this.props.socket}/>
 
           </div>
 

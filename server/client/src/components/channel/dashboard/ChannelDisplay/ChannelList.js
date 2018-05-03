@@ -54,8 +54,6 @@ class ChannelList extends Component{
            nextProps.channels[0]:
            nextProps.channels.slice(-1)[0];
 
-
-
            setTimeout( () => {
               this.setState({currentChannel: currentChannel})
             },500);
@@ -64,7 +62,7 @@ class ChannelList extends Component{
       this.setState({currentChannel: nextProps.channelsObj[nextProps.type_id]});
 
     } else{
-      // console.log(this.state.currentChannel, "currentChannel IS COMPONENTWILLRECEIVEPROPS");
+
       this.setState({currentChannel: nextProps.channelsObj[nextProps.type_id]});
     }
 

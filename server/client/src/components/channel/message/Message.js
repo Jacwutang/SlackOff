@@ -70,7 +70,7 @@ class Message extends Component {
 
 
         //only fetch Messages and fetch Users if it's initial channel loading.
-      console.log("Fetching messages");
+    
       this.props.fetchMessages(nextProps.type_id).then( () => {
         this.props.fetchUsers().then( setTimeout( () => {
 

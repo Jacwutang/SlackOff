@@ -37,7 +37,7 @@ function formatSubscribers(state,ownProps){
   // we have users and channels now.
 
   let user_ids = state.channels[ownProps.match.params.type_id].members;
-  console.log(user_ids, "FORMAT SUBSCRIEERS");
+
   const newObj = {};
 
   user_ids.map((user_id) => {
@@ -45,7 +45,7 @@ function formatSubscribers(state,ownProps){
 
   });
 
-  console.log(newObj);
+
 
   return newObj;
 
@@ -55,7 +55,7 @@ function formatSubscribersToArray(state,ownProps){
   if(state.channels[ownProps.match.params.type_id] === undefined || Object.keys(state.users).length === 0 ){
     return [];
   } else{
-    // return state.channels[ownProps.match.params.type_id].members;
+    
     let members = state.channels[ownProps.match.params.type_id].members;
 
 

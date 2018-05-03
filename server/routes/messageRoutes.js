@@ -55,15 +55,16 @@ module.exports = (app) => {
     // console.log("/api/messages/room_id route hit")
 
 
-    // room_id 5adfbef8db2f763976c5bea
+
     const {channel_id} = req.query;
-    // console.log(room_id, "ROOM ID IS");
+
 
     Message.find({channel: channel_id}, (err,docs) => {
       if(err){
         res.send(400, err.msg);
 
       } else{
+        console.log("MESSAGES FETCHED FOR ROOM", channel_id, docs);
         res.send(docs);
       }
 

@@ -36,35 +36,38 @@ class Message extends Component {
 
     componentDidMount(){
 
-      // socket.on('receiveMessage', (payload) => {
-      //   this.props.fetchMessage(payload);
-      // });
 
+      socket.on('receiveMessage', (payload) => {
+        this.props.fetchMessage(payload);
+      });
 
     }
 
 
 
   componentWillReceiveProps(nextProps){
-
+    console.log(this.props, nextProps);
 
     if( (nextProps.type_id !== this.props.type_id) &&
     ( isEqual(this.props.channel,nextProps.channel) === false) ){
 
-      //stop spinning once props load
-      // this.setState({loaded: true});
+      //setState to be loading.
+      this.setState({loaded: false});
 
 
 
       //setup a socket here
 
       socket.emit('joinChannel', {channel: nextProps.channel});
-      socket.on('subscribedChannel', (payload) => {
+      // socket.on('subscribedChannel', (payload) => {
+      //
+      // });
 
-      });
+
 
 
         //only fetch Messages and fetch Users if it's initial channel loading.
+      console.log("Fetching messages");
       this.props.fetchMessages(nextProps.type_id).then( () => {
         this.props.fetchUsers().then( setTimeout( () => {
 
@@ -110,6 +113,7 @@ class Message extends Component {
         <MessageList
         subscribers={subscribers}
         messages={messages}
+        socket={socket}
 
         />
 

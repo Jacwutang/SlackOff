@@ -34,8 +34,7 @@ io.on('connection', (socket) => {
 
 
   socket.on('joinChannel', (channel) => {
-    console.log("CHANNEL JOINED");
-    // console.log(channel);
+
     socket.join(channel._id);
     socket.emit("subscribedChannel", channel);
   });

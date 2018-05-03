@@ -10,12 +10,7 @@ module.exports = (app) => {
   app.post('/api/channel/new', (req,res) => {
 
       const { name,type } = req.body;
-      // console.log("channel route hit");
-      // console.log(name,"name");
-      // console.log(type,"type");
-      // console.log(req.user);
 
-      //create channel with 1 user
 
       let newChannel = {
         name: name,
@@ -31,8 +26,7 @@ module.exports = (app) => {
           { message: err.errors.name.message });
 
         } else{
-          console.log("create channel succeded");
-          console.log(channel);
+
 
           User.update({"_id": req.user.id},
           {$push: {channels: channel._id}}, (err,success) => {
@@ -42,12 +36,27 @@ module.exports = (app) => {
 
           });
 
+          Channel
+          .findOne({"_id": channel._id })
+          .exec(function(err,docs){
+            if(err){
+              console.log("error populating channel users");
+            }else{
+              console.log("populated", docs);
+              res.send(docs)
+            }
 
 
-          res.send(channel);
+          })
+
+
+
+
         }
 
       });
+
+
 
 
 
@@ -88,10 +97,11 @@ module.exports = (app) => {
 
   app.get('/api/channels', (req,res) => {
 
-    Channel.find({}, (err,docs) => {
+    Channel.find({}, (err, docs) => {
       if(docs){
-
+        console.log("FETCH ALL CHANNELS", docs);
         res.send(docs);
+
       }
 
     });
@@ -105,25 +115,20 @@ module.exports = (app) => {
     const {channel_id} = req.body;
 
     console.log("/api/channel/join route hit");
-    console.log(channel_id);
-    console.log(user.id);
+    console.log(user, "USER IS");
 
 
 
 
-    Channel.findOneAndUpdate( {"_id": channel_id} , { $push: {members: user.id} }, (err,channel) => {
+
+    Channel.findOneAndUpdate( {"_id": channel_id} , { $push: {members: {"_id": user.id} } }, {new:true}, (err,channel) => {
+
       if(channel){
-        // console.log(channel, "BEFORE");
-        //
-        //
-        // console.log(channel, "AFTER");
+        console.log(channel, "BEFORE");
 
-        User.update({"_id": user.id}, {$push: {channels: channel_id}}, (err,success) => {
-          if(success){
-            // console.log("SUCCESS USER", success);
-          }
+        console.log(channel, "AFTER");
 
-        });
+        User.update({"_id": user.id}, {$push: {channels: {"_id": channel_id}} },{new:true});
 
         res.send(channel);
       }

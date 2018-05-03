@@ -37,7 +37,7 @@ class ChannelSearch extends Component{
 
 
 
-      // this.setState({results: this.findMatches(this.state.input, channels)});
+
 
   }
 

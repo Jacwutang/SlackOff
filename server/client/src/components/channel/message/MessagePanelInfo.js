@@ -35,8 +35,7 @@ class MessagePanelInfo extends Component{
 
   render(){
     const {channel,subscribers} = this.props;
-    console.log(subscribers, "subscribers");
-    console.log("subscriber props", subscribers)
+    
 
     return(
       <section className="channel-info-panel">
@@ -57,9 +56,9 @@ class MessagePanelInfo extends Component{
 
         <ul className="members-list">
           {
-            (subscribers).map( (user) =>
+            (subscribers).map( (user,idx) =>
             <MessagePanelList
-            key={user._id}
+            key={`user-${idx}`}
             user={user}
             /> )
           }

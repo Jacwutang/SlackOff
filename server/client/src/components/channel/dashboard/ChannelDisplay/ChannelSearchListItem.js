@@ -12,17 +12,17 @@ class ChannelSearchListItem extends Component{
   }
 
   componentDidMount(){
-    console.log(this.props, "LIST ITEM PROPS");
+  
   }
 
   handleClick(){
     const {channel, socket} = this.props;
-    
+
 
     if(Object.keys(this.props.channels).length === 0 || !this.props.channels[channel._id]){
 
       this.props.joinChannel(channel._id).then( (action) => {
-        console.log("action payload ChannelSearchItem", action);
+
         socket.emit('joinChannel', action.payload);
 
         this.props.handleClick(channel._id);

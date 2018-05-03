@@ -29,11 +29,8 @@ module.exports = (app) => {
             console.log("error saving message", err);
             res.send(400, err.msg);
           } else{
-            // console.log("message saved successfully", newMessage);
-
-
-
-                let offset = new Date(newMessage.timestamp) - (newMessage.time_zone*60000);
+            
+            let offset = new Date(newMessage.timestamp) - (newMessage.time_zone*60000);
 
                 let local_time = new Date(offset);
 
@@ -64,7 +61,7 @@ module.exports = (app) => {
         res.send(400, err.msg);
 
       } else{
-        // console.log("MESSAGES FETCHED FOR ROOM", channel_id, docs);
+
         res.send(docs);
       }
 

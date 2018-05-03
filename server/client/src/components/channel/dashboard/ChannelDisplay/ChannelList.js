@@ -46,6 +46,7 @@ class ChannelList extends Component{
   }
 
   componentWillReceiveProps(nextProps){
+
     if(nextProps.channels.length !== this.props.channels.length){
 
           //  For active channel highlighting, 2 cases to test for. Initial fetch and subsequent adds
@@ -63,12 +64,14 @@ class ChannelList extends Component{
       this.setState({currentChannel: nextProps.channelsObj[nextProps.type_id]});
 
     } else{
-
-      // this.props.joinChannel(this.props.searchChannels[nextProps.type_id]._id);
+      // console.log(this.state.currentChannel, "currentChannel IS COMPONENTWILLRECEIVEPROPS");
+      this.setState({currentChannel: nextProps.channelsObj[nextProps.type_id]});
     }
 
 
   }
+
+
 
 
 

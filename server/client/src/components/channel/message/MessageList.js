@@ -57,7 +57,7 @@ class MessageList extends Component{
 
   render(){
       const {subscribers,messages} = this.props;
-      console.log("MESSAGE-LIST", subscribers, messages);
+
       return(
 
           <ul className="ul-messages" ref="list">

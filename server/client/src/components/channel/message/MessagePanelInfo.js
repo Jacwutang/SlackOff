@@ -27,10 +27,6 @@ class MessagePanelInfo extends Component{
 
   }
 
-  componentDidMount(){
-
-  }
-
   togglePanelCSS(){
     this.props.toggleShowComponent();
   }
@@ -38,7 +34,10 @@ class MessagePanelInfo extends Component{
 
 
   render(){
-    const {channel} = this.props;
+    const {channel,subscribers} = this.props;
+    console.log(subscribers, "subscribers");
+    console.log("subscriber props", subscribers)
+
     return(
       <section className="channel-info-panel">
         <div className="about-channel">
@@ -58,7 +57,7 @@ class MessagePanelInfo extends Component{
 
         <ul className="members-list">
           {
-            (this.props.subscribers).map( (user) =>
+            (subscribers).map( (user) =>
             <MessagePanelList
             key={user._id}
             user={user}

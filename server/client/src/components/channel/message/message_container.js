@@ -50,13 +50,19 @@ function formatSubscribers(state,ownProps){
 };
 
 function formatSubscribersToArray(state,ownProps){
-  if(state.channels[ownProps.match.params.type_id] === undefined || state.users === undefined) return [];
+  if(state.channels[ownProps.match.params.type_id] === undefined || Object.keys(state.users).length === 0 ){
+    return [];
+  } else{
+    // return state.channels[ownProps.match.params.type_id].members;
+    let members = state.channels[ownProps.match.params.type_id].members;
+    console.log(members, "MEMBERS ARE");
 
-  let user_ids = state.channels[ownProps.match.params.type_id].members;
+    let array = members.map( (user) => state.users[user]);
+    console.log("mapped array", array);
+    return array;
+  }
 
-  let array = user_ids.map( (id) => state.users[id]);
 
-  return array;
 
 
 }

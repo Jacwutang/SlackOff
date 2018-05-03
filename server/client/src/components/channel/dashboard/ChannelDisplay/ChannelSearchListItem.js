@@ -17,7 +17,7 @@ class ChannelSearchListItem extends Component{
   handleClick(){
     const {channel} = this.props;
 
-    if(!this.props.channels[channel._id]){
+    if(Object.keys(this.props.channels).length === 0 || !this.props.channels[channel._id]){
       this.props.joinChannel(channel._id).then( () => this.props.handleClick(channel._id));
     } else{
       this.props.handleClick(channel._id);

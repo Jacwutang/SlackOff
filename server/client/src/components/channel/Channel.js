@@ -19,13 +19,6 @@ class Channel extends Component {
   }
 
 
-
-
-
-
-
-
-
   render(){
     if(!this.props.auth){
       return null;

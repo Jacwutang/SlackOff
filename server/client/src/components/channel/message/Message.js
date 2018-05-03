@@ -31,25 +31,14 @@ class Message extends Component {
       showComponent: false,
     }
 
-
-    // this.handleInput = this.handleInput.bind(this);
-    // this.triggerInputCSS = this.triggerInputCSS.bind(this);
-    // this.exitInputCSS = this.exitInputCSS.bind(this);
-      this.showComponent = this.showComponent.bind(this);
-
-
-
-    }
+    this.showComponent = this.showComponent.bind(this);
+  }
 
     componentDidMount(){
 
-      console.log(this.props);
-
-      socket.on('receiveMessage', (payload) => {
-        this.props.fetchMessage(payload);
-
-
-      });
+      // socket.on('receiveMessage', (payload) => {
+      //   this.props.fetchMessage(payload);
+      // });
 
 
     }
@@ -63,7 +52,7 @@ class Message extends Component {
     ( isEqual(this.props.channel,nextProps.channel) === false) ){
 
       //stop spinning once props load
-      this.setState({loaded: false});
+      // this.setState({loaded: true});
 
 
 
@@ -89,15 +78,9 @@ class Message extends Component {
     }
   }
 
-  componentWillUnmount(){
-
-  }
 
   showComponent(){
     let bool = (this.state.showComponent === true)? false:true;
-
-    // if(bool === false)
-    //   this.exitPanelCSS();
     this.setState({showComponent: bool});
   }
 
@@ -113,8 +96,6 @@ class Message extends Component {
 
            );
     }
-
-
 
 
     return(

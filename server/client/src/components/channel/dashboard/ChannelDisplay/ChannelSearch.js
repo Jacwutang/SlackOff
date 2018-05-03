@@ -84,7 +84,7 @@ class ChannelSearch extends Component{
          key={channel._id}
          match={this.state.input}
          channel={channel}
-         channels={this.props.channelsObject}
+         channels={this.props.myChannels}
          handleClick={this.handleClick}
          joinChannel={this.props.joinChannel}
          />

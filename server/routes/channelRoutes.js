@@ -90,14 +90,7 @@ module.exports = (app) => {
 
     Channel.find({}, (err,docs) => {
       if(docs){
-        // let newObj = {};
-        // docs.map( (doc) => {
-        //    return newObj[doc._id] = { name: doc.name, _id: doc._id};
-        //
-        // });
-        //
-        //
-        // res.send(newObj);
+
         res.send(docs);
       }
 
@@ -113,13 +106,24 @@ module.exports = (app) => {
 
     console.log("/api/channel/join route hit");
     console.log(channel_id);
+    console.log(user.id);
 
 
-    Channel.findOne({"_id": channel_id}, (err,channel) => {
+
+
+    Channel.findOneAndUpdate( {"_id": channel_id} , { $push: {members: user.id} }, (err,channel) => {
       if(channel){
-        channel.members.push(user);
+        // console.log(channel, "BEFORE");
+        //
+        //
+        // console.log(channel, "AFTER");
 
-        User.update({"_id": user.id}, {$push: {channels: channel._id}});
+        User.update({"_id": user.id}, {$push: {channels: channel_id}}, (err,success) => {
+          if(success){
+            // console.log("SUCCESS USER", success);
+          }
+
+        });
 
         res.send(channel);
       }
@@ -140,8 +144,3 @@ module.exports = (app) => {
 
 
 };
-
-
-// name: {type: String, unique: true, required: true},
-// members: [{ type: Schema.Types.ObjectId, ref: 'User'}],
-// is_dm: {type: Boolean, default: false}

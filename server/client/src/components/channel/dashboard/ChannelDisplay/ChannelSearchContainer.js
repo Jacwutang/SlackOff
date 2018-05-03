@@ -18,7 +18,7 @@ function formatChannelsToArray(state,ownProps){
 function mapStateToProps(state,ownProps){
   return{
     channels: formatChannelsToArray(state,ownProps),
-    channelsObject: state.channels,
+    myChannels: state.channels,
   }
 
 }

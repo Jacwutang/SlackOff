@@ -48,7 +48,7 @@ class MessageListItem extends Component{
     if(local_time.getHours() < 12){
       hour = `${local_time.getHours()- 12}`;
     } else if(local_time.getHours() > 12 && local_time.getHours() <= 23){
-      hour = local_time.getHours();
+      hour = local_time.getHours() - 12;
     } else{
       hour = 12;
     }

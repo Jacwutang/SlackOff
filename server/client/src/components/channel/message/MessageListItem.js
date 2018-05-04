@@ -44,9 +44,17 @@ class MessageListItem extends Component{
 
 
 
+    let hour;
+    if(local_time.getHours() < 12){
+      hour = `${local_time.getHours()- 12}`;
+    } else if(local_time.getHours() > 12 && local_time.getHours() <= 23){
+      hour = local_time.getHours();
+    } else{
+      hour = 12;
+    }
 
-    let hour = (local_time.getHours() > 12 )?
-    `${local_time.getHours()- 12}` : local_time.getHours();
+    // let hour = (local_time.getHours() > 12 )?
+    // `${local_time.getHours()- 12}` : local_time.getHours();
 
 
 
@@ -58,7 +66,7 @@ class MessageListItem extends Component{
 
     let day = dayNames[local_time.getDay()];
     let month = monthNames[local_time.getMonth() + 1];
-    let period = (local_time.getHours() <= 11)? "AM" : "PM";
+    let period = (hour <= 11)? "AM" : "PM";
     let date = (local_time.getDate());
 
     return(

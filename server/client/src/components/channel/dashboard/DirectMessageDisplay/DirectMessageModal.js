@@ -48,9 +48,7 @@ class DirectMessageModal extends Component{
       onClose={() => this.onCloseModal()}
       little
       animationDuration={500} >
-      <h3> Search Users feature is not available </h3>
-
-
+      <h4> Search Users feature is not available </h4>
 
       </Modal>
 

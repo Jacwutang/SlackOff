@@ -9,6 +9,12 @@
   color: black;
 }
 
+.a-channel-info:hover{
+  -webkit-mask-image: linear-gradient(-75deg, rgba(0,0,0,.6) 30%, #000 50%, rgba(0,0,0,.6) 70%);
+    -webkit-mask-size: 200%;
+    animation: shine 2s infinite;
+}
+
 .fa-info-circle{
   color: gray;
 }
@@ -62,20 +68,6 @@
 }
 
 
-/* .ul-messages{
-  overflow-y: auto;
-  overflow-x: hidden;
-  height: calc(100vh - 17vh);
-
-  width: 95%;
-  margin: 0 auto;
-  border-bottom: none;
-  margin-top: 10px;
-  position: relative;
-  left: 5px;
-
-} */
-
 .fa-user{
   color: green;
 }
@@ -92,7 +84,7 @@
 
 .channel-info-panel{
   height: calc(100vh - 17vh);
-  width: 20vw;
+  width: 15vw;
   border: 1px solid gray;
   border-top:none;
   border-right:none;

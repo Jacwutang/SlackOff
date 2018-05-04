@@ -14,7 +14,7 @@ class MessageInput extends Component {
   }
 
   componentDidMount(){
-    console.log("MESSAGE INPUT COMPONENT MOUNTED");
+    
 
   }
 

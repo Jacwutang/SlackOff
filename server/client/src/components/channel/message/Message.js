@@ -70,12 +70,12 @@ class Message extends Component {
 
 
         //only fetch Messages and fetch Users if it's initial channel loading.
-    
+
       this.props.fetchMessages(nextProps.type_id).then( () => {
         this.props.fetchUsers().then( setTimeout( () => {
 
           this.setState({loaded:true});
-        },2500));
+        },500));
 
 
 
@@ -87,6 +87,7 @@ class Message extends Component {
 
   showComponent(){
     let bool = (this.state.showComponent === true)? false:true;
+
     this.setState({showComponent: bool});
   }
 

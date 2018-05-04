@@ -48,31 +48,7 @@ class DirectMessageModal extends Component{
       onClose={() => this.onCloseModal()}
       little
       animationDuration={500} >
-
-        <div className="modal-content">
-
-         <h3>Direct Messages</h3>
-
-         <div className="modal-form">
-            <input
-              placeholder="Find Users"
-              type="text"
-              required
-              value={this.state.input}
-              onChange={this.handleInput('input')}
-             />
-             <a onClick={(e) => this.handleSubmit(e)}>
-               <i className="fas fa-arrow-alt-circle-right"></i>
-             </a>
-
-         </div>
-
-          <DirectMessageSearch />
-
-          />
-
-
-        </div>
+      <h3> Search Users feature is not available </h3>
 
 
 
@@ -86,3 +62,29 @@ class DirectMessageModal extends Component{
 };
 
 export default DirectMessageModal;
+
+//
+// <div className="modal-content">
+//
+//  <h3>Direct Messages</h3>
+//
+//  <div className="modal-form">
+//     <input
+//       placeholder="Find Users"
+//       type="text"
+//       required
+//       value={this.state.input}
+//       onChange={this.handleInput('input')}
+//      />
+//      <a onClick={(e) => this.handleSubmit(e)}>
+//        <i className="fas fa-arrow-alt-circle-right"></i>
+//      </a>
+//
+//  </div>
+//
+//   <DirectMessageSearch />
+//
+//   />
+//
+//
+// </div>

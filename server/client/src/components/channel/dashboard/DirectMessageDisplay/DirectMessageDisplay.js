@@ -31,7 +31,7 @@ class DirectMessageDisplay extends Component {
     window.setTimeout( () => {
       this.setState({loaded:true})
 
-    },4500);
+    },2500);
   }
 
   render(){

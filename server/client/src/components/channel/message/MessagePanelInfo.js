@@ -9,7 +9,7 @@ import MessagePanelList from './MessagePanelList';
 
 import axios from 'axios';
 import isEqual  from 'lodash/isEqual';
-// import { RECEIVE_ALL_MESSAGES, RECEIVE_MESSAGE } from '../../../actions/types';
+
 import {RECEIVE_ALL_MESSAGES, RECEIVE_MESSAGE} from 'actions/types';
 
 import socketIOClient from "socket.io-client";
@@ -35,7 +35,7 @@ class MessagePanelInfo extends Component{
 
   render(){
     const {channel,subscribers} = this.props;
-    
+
 
     return(
       <section className="channel-info-panel">

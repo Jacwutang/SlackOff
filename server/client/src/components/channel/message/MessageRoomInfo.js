@@ -16,9 +16,7 @@ class MessageRoomInfo extends Component{
     this.showComponent = this.showComponent.bind(this);
   }
 
-  componentDidMount(){
-    console.log("MOUNTED ROOM INFO", this.props);
-  }
+  
 
   triggerInputCSS(e){
     e.preventDefault();

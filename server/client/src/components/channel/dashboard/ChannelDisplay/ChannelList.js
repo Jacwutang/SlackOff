@@ -39,7 +39,7 @@ class ChannelList extends Component{
       setTimeout( () => {
         this.setState({loaded:true})
 
-      },3500);
+      },2500);
 
     });
 

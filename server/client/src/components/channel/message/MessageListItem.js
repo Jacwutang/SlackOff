@@ -65,7 +65,7 @@ class MessageListItem extends Component{
 
             <div className="name-and-date">
               <div className="author-div"> {author} </div>
-              <div className="timestamp-div"> {hour} {minutes} {period} </div>
+              <div className="timestamp-div"> {hour}: {minutes} {period} </div>
             </div>
 
             <div> {body} </div>

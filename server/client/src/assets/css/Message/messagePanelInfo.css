@@ -84,7 +84,7 @@
 
 .channel-info-panel{
   height: calc(100vh - 17vh);
-  width: 15vw;
+  width: 18vw;
   border: 1px solid gray;
   border-top:none;
   border-right:none;
@@ -97,7 +97,8 @@
   margin-top: 7vh;
   margin-bottom: 5vh;
   background: white;
-  transition: 0.5s;
+  transition: 2.5s;
+  z-index: 1;
 }
 
 .active-panel{

@@ -70,12 +70,12 @@ class MessageList extends Component{
 
 
     let hour;
-    if(local_time.getHours() < 12){
-      hour = `${local_time.getHours()- 12}`;
+    if(local_time.getHours() === 0){
+      hour = 12;
     } else if(local_time.getHours() > 12 && local_time.getHours() <= 23){
       hour = local_time.getHours() - 12;
     } else{
-      hour = 12;
+      hour = local_time.getHours();
     }
 
     let minutes = (local_time.getMinutes() < 10)?
@@ -103,6 +103,7 @@ class MessageList extends Component{
 
       let hour,minutes,period,day,month,date;
       let bool;
+      let trackPreviousMessage = {};
       return(
 
           <ul className="ul-messages" ref="list">
@@ -111,9 +112,19 @@ class MessageList extends Component{
 
             [hour,minutes,period,day,month,date] = this.formatTime(message.timestamp, message.time_zone);
 
+
+            bool = false;
+
             if(idx === 0){
               bool = true;
+
+            } else if(trackPreviousMessage["month"] !== month || trackPreviousMessage["date"] !== date){
+              bool = true;
             }
+
+            trackPreviousMessage["month"] = month;
+            trackPreviousMessage["date"] = date;
+
 
 
               return (

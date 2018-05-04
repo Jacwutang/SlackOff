@@ -1,5 +1,16 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import 'assets/css/Message/message.css'
+
+const monthNames = ["January", "February", "March", "April", "May", "June",
+"July", "August", "September", "October", "November", "December"
+];
+
+const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+const endingHash = {1: "st", 2: "nd", 3: "rd" };
+
+
 
 class MessageListItem extends Component{
   constructor(props){
@@ -10,98 +21,59 @@ class MessageListItem extends Component{
 
   }
 
-    componentDidMount(){
-
-      axios.get('/api/avatars').then(resp => {
-
-        let picture = resp.data.results[0].picture.thumbnail;
-        this.setState({ picture: picture});
-
+  componentDidMount(){
+    axios.get('/api/avatars').then(resp => {
+    let picture = resp.data.results[0].picture.thumbnail;
+    this.setState({ picture: picture});
     });
-
-
-
   }
 
-  formatTime(){
+  renderDivideLine(){
+    const {renderDivideLine,day,month,date} = this.props;
 
-    const monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-    ];
+    let end = (date <= 3)? endingHash[date]: "th";
 
-    const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-
-
-    const {timestamp, time_zone} = this.props;
-
-    let offset = new Date(timestamp) - (time_zone*60000);
-
-    let local_time_str = new Date(offset).toISOString();
-    // 2018-04-28T14:15:13.923Z
-    // console.log(local_time, "local_time ISOString");
-    let local_time = new Date(local_time_str.slice(0,-1));
-
-
-
-    let hour;
-    if(local_time.getHours() < 12){
-      hour = `${local_time.getHours()- 12}`;
-    } else if(local_time.getHours() > 12 && local_time.getHours() <= 23){
-      hour = local_time.getHours() - 12;
+    if(renderDivideLine == true){
+      return(
+          <li className="message-list-divider">
+            <span> {day}, {month} {date}{end} </span>
+          </li>
+      )
     } else{
-      hour = 12;
+      return null;
     }
 
-    // let hour = (local_time.getHours() > 12 )?
-    // `${local_time.getHours()- 12}` : local_time.getHours();
-
-
-
-    let minutes = (local_time.getMinutes() < 10)?
-    `0${local_time.getMinutes()}` : local_time.getMinutes();
-
-
-
-
-    let day = dayNames[local_time.getDay()];
-    let month = monthNames[local_time.getMonth() + 1];
-    let period = (local_time.getHours() <= 11)? "AM" : "PM";
-    let date = (local_time.getDate());
-
-    return(
-      `
-      ${hour}:${minutes} ${period}
-
-      `
-    );
 
 
   }
 
-
-    render(){
+  render(){
       // if(!this.state.loaded){
       //   return null;
       // }
-    const {body,author} = this.props;
+    const {body,author,hour,minutes,period} = this.props;
 
     return(
-      <li className="li-message">
-        <div className="img-container-channel-thumbnail">
-          <img className="thumbnail-img" src={this.state.picture} />
-        </div>
-        <div className="message-details">
-          <div className="name-and-date">
-            <div className="author-div"> {author} </div>
-            <div className="timestamp-div">  {this.formatTime()} </div>
+      <div>
+        {this.renderDivideLine()}
+        <li className="li-message">
+
+          <div className="img-container-channel-thumbnail">
+            <img className="thumbnail-img" src={this.state.picture} />
+          </div>
+          <div className="message-details">
+
+            <div className="name-and-date">
+              <div className="author-div"> {author} </div>
+              <div className="timestamp-div"> {hour} {minutes} {period} </div>
+            </div>
+
+            <div> {body} </div>
           </div>
 
-          <div> {body} </div>
-        </div>
 
-
-      </li>
+        </li>
+      </div>
     );
   }
 

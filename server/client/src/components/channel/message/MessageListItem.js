@@ -66,7 +66,7 @@ class MessageListItem extends Component{
 
     let day = dayNames[local_time.getDay()];
     let month = monthNames[local_time.getMonth() + 1];
-    let period = (hour <= 11)? "AM" : "PM";
+    let period = (local_time.getHours() <= 11)? "AM" : "PM";
     let date = (local_time.getDate());
 
     return(

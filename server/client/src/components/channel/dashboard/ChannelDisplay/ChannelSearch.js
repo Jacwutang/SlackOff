@@ -88,6 +88,8 @@ class ChannelSearch extends Component{
          handleClick={this.handleClick}
          joinChannel={this.props.joinChannel}
          socket={this.props.socket}
+         timestamp={channel.timestamp}
+         time_zone={channel.time_zone}
 
          />
        )}

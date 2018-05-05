@@ -121,7 +121,7 @@
 
 
 .msg-input-wrapper.search-container {
-  height: 4vh;
+  height: 3vh;
   width: 85%;
   transition: 1s;
   box-shadow: none;
@@ -201,7 +201,7 @@
 }
 
 .bottom-row{
-  height: 5vh;
+  height: 4vh;
   /* border-top: 1px solid #C0C0C0; */
   width: 95%;
   position: absolute;

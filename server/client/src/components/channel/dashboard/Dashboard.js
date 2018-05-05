@@ -17,7 +17,7 @@ class Dashboard extends Component {
 
   render(){
 
-    const {auth} = this.props;
+    let username = this.props.auth.local? this.props.auth.local.username: this.props.auth.google.displayName;
 
     return(
       <section className="col s2">
@@ -32,7 +32,7 @@ class Dashboard extends Component {
 
         <div className="displayname-div">
           <i className="fas fa-circle"></i>
-          <h4 class> {auth.local.username} </h4>
+          <h4 class> {username} </h4>
         </div>
 
         <section className="dashboard-message">

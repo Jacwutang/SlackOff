@@ -15,29 +15,24 @@ class Dashboard extends Component {
 
   }
 
-  componentDidMount(){
-    console.log("DASHBOARD MOUNTED");
-    console.log("DASHBOARD PROPS", this.props);
-  }
-
-  componentWillReceiveProps(){
-    console.log("DASHBOARD RECIEVED PROPS");
-
-  }
-
   render(){
 
+    const {auth} = this.props;
 
     return(
       <section className="col s2">
         <div className="workspace-div">
-        <span>
-          Workspace
-        </span>
-        <a href= "/api/logout">
-          <span> Logout </span>
-        </a>
+          <span>
+            Workspace
+          </span>
+          <a href= "/api/logout">
+            <span> Logout </span>
+          </a>
+        </div>
 
+        <div className="displayname-div">
+          <i className="fas fa-circle"></i>
+          <h4 class> {auth.local.username} </h4>
         </div>
 
         <section className="dashboard-message">

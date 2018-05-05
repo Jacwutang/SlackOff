@@ -13,8 +13,13 @@ import logger from 'redux-logger'
 import App from './components/App';
 import reducers from './reducers';
 
+let middlewares = [];
 document.addEventListener('DOMContentLoaded', () => {
-  const store = createStore( reducers, {}, applyMiddleware(reduxThunk, logger) );
+  if(process.env.NODE_ENV !== 'production'){
+    middlewares.push(reduxThunk, logger);
+  }
+
+  const store = createStore( reducers, {}, applyMiddleware(...middlewares) );
   const root = document.getElementById('root');
 
   document.body.style.overflow = "hidden";

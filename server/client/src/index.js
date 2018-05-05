@@ -13,10 +13,10 @@ import logger from 'redux-logger'
 import App from './components/App';
 import reducers from './reducers';
 
-let middlewares = [];
+let middlewares = [reduxThunk];
 document.addEventListener('DOMContentLoaded', () => {
   if(process.env.NODE_ENV !== 'production'){
-    middlewares.push(reduxThunk, logger);
+    middlewares.push(logger);
   }
 
   const store = createStore( reducers, {}, applyMiddleware(...middlewares) );

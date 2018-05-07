@@ -17,7 +17,7 @@ The purpose of this project was to build a full stack application with the funct
 
 <img src='http://res.cloudinary.com/dbtepon6n/image/upload/v1525735040/livechat.gif' />
 
-Slax utilizes websockets via [Socket.io](https://socket.io/) to establish real-time chat. When a user submits a new message, the client emits an signal the server to broadcast a message to others who are viewing the channel.
+Slack Off utilizes websockets via [Socket.io](https://socket.io/) to establish real-time chat. When a user submits a new message, the client emits an signal the server to broadcast a message to others who are viewing the channel.
 
 * When our Message component mounts, we subscribe an open connection to Socketio. We then make sure to unsubscribe it when the component will unmount.
 

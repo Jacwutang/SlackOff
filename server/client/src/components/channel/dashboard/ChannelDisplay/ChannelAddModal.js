@@ -71,7 +71,7 @@ class ChannelAddModal extends Component{
 
      </ul>
 
-       <h3>Create a new Channel</h3>
+       <h5>Create a new Channel</h5>
 
        <form className="modal-form" onSubmit={this.handleSubmit}>
          <input

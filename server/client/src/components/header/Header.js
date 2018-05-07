@@ -36,6 +36,9 @@ class Header extends Component {
     return(
 
       <nav>
+
+
+        <div className="nav-wrapper">
         <Link
           to={this.props.auth ? '/messages' : '/' }
           className="brand-logo"
@@ -44,7 +47,6 @@ class Header extends Component {
          <span className="logo-span">SlackOff</span>
         </Link>
 
-        <div className="nav-wrapper hide-on-med-and-down">
           <ul id="nav-mobile" className="right">
             {this.renderContent()}
           </ul>

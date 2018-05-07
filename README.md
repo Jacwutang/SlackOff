@@ -1,4 +1,4 @@
-![Header](https://i.imgur.com/w9bqPgp.png)
+![Header](http://res.cloudinary.com/dbtepon6n/image/upload/v1525737039/header.png)
 
 ### Check out the live [Application](http://slax.us)!
 

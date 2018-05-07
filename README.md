@@ -31,8 +31,7 @@ componentDidMount() {
         this.props.fetchMessage(payload);
       });
 
-
- this.props.socket.on('subscribedChannel', (payload) => {
+this.props.socket.on('subscribedChannel', (payload) => {
         this.props.fetchSingleChannel(payload._id);
       });
 }
@@ -41,18 +40,13 @@ componentDidMount() {
 
 ```javascript
 io.on('connection', (socket) => {
-
-
-
   socket.on('joinChannel', (payload) => {
     socket.join(payload._id);
     socket.broadcast.to(payload._id).emit('subscribedChannel', payload);
-  });
-
-
+ });
 ```
 
-## 2) Live Search
+### 2) Live Search
 Using Regex and pattern matching, we were able to implement search for channels and active highlighting with each keystroke.
 
 <img src='http://res.cloudinary.com/dbtepon6n/image/upload/v1525734577/livesearch.gif' />
@@ -62,24 +56,15 @@ Using Regex and pattern matching, we were able to implement search for channels 
     return channels.filter( (channel) => {
       const regex = new RegExp(word, 'gi');
       return channel.name.match(regex);
-
-    })
+      })
   }
-
-
 ```
 
 ```javascript
 render(){
-
-
     const {channel, match} = this.props;
-
-
-
     const regex = new RegExp(match, 'gi');
-
-
+    
     const channelName = channel.name.replace(regex, ` <span class="highlight-name"> ${match} </span>`);
 
       return(
@@ -100,7 +85,7 @@ Incorporating Passport.js authentication strategies, we were able to incorporate
 
 <img src='http://res.cloudinary.com/dbtepon6n/image/upload/v1525734576/locallogin.gif' /> <img src='http://res.cloudinary.com/dbtepon6n/image/upload/v1525734577/googlelogin.gif' />
 
-# Local-Login
+#### Local-Login
 ```javascript
 passport.use('local-login', new LocalStrategy({
         // by default, local strategy uses username and password, we will override with email
@@ -109,10 +94,9 @@ passport.use('local-login', new LocalStrategy({
         passReqToCallback : true // allows us to pass back the entire request to the callback
     },
     function(req, username, password, done) { 
-
 ```
 
-# Google-Login
+#### Google-Login
 ```javascript
 
 passport.use(

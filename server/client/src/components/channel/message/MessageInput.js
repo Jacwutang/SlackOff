@@ -14,7 +14,7 @@ class MessageInput extends Component {
   }
 
   componentDidMount(){
-    
+
 
   }
 
@@ -58,7 +58,9 @@ class MessageInput extends Component {
 
           }
           value={this.state.input}
-          onChange={this.handleInput('input')} />
+          onChange={this.handleInput('input')}
+          autoComplete="off"
+          />
 
         </form>
 

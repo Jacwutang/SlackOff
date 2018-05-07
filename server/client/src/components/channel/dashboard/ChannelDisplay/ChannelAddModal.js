@@ -80,6 +80,7 @@ class ChannelAddModal extends Component{
            required
            value={this.state.input}
            onChange={this.handleInput('input')}
+           autoComplete="off"
           />
           <a onClick={this.handleSubmit}>
             <i className="fa fa-paper-plane fa-2x"></i>

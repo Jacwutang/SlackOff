@@ -1,7 +1,7 @@
 .search-results-wrapper{
   display: flex;
   flex-direction: column;
-  height:45vh;
+  height:50vh;
   width:45vw;
   align-items: center;
   justify-content: flex-start;

@@ -72,6 +72,7 @@ class ChannelSearch extends Component{
         placeholder="Search"
         value={this.state.input}
         onChange={(e) => this.handleInput(e,'input')}
+        autoComplete="off"
        />
 
       </div>

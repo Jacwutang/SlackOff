@@ -36,24 +36,17 @@ class Header extends Component {
     return(
 
       <nav>
-        <div className="nav-wrapper">
-          <Link
-            to={this.props.auth ? '/messages' : '/' }
-            className="brand-logo"
-          >
-           <img src={require("../../images/Slack_Mark_Web.png")} alt="logo" width={75}  />
-           <span className="logo-span">SlackOff</span>
-          </Link>
+        <Link
+          to={this.props.auth ? '/messages' : '/' }
+          className="brand-logo"
+        >
+         <img src={require("../../images/Slack_Mark_Web.png")} alt="logo" width={75}  />
+         <span className="logo-span">SlackOff</span>
+        </Link>
+
+        <div className="nav-wrapper hide-on-med-and-down">
           <ul id="nav-mobile" className="right">
-            <li>
-              <Link to="/demo">
-                <span>Why SlackOff?</span>
-              </Link>
-            </li>
-
             {this.renderContent()}
-            
-
           </ul>
         </div>
       </nav>

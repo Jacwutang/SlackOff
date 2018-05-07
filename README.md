@@ -1,6 +1,6 @@
 ![Header](http://res.cloudinary.com/dbtepon6n/image/upload/v1525737039/header.png)
 
-### Check out the live [Application](http://slax.us)!
+### Check out the live [Application](http://slackoff-jwu.herokuapp.com)!
 
 ## Technologies
 
@@ -13,7 +13,7 @@ The purpose of this project was to build a full stack application with the funct
 
 ## Notable Features
 
-### Live Chat
+### 1) Live Chat
 
 <img src='http://res.cloudinary.com/dbtepon6n/image/upload/v1525735040/livechat.gif' />
 
@@ -52,7 +52,7 @@ io.on('connection', (socket) => {
 
 ```
 
-## Live Search
+## 2) Live Search
 Using Regex and pattern matching, we were able to implement search for channels and active highlighting with each keystroke.
 
 <img src='http://res.cloudinary.com/dbtepon6n/image/upload/v1525734577/livesearch.gif' />
@@ -95,12 +95,12 @@ render(){
 
 
 
-### Multiple User authentication strategies
+### 3) Multiple User authentication strategies
 Incorporating Passport.js authentication strategies, we were able to incorporate a traditional login (username and password) along with social media login using Google's Oauth API.
 
 <img src='http://res.cloudinary.com/dbtepon6n/image/upload/v1525734576/locallogin.gif' /> <img src='http://res.cloudinary.com/dbtepon6n/image/upload/v1525734577/googlelogin.gif' />
 
-#Local-Login
+# Local-Login
 ```javascript
 passport.use('local-login', new LocalStrategy({
         // by default, local strategy uses username and password, we will override with email
@@ -112,7 +112,7 @@ passport.use('local-login', new LocalStrategy({
 
 ```
 
-#Google-Login
+# Google-Login
 ```javascript
 
 passport.use(
@@ -145,7 +145,7 @@ passport.use(
 
 ```
 
-### Error validations
+### 4) Error validations
 Any database validation errors are caught and prompt error messages are displayed to the user.
 
 * User authentication errors validation
@@ -157,14 +157,7 @@ Any database validation errors are caught and prompt error messages are displaye
 
 
 * Create Channel errors validation
-<img src='http://res.cloudinary.com/dbtepon6n/image/upload/v1525736907/channelerrors.gif' />
-
-
-
-
-
-
-
+<img src='http://res.cloudinary.com/dbtepon6n/image/upload/v1525737224/channelerrors.gif' />
 
 
 

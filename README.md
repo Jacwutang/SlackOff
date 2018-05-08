@@ -134,7 +134,7 @@ Any database validation errors are caught and prompt error messages are displaye
 
 ##### User authentication errors validation
 
-<img src='http://res.cloudinary.com/dbtepon6n/image/upload/v1525736579/usernameexists.gif' /><img src='http://res.cloudinary.com/dbtepon6n/image/upload/v1525736577/incorrectpassword.gif' /><img src='http://res.cloudinary.com/dbtepon6n/image/upload/v1525736576/invalidcredentials.gif' />
+<img src='http://res.cloudinary.com/dbtepon6n/image/upload/v1525736579/usernameexists.gif' /> <img src='http://res.cloudinary.com/dbtepon6n/image/upload/v1525736577/incorrectpassword.gif' /> <img src='http://res.cloudinary.com/dbtepon6n/image/upload/v1525736576/invalidcredentials.gif' />
 
 
 

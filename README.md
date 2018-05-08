@@ -23,7 +23,7 @@ Slack Off utilizes websockets via [Socket.io](https://socket.io/) to establish r
 
 ```javascript
 componentWillUnmount() {
-  socket.unsubscribe(`channel-${this.props.match.params.channelId}`);
+  this.props.socket.unsubscribe(`channel-${this.props.match.params.channelId}`);
 }
 
 componentDidMount() {

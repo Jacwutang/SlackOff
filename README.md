@@ -132,15 +132,16 @@ passport.use(
 ### 4) Error validations
 Any database validation errors are caught and prompt error messages are displayed to the user.
 
-* User authentication errors validation
-<img src='http://res.cloudinary.com/dbtepon6n/image/upload/v1525736579/usernameexists.gif' /> <img src='http://res.cloudinary.com/dbtepon6n/image/upload/v1525736577/incorrectpassword.gif' /> <img src='http://res.cloudinary.com/dbtepon6n/image/upload/v1525736576/invalidcredentials.gif' />
+##### User authentication errors validation
+
+<img src='http://res.cloudinary.com/dbtepon6n/image/upload/v1525736579/usernameexists.gif' /><img src='http://res.cloudinary.com/dbtepon6n/image/upload/v1525736577/incorrectpassword.gif' /><img src='http://res.cloudinary.com/dbtepon6n/image/upload/v1525736576/invalidcredentials.gif' />
 
 
 
 
 
 
-* Create Channel errors validation
+##### Create Channel errors validation
 <img src='http://res.cloudinary.com/dbtepon6n/image/upload/v1525737224/channelerrors.gif' />
 
 

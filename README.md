@@ -7,6 +7,7 @@
 * Express/Node.js
 * React
 * Redux
+* MongoDB
 * Websockets (Socket.io)
 
 The purpose of this project was to build a full stack application with the functionality and design of a currently existing website that meets predefined feature specifications. The core feature set built was #Live Chat, #User Authentication, #Channels and #Direct Messages.

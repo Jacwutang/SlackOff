@@ -82,21 +82,14 @@ class ChannelSearchListItem extends Component{
       `${month} ${date}, ${year}`
     );
 
-
-
-
   }
 
 
   render(){
 
-
     const {channel, match} = this.props;
 
-
-
     const regex = new RegExp(match, 'gi');
-
 
     const channelName = channel.name.replace(regex, ` <span class="highlight-name"> ${match} </span>`);
 

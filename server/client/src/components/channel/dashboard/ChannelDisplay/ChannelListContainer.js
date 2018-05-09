@@ -33,20 +33,14 @@ function mapStateToProps(state,ownProps){
     auth_type: Object.keys(auth)[0],
     type: ownProps.match.params.type,
     type_id: ownProps.match.params.type_id
-
-
-
   };
 
 }
 
 function mapDispatchToProps(dispatch){
+
   return{
-
-      fetchChannels: () => dispatch(fetchChannels()),
-
-
-
+    fetchChannels: () => dispatch(fetchChannels()),
   };
 
 };

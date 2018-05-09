@@ -33,16 +33,16 @@ passport.deserializeUser( (id,done) => {
 // });
 
 passport.use('local-signup', new LocalStrategy({
-        // by default, local strategy uses username and password, we will override with email
+
         usernameField : 'username',
         passwordField : 'password',
-        passReqToCallback : true // allows us to pass back the entire request to the callback
+        passReqToCallback : true
     },
     function(req, username, password, done) {
 
         // asynchronous
         // User.findOne wont fire unless data is sent back
-        console.log("LOCAL-SIGNUP")
+        ("LOCAL-SIGNUP")
         process.nextTick(function() {
 
         // find a user whose email is the same as the forms email
@@ -54,13 +54,13 @@ passport.use('local-signup', new LocalStrategy({
 
             // check to see if theres already a user with that username
             if (user) {
-                console.log("ALREADY THIS USER")
+                ("ALREADY THIS USER")
                 // return done(null, false, req.flash('signupMessage', 'That username is already taken.'));
 
                 return done(null,false,{message: 'Username already exists'});
                 // return res.status(401).json("Incorrect email or password1")
             } else {
-              console.log("SIGNUP PORTION REACHED")
+              ("SIGNUP PORTION REACHED")
                 // if there is no user with that username
                 // create the user
                 var newUser  = new User();
@@ -74,7 +74,7 @@ passport.use('local-signup', new LocalStrategy({
                     if (err){
                       throw err;
                     } else{
-                      console.log("saved user")
+                      ("saved user")
                         return done(null, newUser);
                     }
 
@@ -94,13 +94,10 @@ passport.use('local-signup', new LocalStrategy({
         passwordField : 'password',
         passReqToCallback : true // allows us to pass back the entire request to the callback
     },
-    function(req, username, password, done) { // callback with username and password from our form
-      // console.log("LOCAL-LOGIN")
+    function(req, username, password, done) {
 
-        // find a user whose username is the same as the forms username
-        // we are checking to see if the user trying to login already exists
         User.findOne({ 'local.username' :  username }, function(err, user) {
-            // if there are any errors, return the error before anything else
+
             if (err){
 
               return done(err);
@@ -123,7 +120,7 @@ passport.use('local-signup', new LocalStrategy({
             }
 
             // all is well, return successful user
-            // console.log("WE FOUND YOU RETURN USER")
+            // ("WE FOUND YOU RETURN USER")
             return done(null, user);
         });
 
@@ -141,13 +138,10 @@ passport.use(
     callbackURL: '/auth/google/callback',
     proxy: true
   }, async (accessToken, refreshToken,profile,done) => {
-      //returns promise
+
       const existingUser = await User.findOne({ 'google.googleId': profile.id })
 
             if(existingUser){
-              //1st arg error obj, 2nd user obj
-              console.log(existingUser,"EXISTING USER");
-
               done(null, existingUser);
             } else{
                 const user =  new User();
@@ -158,13 +152,9 @@ passport.use(
                     if (err){
                       throw err;
                     } else{
-                        console.log("saved user")
                         return done(null, user);
                     }
-
-
                 });
             }
         })
-
 );

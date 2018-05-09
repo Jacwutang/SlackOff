@@ -47,8 +47,6 @@ class ChannelSearch extends Component{
       return channel.name.match(regex);
 
     })
-
-
   }
 
   handleClick(channel_id){

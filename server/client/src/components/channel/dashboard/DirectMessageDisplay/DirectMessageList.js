@@ -13,10 +13,6 @@ class DirectMessageList extends Component{
     super(props);
   }
 
-  componentDidMount(){
-    //fetch direct messages
-  }
-
   render(){
     return(
       <div/>

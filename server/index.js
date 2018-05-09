@@ -7,11 +7,11 @@ const bodyParser = require('body-parser');
 const flash    = require('connect-flash');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
-const cors = require('cors');
+// const cors = require('cors');
 const axios = require('axios');
 
 const app = express();
-app.use(cors());
+// app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -26,7 +26,7 @@ const PORT = process.env.PORT ||  5000;
 
 
 http.listen(PORT, () => {
-  console.log('listening on *:5000');
+
 });
 
 
@@ -35,7 +35,6 @@ io.on('connection', (socket) => {
 
 
   socket.on('joinChannel', (payload) => {
-    console.log(payload, "PAYLOAD BACKEND");
     socket.join(payload._id);
     socket.broadcast.to(payload._id).emit('subscribedChannel', payload);
   });
@@ -46,7 +45,7 @@ io.on('connection', (socket) => {
 
     //broadcast to everybody except me.
     socket.broadcast.to(payload.channel).emit('receiveMessage',payload);
-    console.log("Message received backend",payload)
+    ("Message received backend",payload)
   });
 
 
@@ -60,20 +59,10 @@ io.on('connection', (socket) => {
 });
 
 
-
-
-
 require('./models/User');
 require('./models/Channel');
 require('./models/Message');
-
-
-
 require('./services/passport');
-
-
-
-
 mongoose.connect(keys.mongoURI);
 
 
@@ -103,7 +92,7 @@ require('./routes/messageRoutes')(app);
 require('./routes/userRoutes')(app);
 
 app.get('/api/avatars', (req,res) => {
-  // console.log("api/avatars route hit");
+  // ("api/avatars route hit");
 
   const url = "https://randomuser.me/api/";
 

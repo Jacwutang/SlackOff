@@ -21,7 +21,7 @@ module.exports = (app) => {
 
       Channel.create(newChannel, (err,channel) => {
         if(err){
-          console.log("ERROR IS", err);
+          ("ERROR IS", err);
           res.status(400).send(
           { message: err.errors.name.message });
 
@@ -31,7 +31,7 @@ module.exports = (app) => {
           User.update({"_id": req.user.id},
           {$push: {channels: channel._id}}, (err,success) => {
             if(err){
-              console.log("error update user");
+              ("error update user");
             }
 
           });
@@ -40,7 +40,7 @@ module.exports = (app) => {
           .findOne({"_id": channel._id })
           .exec(function(err,docs){
             if(err){
-              console.log("error populating channel users");
+              ("error populating channel users");
             }else{
 
               res.send(docs)
@@ -79,7 +79,7 @@ module.exports = (app) => {
       if(err){
         res.status(401).send({message: "Error occured finding user's channels"});
       } else{
-        console.log(docs.channels, "CHANNELS FETCHARE ARE")
+        (docs.channels, "CHANNELS FETCHARE ARE")
         res.send(docs.channels);
       }
 
@@ -100,10 +100,10 @@ module.exports = (app) => {
 
     Channel.findOne({"_id": channel_id}, (err,doc) => {
       if(doc){
-        // console.log(doc, "The SINGLE Channel fetched is", doc);
+        // (doc, "The SINGLE Channel fetched is", doc);
         res.send(doc);
       }else{
-        // console.log("ERROR FETCHING SINGLE CHANNEL")
+        // ("ERROR FETCHING SINGLE CHANNEL")
       }
 
 
@@ -116,7 +116,7 @@ module.exports = (app) => {
 
     Channel.find({}, (err, docs) => {
       if(docs){
-        // console.log("FETCH ALL CHANNELS", docs);
+        // ("FETCH ALL CHANNELS", docs);
         res.send(docs);
 
       }
@@ -142,7 +142,7 @@ module.exports = (app) => {
           if(err){
 
           }else{
-              console.log("SUCCESS", channel);
+              ("SUCCESS", channel);
               res.send(channel);
           }
 

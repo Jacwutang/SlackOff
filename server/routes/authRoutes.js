@@ -44,17 +44,17 @@ module.exports = (app) => {
   app.post('/api/local-signup', function(req, res, next) {
   passport.authenticate('local-signup', function(err, user, info) {
     if (err){
-      // console.log("error");
+      // ("error");
       return next(err);
     }
 
     if (!user){
-      // console.log(info)
+      // (info)
       return res.status(401).send(info);
     }
     req.logIn(user, function(err) {
       if (err){
-        console.log("error login");
+        ("error login");
         return next(err);
       }
 
@@ -94,11 +94,11 @@ module.exports = (app) => {
 
     if(req.user.google.displayName){
       user.displayName = req.user.google.displayName;
-      // console.log("GOOGLE USER SENT BACK")
+      // ("GOOGLE USER SENT BACK")
       return res.send({google:user});
     } else{
       user.username = req.user.local.username;
-      // console.log("LOCAL USER SENT BACK")
+      // ("LOCAL USER SENT BACK")
       return res.send({local:user});
     }
   });

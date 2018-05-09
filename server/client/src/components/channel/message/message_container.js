@@ -1,8 +1,6 @@
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
 import Message from './Message';
-// import { createMessage, fetchMessages, fetchUsers } from '../../../actions/index';
-
 import {createMessage, fetchMessages, fetchUsers, fetchSingleChannel} from 'actions/index';
 
 
@@ -34,7 +32,7 @@ function formatSubscribers(state,ownProps){
   if(state.channels[ownProps.match.params.type_id] === undefined || state.users === undefined) return {};
 
 
-  // we have users and channels now.
+  
 
   let user_ids = state.channels[ownProps.match.params.type_id].members;
 
@@ -55,7 +53,7 @@ function formatSubscribersToArray(state,ownProps){
   if(state.channels[ownProps.match.params.type_id] === undefined || Object.keys(state.users).length === 0 ){
     return [];
   } else{
-    
+
     let members = state.channels[ownProps.match.params.type_id].members;
 
 

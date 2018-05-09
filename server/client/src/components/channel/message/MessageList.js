@@ -8,7 +8,6 @@ import MessageInput from './MessageInput';
 import MessagePanelInfo from './MessagePanelInfo';
 import axios from 'axios';
 import isEqual  from 'lodash/isEqual';
-// import { RECEIVE_ALL_MESSAGES, RECEIVE_MESSAGE } from '../../../actions/types';
 import {RECEIVE_ALL_MESSAGES, RECEIVE_MESSAGE} from 'actions/types';
 
 

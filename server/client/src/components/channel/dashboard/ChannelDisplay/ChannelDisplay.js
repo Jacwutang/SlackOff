@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
-
 import Modal from 'react-responsive-modal';
-
 import { RECEIVE_CHANNEL_ERRORS } from 'actions/types';
 import axios from 'axios';
-
-// import ChannelIndexItem from './ChannelIndexItem';
 import ChannelSearchModal from './ChannelSearchModal';
 import ChannelAddModal from './ChannelAddContainer';
 import ChannelList from './ChannelListContainer';
-// import {Wave} from 'better-react-spinkit';
-
 import 'assets/css/ChannelDisplay/channelDisplay.css';
 import 'assets/css/Dashboard/dashboard.css';
 import 'assets/css/animation.css';

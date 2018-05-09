@@ -48,9 +48,7 @@ class MessageListItem extends Component{
   }
 
   render(){
-      // if(!this.state.loaded){
-      //   return null;
-      // }
+
     const {body,author,hour,minutes,period} = this.props;
 
     return(

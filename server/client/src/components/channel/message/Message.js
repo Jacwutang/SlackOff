@@ -9,7 +9,6 @@ import MessagePanelInfo from './MessagePanelInfo';
 import MessageRoomInfo from './MessageRoomInfo';
 import axios from 'axios';
 import isEqual  from 'lodash/isEqual';
-// import { RECEIVE_ALL_MESSAGES, RECEIVE_MESSAGE } from '../../../actions/types';
 import {RECEIVE_ALL_MESSAGES, RECEIVE_MESSAGE} from 'actions/types';
 
 
@@ -39,8 +38,6 @@ class Message extends Component {
 
 
       this.props.socket.on('subscribedChannel', (payload) => {
-        console.log(payload,"payload CLIENT")
-        // "53232sdsff"
         this.props.fetchSingleChannel(payload._id);
       });
 

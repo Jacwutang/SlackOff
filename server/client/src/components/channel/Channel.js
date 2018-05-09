@@ -18,12 +18,6 @@ class Channel extends Component {
 
   }
 
-  componentDidMount(){
-
-
-  }
-
-
   render(){
     if(!this.props.auth){
       return null;

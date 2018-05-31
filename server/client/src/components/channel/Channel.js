@@ -1,43 +1,30 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-
-
-import 'assets/css/Channel/channel.css';
-import DashBoard from './dashboard/DashboardContainer';
-import Message from './message/message_container';
+import "assets/css/Channel/channel.css";
+import DashBoard from "./dashboard/DashboardContainer";
+import Message from "./message/message_container";
 
 import socketIOClient from "socket.io-client";
-const HOST = window.location.origin;
-const socket = socketIOClient("http://localhost:5000");
-
-
+const HOST = window.location.origin; // heroku
+const socket = socketIOClient(HOST);
 
 class Channel extends Component {
-  constructor(){
+  constructor() {
     super();
-
   }
 
-  render(){
-    if(!this.props.auth){
+  render() {
+    if (!this.props.auth) {
       return null;
     }
 
-    return(
-
-    <div className="row">
-
-    <DashBoard socket={socket}/>
-    <Message socket={socket}/>
-
-
-
-
-    </div>
-
-
+    return (
+      <div className="row">
+        <DashBoard socket={socket} />
+        <Message socket={socket} />
+      </div>
     );
   }
-};
+}
 
 export default Channel;

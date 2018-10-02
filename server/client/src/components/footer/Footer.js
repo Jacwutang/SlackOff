@@ -6,8 +6,6 @@ export default () => {
     <div className="container">
       <nav className="nav-footer">
         <div className="div-footer">
-          <h4 className="h4-footer"> You're in Good Hands </h4>
-
           <p className="p-footer-description">
             {" "}
             Join millions of people around the world and SlackOff
